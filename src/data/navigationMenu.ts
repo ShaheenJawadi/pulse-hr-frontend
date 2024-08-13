@@ -14,7 +14,7 @@ export const  navigationMenu:NavigationMenuType[] = [
     {
         title: 'Tableau de bord',
         icon: DashboardIcon,      
-         link: '/home',
+         link: '/dashboard',
     },
     {
         title: 'Employés',
