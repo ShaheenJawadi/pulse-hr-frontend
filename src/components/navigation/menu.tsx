@@ -11,30 +11,35 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { navigationMenu } from "@/data/navigationMenu";
 
-const NavigationMenu = () => {
+
+type NavigationMenuType = {
+
+    isOpen:boolean
+}
+
+const NavigationMenu = ({isOpen}:NavigationMenuType) => {
 
     return (
         <List>
         {navigationMenu.map((element, index) => (
-          <ListItem key={index} disablePadding sx={{ display: "block" }}>
+          <ListItem  key={index} disablePadding sx={{ display: "block" }}>
             <ListItemButton
             href={element.link}
               sx={{
                 minHeight: 48,
-                justifyContent: "initial",
+                justifyContent: isOpen ? 'initial' : 'center',
                 px: 2.5,
               }}
             >
               <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: 3,
+                sx={{ 
+                  mr: isOpen ? 3 : 'auto',
                   justifyContent: "center",
                 }}
               >
-               <element.icon/>
+               <element.icon  fontSize="medium"   sx={{ fontSize: isOpen? null  : 30  }}   />
               </ListItemIcon>
-              <ListItemText primary={element.title} sx={{ opacity: 1 }} />
+              <ListItemText primary={element.title} sx={{ display: isOpen ? "block" : "none" }}/>
             </ListItemButton>
           </ListItem>
         ))}

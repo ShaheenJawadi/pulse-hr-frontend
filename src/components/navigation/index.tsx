@@ -5,7 +5,8 @@ import MuiDrawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
- 
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import NavigationMenu from "./menu";
 
 const drawerWidth = 260;
@@ -25,9 +26,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(12)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(18)} + 1px)`,
   },
 });
 
@@ -57,15 +58,28 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Navigation() {
+
+    const [open , setOpen]= React.useState<boolean>(true);
+
+    const handleDrawerOpen = () => {
+        setOpen(!open);
+      };
+
   return (
-    <Drawer variant="permanent" open={true}>
+    <Drawer variant="permanent" open={open}>
       <DrawerHeader>
-        <IconButton>
-          <ChevronLeftIcon />
+        <IconButton  onClick={()=>handleDrawerOpen()}>
+
+            {
+                open ? <FiberSmartRecordIcon sx={{fontSize:20}} />:<FiberManualRecordIcon  sx={{fontSize:20}} />
+            }
+          
+          
+
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <NavigationMenu/>
+      <NavigationMenu isOpen={open}/>
       
     </Drawer>
   );
