@@ -9,20 +9,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { navigationMenu } from "@/data/navigationMenu";
 
 const NavigationMenu = () => {
 
     return (
         <List>
-        {[
-          "Tableau de bord",
-          "Employés",
-          "Recrutement",
-          "Congés ",
-          "Performance",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {navigationMenu.map((element, index) => (
+          <ListItem key={index} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+            href={element.link}
               sx={{
                 minHeight: 48,
                 justifyContent: "initial",
@@ -36,9 +32,9 @@ const NavigationMenu = () => {
                   justifyContent: "center",
                 }}
               >
-                <DashboardIcon />
+               <element.icon/>
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: 1 }} />
+              <ListItemText primary={element.title} sx={{ opacity: 1 }} />
             </ListItemButton>
           </ListItem>
         ))}
