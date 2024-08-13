@@ -1,4 +1,5 @@
   
+import AppTheme from "@/theme/themeProviders";
 import "./globals.css";
  
 
@@ -9,7 +10,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body >
+        
+        <AppTheme>
+        {children}
+        </AppTheme>
+        </body>
     </html>
   );
 }
