@@ -1,6 +1,6 @@
 
 import { Box } from '@mui/material'
-import { ChildrenType } from './types'
+import { ChildrenType }  from '@/types/themeTypes'
 import Navigation from '@/components/navigation'
  
 

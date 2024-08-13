@@ -1,5 +1,5 @@
 'use client'
-import { ChildrenType } from '@/theme/types'
+import { ChildrenType } from '@/types/themeTypes'
 import Wrapper from '@/theme/wrapper'
 import Button from '@mui/material/Button'
 import { ReactNode } from 'react'

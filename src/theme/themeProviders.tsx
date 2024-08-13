@@ -1,5 +1,5 @@
 'use client'
-import { ChildrenType } from '@/theme/types' 
+import { ChildrenType } from '@/types/themeTypes' 
 import { CssBaseline, ThemeProvider } from '@mui/material'  
 import {  createTheme  } from '@mui/material/styles'
 import { Experimental_CssVarsProvider as CssVarsProvider ,  experimental_extendTheme as extendTheme } from '@mui/material/styles';
