@@ -1,5 +1,7 @@
 
+import { Box } from '@mui/material'
 import { ChildrenType } from './types'
+import Navigation from '@/components/navigation'
  
 
  
@@ -7,9 +9,10 @@ import { ChildrenType } from './types'
 const Wrapper = ({ children }: ChildrenType) => {  
   
   return (
-    <div >
+    <Box sx={{display:'flex'}} >
+      <Navigation/>
       {children}
-    </div>
+    </Box>
   )
 }
 
