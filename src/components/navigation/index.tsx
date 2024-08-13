@@ -3,8 +3,7 @@ import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
  
 import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import IconButton from "@mui/material/IconButton"; 
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import NavigationMenu from "./menu";
@@ -60,18 +59,27 @@ const Drawer = styled(MuiDrawer, {
 export default function Navigation() {
 
     const [open , setOpen]= React.useState<boolean>(true);
+    const [isHovered, setIsHovered] = React.useState(false);
 
+    const handleMouseEnter = () => {
+      setIsHovered(true);  
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHovered(false);  
+    };
     const handleDrawerOpen = () => {
         setOpen(!open);
       };
-
+ 
   return (
-    <Drawer variant="permanent" open={open}>
+    <Drawer variant="permanent" open={open || isHovered}      onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}>
       <DrawerHeader>
         <IconButton  onClick={()=>handleDrawerOpen()}>
 
             {
-                open ? <FiberSmartRecordIcon sx={{fontSize:20}} />:<FiberManualRecordIcon  sx={{fontSize:20}} />
+                open ? <FiberSmartRecordIcon sx={{fontSize:20}} />:isHovered ?  <FiberManualRecordIcon  sx={{fontSize:20}} /> :null
             }
           
           
@@ -79,7 +87,7 @@ export default function Navigation() {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <NavigationMenu isOpen={open}/>
+      <NavigationMenu isOpen={open  || isHovered}/>
       
     </Drawer>
   );
