@@ -2,21 +2,22 @@
 import { ChildrenType } from '@/theme/types' 
 import { CssBaseline, ThemeProvider } from '@mui/material'  
 import {  createTheme  } from '@mui/material/styles'
- 
+import { Experimental_CssVarsProvider as CssVarsProvider ,  experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import themeOptions from '.' 
 const AppTheme = async ({ children }: ChildrenType) => {
  
-  const theme = createTheme(themeOptions())
+  const theme = extendTheme(themeOptions())
 
     return (
       <AppRouterCacheProvider >
-        <ThemeProvider theme={theme}  >
+        <CssVarsProvider theme={theme}  
+       >
           <>
             <CssBaseline />
             {children}
           </>
-        </ThemeProvider>
+        </CssVarsProvider>
       </AppRouterCacheProvider>
     )
 }
