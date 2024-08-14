@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { Box } from "@mui/material";
-import GeneralTable from "@/ui/table";
+import GeneralTable from "@/ui/table/mainTable";
 
 type Person = {
   id: number;
