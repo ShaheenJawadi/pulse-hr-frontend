@@ -82,29 +82,17 @@ export default function Navigation() {
     >
       <DrawerHeader>
         <Stack direction={"row"} flex={1} justifyContent={"space-between"}>
-          <Box
-            sx={{
-              flex: 1,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            flex={1}
-          >
-            <Image
-              src="/logo/logo.svg"
-              width={180}
-              height={60}
-              alt="Picture of the author"
-            />
-          </Box>
-          <IconButton onClick={() => handleDrawerOpen()}>
-            {open ? (
-              <FiberSmartRecordIcon sx={{ fontSize: 20 }} />
-            ) : isHovered ? (
-              <FiberManualRecordIcon sx={{ fontSize: 20 }} />
-            ) : null}
-          </IconButton>{" "}
+          <LogoComponent isOpen={open || isHovered} />
+
+          {open ? (
+            <IconButton onClick={() => handleDrawerOpen()}>
+              <FiberSmartRecordIcon sx={{ fontSize: 20 }} />{" "}
+            </IconButton>
+          ) : isHovered ? (
+            <IconButton onClick={() => handleDrawerOpen()}>
+              <FiberManualRecordIcon sx={{ fontSize: 20 }} />{" "}
+            </IconButton>
+          ) : null}
         </Stack>
       </DrawerHeader>
       <Divider />
@@ -112,3 +100,23 @@ export default function Navigation() {
     </Drawer>
   );
 }
+
+const LogoComponent = ({ isOpen }: { isOpen: boolean }) => {
+  return (
+    <Box
+      sx={{
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      flex={1}
+    >
+      {isOpen ? (
+        <Image src="/logo/logo.svg" width={180} height={60} alt="logo" />
+      ) : (
+        <Image src="/logo/logo_sx.svg" width={50} height={50} alt="logo" />
+      )}
+    </Box>
+  );
+};
