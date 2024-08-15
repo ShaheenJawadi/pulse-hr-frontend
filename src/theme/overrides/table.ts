@@ -1,10 +1,10 @@
 import { Theme } from '@mui/material/styles'
 
-const MUITable = () => {
+const MUITable = (): Theme['components']  => {
     return {
         MuiTableContainer: {
             styleOverrides: {
-                root: ({ theme }: { theme: Theme }) => ({
+                root: ({ theme }) => ({
                     boxShadow: theme.shadows[0],
                     borderTopColor: theme.palette.divider,
                     borderRadius: 0,
@@ -24,7 +24,7 @@ const MUITable = () => {
         },
         MuiTableBody: {
             styleOverrides: {
-                root: ({ theme }: { theme: Theme }) => ({
+                root: ({ theme }) => ({
                     '& .MuiTableCell-body': {
                         fontWeight: 400,
                         fontSize: '0.775rem',
@@ -35,7 +35,7 @@ const MUITable = () => {
         },
         MuiTableRow: {
             styleOverrides: {
-                root: ({ theme }: { theme: Theme }) => ({
+                root: ({ theme }) => ({
                     '& .MuiTableCell-head:first-child, & .MuiTableCell-root:first-child ': {
                         paddingLeft: theme.spacing(5)
                     },
@@ -47,7 +47,7 @@ const MUITable = () => {
         },
         MuiTableCell: {
             styleOverrides: {
-                root: ({ theme }: { theme: Theme }) => ({
+                root: ({theme}) => ({
                     borderBottom: `1px solid ${theme.palette.divider}`,
                 })
             }

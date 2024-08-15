@@ -1,9 +1,9 @@
-
 import colorPalette from './pattern/colors' 
 import breakpoints from './pattern/breakpoints'
 import spacing from './pattern/spacing'
 import { ThemeOptions } from '@mui/material'
 import Overrides from './overrides'
+import Typography from './pattern/typography'
  
  
 const themeOptions = (): ThemeOptions => {
