@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { navigationMenu } from "@/data/navigationMenu";
 import { usePathname } from "next/navigation";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import Link from "next/link";
 
 type NavigationMenuType = {
   isOpen: boolean;
@@ -36,33 +37,35 @@ const NavigationMenu = ({ isOpen }: NavigationMenuType) => {
       <List>
         {navigationMenu.map((element, index) => (
           <ListItem key={index} disablePadding sx={{ display: "block" }}>
-            <StyledListItemButton
-              className={currentPath === element.link ? `selected` : ""}
-              href={element.link}
-              sx={{
-                minHeight: 48,
-                justifyContent: isOpen ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+            <Link href={element.link}>
+              <StyledListItemButton
+                className={currentPath === element.link ? `selected` : ""}
+                
                 sx={{
-                  mr: isOpen ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "inherit",
+                  minHeight: 48,
+                  justifyContent: isOpen ? "initial" : "center",
+                  px: 2.5,
                 }}
               >
-                <element.icon
-                  fontSize="medium"
-                  color="inherit"
-                  sx={{ fontSize: isOpen ? null : 30 }}
+                <ListItemIcon
+                  sx={{
+                    mr: isOpen ? 3 : "auto",
+                    justifyContent: "center",
+                    color: "inherit",
+                  }}
+                >
+                  <element.icon
+                    fontSize="medium"
+                    color="inherit"
+                    sx={{ fontSize: isOpen ? null : 30 }}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={element.title}
+                  sx={{ display: isOpen ? "block" : "none" }}
                 />
-              </ListItemIcon>
-              <ListItemText
-                primary={element.title}
-                sx={{ display: isOpen ? "block" : "none" }}
-              />
-            </StyledListItemButton>
+              </StyledListItemButton>{" "}
+            </Link>
           </ListItem>
         ))}
       </List>
