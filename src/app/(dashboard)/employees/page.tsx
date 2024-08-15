@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import GeneralTable from "@/ui/table/mainTable";
 
 type Person = {
@@ -40,9 +40,9 @@ const columns: ColumnDef<Person>[] = [
 
 const MyTable = () => {
   return (
-    <Box>
+    <Paper >
       <GeneralTable columns={columns} data={data} />
-    </Box>
+    </Paper>
   );
 };
 
