@@ -53,7 +53,7 @@ const GeneralTable = ({ columns, data }: GeneralTableProps) => {
   };
 
   return (
-    <Card variant="outlined">
+  
       <Stack spacing={3}>
         <Box alignContent={"flex-end"} display={"flex"}>
           <TablePagination
@@ -112,7 +112,7 @@ const GeneralTable = ({ columns, data }: GeneralTableProps) => {
           }}
         />
       </Stack>
-    </Card>
+     
   );
 };
 
