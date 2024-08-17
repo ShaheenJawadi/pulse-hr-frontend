@@ -16,6 +16,7 @@
         "@mui/material": "^5.16.7",
         "@mui/material-nextjs": "^5.16.6",
         "@tanstack/react-table": "^8.20.1",
+        "axios": "^1.7.4",
         "next": "14.2.5",
         "react": "^18",
         "react-dom": "^18",
