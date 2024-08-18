@@ -55,7 +55,7 @@ const MyTable = () => {
     <Stack spacing={3}>
       <PagerHeader title="Employés" />
 
-      <Paper>
+      <Paper className="mainPaper">
         <GeneralTable columns={columns} data={data} />
       </Paper>
     </Stack>

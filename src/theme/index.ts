@@ -15,7 +15,7 @@ const themeOptions = (): ThemeOptions => {
   ...spacing,
   breakpoints: breakpoints(),
   shape: {
-    borderRadius: 10
+    borderRadius: 7
   },
   mixins: {
     toolbar: {

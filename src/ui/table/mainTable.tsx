@@ -102,7 +102,8 @@ const GeneralTable = ({ columns, data }: GeneralTableProps) => {
             </Table>
           </TableContainer>
         </Box>
-        <TablePagination
+        <Box paddingX={5}>
+               <TablePagination
           component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={rowsPerPage}
@@ -111,6 +112,8 @@ const GeneralTable = ({ columns, data }: GeneralTableProps) => {
             table.setPageIndex(page);
           }}
         />
+        </Box>
+   
       </Stack>
      
   );
