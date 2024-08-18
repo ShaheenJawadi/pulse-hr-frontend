@@ -22,8 +22,20 @@ const Drawer = styled(MuiDrawer)<DrawerProps>(({ theme }) => ({
 }));
 
 const CommonDrawer = () => {
+
+    const [open, setOpen] = useState(true);
+
+
+
+
+    const closeDrawer = () => {
+
+        setOpen(!open)
+
+    }
+
   return (
-    <Drawer open={true} hideBackdrop anchor="right" variant="temporary">
+    <Drawer open={open} hideBackdrop anchor="right" variant="temporary">
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
@@ -42,7 +54,7 @@ const CommonDrawer = () => {
           <Typography sx={{ color: "text.secondary" }}>sub tit</Typography>
         </Box>
         <Box>
-          <IconButton color="error">
+          <IconButton color="error"  onClick={()=>closeDrawer()}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </Box>
