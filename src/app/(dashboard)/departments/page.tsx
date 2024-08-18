@@ -17,7 +17,10 @@ import GeneralTable from "@/ui/table/mainTable";
 
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";
-
+import { title } from "process";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import InfoIcon from '@mui/icons-material/Info';
 type FakeDepartment = {
   id: number;
   name: string;
@@ -36,22 +39,40 @@ const data: FakeDepartment[] = [
   },
 ];
 
+const departementMenu = [
+  {
+    title: "Détails",
+    icon: <InfoIcon />,
+  },
+  {
+    title: "Modifier",
+    icon: <EditIcon />,
+  },
+  {
+    title: "Supprimer",
+    icon: <DeleteIcon />,
+  },
+ 
+];
+
 const columns: ColumnDef<FakeDepartment>[] = [
   {
     header: "Designation",
     accessorKey: "name",
     cell: ({ getValue }) => <strong>{getValue<string>()}</strong>,
   },
-  
+
   {
     header: "Manager",
     accessorKey: "lastName",
     cell: ({ getValue }) => (
-      <Stack direction={"row"} spacing={2} alignItems={"center"} style={{ color: "var(--mui-palette-primary-main)" }}>
-        <Avatar
-        alt="name lastname"
-          sx={{ width: 30, height: 30 }}
-        />
+      <Stack
+        direction={"row"}
+        spacing={2}
+        alignItems={"center"}
+        style={{ color: "var(--mui-palette-primary-main)" }}
+      >
+        <Avatar alt="name lastname" sx={{ width: 30, height: 30 }} />
         <Typography variant="body1"> name lastname</Typography>
       </Stack>
     ),
@@ -60,21 +81,19 @@ const columns: ColumnDef<FakeDepartment>[] = [
     header: "Eemployés",
     accessorKey: "nb_emps",
     cell: ({ getValue }) => (
-      <AvatarGroup sx={{justifyContent:"start"}} total={getValue<number>()}>
-        <Avatar alt="name lastname"   />
-        <Avatar alt="name lastname"  />
-        <Avatar alt="name lastname"   />
-        <Avatar alt="name lastname"  />
+      <AvatarGroup sx={{ justifyContent: "start" }} total={getValue<number>()}>
+        <Avatar alt="name lastname" />
+        <Avatar alt="name lastname" />
+        <Avatar alt="name lastname" />
+        <Avatar alt="name lastname" />
       </AvatarGroup>
     ),
   },
   {
     header: "Actions",
     accessorKey: "action",
-    cell: ({ row }) => (
-      <MenuOption/>
-    ),
-    enableSorting: false
+    cell: ({ row }) => <MenuOption menulist={departementMenu} />,
+    enableSorting: false,
   },
 ];
 
