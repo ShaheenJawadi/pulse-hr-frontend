@@ -2,6 +2,15 @@ import http from './http';
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { API_ENDPOINTS } from './apiEndpoints';
 
+
+type responseType = {
+
+    success:boolean;
+    data:any;
+    message:string;
+
+}
+
 export class CoreApi {
     protected http: AxiosInstance;
 
@@ -11,7 +20,7 @@ export class CoreApi {
 
     async create(data: any): Promise<any> {
         try {
-            const res: AxiosResponse<{ success: boolean; data: any }> = await this.http.post(
+            const res: AxiosResponse<responseType> = await this.http.post(
                 `${this.base_path}${API_ENDPOINTS.CREATE}`,
                 data
             );
@@ -36,7 +45,7 @@ export class CoreApi {
 
     async update(data: any): Promise<any> {
         try {
-            const res: AxiosResponse<{ success: boolean; data: any }> = await this.http.post(
+            const res: AxiosResponse<responseType> = await this.http.post(
                 `${this.base_path}${API_ENDPOINTS.UPDATE}`,
                 data
             );
@@ -53,19 +62,19 @@ export class CoreApi {
 
     async list(params: any = {}): Promise<any[]> {
         try {
-            const res: AxiosResponse<any[]> = await this.http.get(
+            const res: AxiosResponse<responseType> = await this.http.get(
                 `${this.base_path}${API_ENDPOINTS.LIST}`,
                 { params }
             );
-            return res.data;
+            return res.data.data;
         } catch (err) {
             throw err;
         }
     }
 
-    async findOne(id: number | string): Promise<any> {
+    async findOne(id: number | string): Promise<responseType> {
         try {
-            const res: AxiosResponse<any> = await this.http.get(`${this.base_path}/${id}`);
+            const res: AxiosResponse<responseType> = await this.http.get(`${this.base_path}/${id}`);
             return res.data;
         } catch (err) {
             throw err;
