@@ -20,7 +20,8 @@
         "next": "14.2.5",
         "react": "^18",
         "react-dom": "^18",
-        "react-perfect-scrollbar": "^1.5.8"
+        "react-perfect-scrollbar": "^1.5.8",
+        "react-query": "^3.39.3"
     },
     "devDependencies": {
         "@types/node": "^20",
