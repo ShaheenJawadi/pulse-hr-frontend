@@ -16,6 +16,7 @@ import {
 import GeneralTable from "@/ui/table/mainTable";
 
 import PagerHeader from "@/components/listingPages/pageHeader";
+import MenuOption from "@/components/listingPages/menuOptions";
 
 type FakeDepartment = {
   id: number;
@@ -35,12 +36,13 @@ const data: FakeDepartment[] = [
   },
 ];
 
-const columns: ColumnDef<Person>[] = [
+const columns: ColumnDef<FakeDepartment>[] = [
   {
     header: "Designation",
     accessorKey: "name",
     cell: ({ getValue }) => <strong>{getValue<string>()}</strong>,
   },
+  
   {
     header: "Manager",
     accessorKey: "lastName",
@@ -69,7 +71,10 @@ const columns: ColumnDef<Person>[] = [
   {
     header: "Actions",
     accessorKey: "action",
-    cell: ({ getValue }) => <div></div>,
+    cell: ({ row }) => (
+      <MenuOption/>
+    ),
+    enableSorting: false
   },
 ];
 
