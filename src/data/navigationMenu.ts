@@ -5,7 +5,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import { ReactElement } from "react";
 import { SvgIconProps } from "@mui/material";
-
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 
 
 export const  navigationMenu:NavigationMenuType[] = [
@@ -22,6 +22,11 @@ export const  navigationMenu:NavigationMenuType[] = [
         link: '/employees'
     },
     {
+        title: 'Départements',
+        icon: MapsHomeWorkIcon,
+        link: '/departments'
+    },
+    {
         title: 'Recrutement',
         icon: WorkIcon,
         link: '/recruitment'
@@ -31,5 +36,7 @@ export const  navigationMenu:NavigationMenuType[] = [
         icon: QueryStatsIcon,
         link: '/performance'
     }
+
+
 
 ]
