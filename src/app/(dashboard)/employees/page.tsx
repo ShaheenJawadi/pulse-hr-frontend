@@ -1,8 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Box, Paper } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import GeneralTable from "@/ui/table/mainTable";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PagerHeader from "@/components/listingPages/pageHeader";
 
 type Person = {
   id: number;
@@ -40,9 +52,13 @@ const columns: ColumnDef<Person>[] = [
 
 const MyTable = () => {
   return (
-    <Paper >
-      <GeneralTable columns={columns} data={data} />
-    </Paper>
+    <Stack spacing={3}>
+      <PagerHeader title="Employés" />
+
+      <Paper>
+        <GeneralTable columns={columns} data={data} />
+      </Paper>
+    </Stack>
   );
 };
 
