@@ -3,6 +3,7 @@ import { Box, Container } from "@mui/material";
 import { ChildrenType } from "@/types/themeTypes";
 import Navigation from "@/components/navigation";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import CommonDrawer from "@/components/drawer";
 
 const Layout = async ({ children }: ChildrenType) => {
   return (
@@ -13,6 +14,7 @@ const Layout = async ({ children }: ChildrenType) => {
           <Container maxWidth="xl" sx={{ paddingY: 5 }}>
             {children}
           </Container>
+          <CommonDrawer  />
         </PerfectScrollbar> 
       </Box>
     </Box>
