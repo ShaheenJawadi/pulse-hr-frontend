@@ -10,7 +10,7 @@ const DrawerHolder = ( ) => {
   const { closeDrawer } = useDrawerAction();
 
   return (
-    <CommonDrawer closeDrawer={() => closeDrawer} isOpen={isOpen}>
+    <CommonDrawer closeDrawer={closeDrawer} isOpen={isOpen}>
       <h1>{data}</h1>
     </CommonDrawer>
   );

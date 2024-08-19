@@ -103,7 +103,7 @@ const MyTable = () => {
   const { openDrawer } = useDrawerAction();
 
   const drawertest = () => {
-    openDrawer('test drawer');
+    openDrawer((new Date()).getTime());
   }
 
 
