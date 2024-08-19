@@ -103,7 +103,7 @@ const MyTable = () => {
   const { openDrawer } = useDrawerAction();
 
   const drawertest = () => {
-    openDrawer((new Date()).getTime());
+    openDrawer("ADD_DEPARTMENT" ,  null);
   }
 
 

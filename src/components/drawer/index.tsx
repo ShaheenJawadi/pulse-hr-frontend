@@ -27,11 +27,13 @@ type Props={
     isOpen : boolean ; 
     closeDrawer : ()=>void;
     children:React.ReactNode;
+    drawerTitle:string;
+    drawerSubtitle ?: string ;
 }
 const CommonDrawer = (props:Props) => {
 
     
-  const { isOpen, closeDrawer,children } = props;
+  const { isOpen, closeDrawer,children , drawerTitle , drawerSubtitle } = props;
 
  
   return (
@@ -49,9 +51,9 @@ const CommonDrawer = (props:Props) => {
             variant="h6"
             sx={{ fontWeight: 600, textTransform: "uppercase" }}
           >
-            Tit
+            {drawerTitle}
           </Typography>
-          <Typography sx={{ color: "text.secondary" }}>sub tit</Typography>
+          <Typography sx={{ color: "text.secondary" }}>{drawerSubtitle}</Typography>
         </Box>
         <Box>
           <IconButton color="error"  onClick={closeDrawer}>
