@@ -1,30 +1,40 @@
 'use client';
 import React, { ReactNode } from "react";
 
+
+
+type DrawerViewType= "ADD_DEPARTMENT"|undefined ; 
+
 interface State {
   isOpen: boolean;
   data:any;
+  view: DrawerViewType;
 }
 
-type Action = { type: "open"; data?: any } | { type: "close" };
+type Action = { type: "open"; view : DrawerViewType ,  data?: any } | { type: "close" };
 
 const initialState: State = {
   isOpen: false,
   data:null,
+  view :undefined
 };
 
 function drawerReducer(state: State, action: Action): State {
   switch (action.type) {
     case "open":
       return {
+        ...state,
         isOpen: true,
+        view: action.view,
         data: action.data,
       };
 
     case "close":
       return {
+        ...state,
         isOpen: false,
         data:null ,
+        view:undefined,
       };
     default:
       throw new Error("Unknown Drawer Action!");
@@ -71,8 +81,8 @@ export function useDrawerAction() {
   }
 
   return {
-    openDrawer(data?: any) {
-      dispatch({ type: "open" , data});
+    openDrawer(view :any,data?: any) {
+      dispatch({ type: "open" , view:view  ,  data:data});
     },
     closeDrawer(returnClose?:any) {
         dispatch({ type: 'close'  });

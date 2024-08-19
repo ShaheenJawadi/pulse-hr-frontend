@@ -6,12 +6,16 @@ import { useDrawerAction, useDrawerState } from "./drawer.context";
  
 
 const DrawerHolder = ( ) => { 
-  const { isOpen,data } = useDrawerState();
+  const { isOpen,data , view } = useDrawerState();
   const { closeDrawer } = useDrawerAction();
+
+
+
 
   return (
     <CommonDrawer closeDrawer={closeDrawer} isOpen={isOpen}>
-      <h1>{data}</h1>
+      {view=="ADD_DEPARTMENT" ? <div>Add departemnet sectiuon </div> : null}
+ 
     </CommonDrawer>
   );
 };
