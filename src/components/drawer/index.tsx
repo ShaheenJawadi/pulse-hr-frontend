@@ -1,7 +1,6 @@
-import { useState } from "react";
+"use client";
 import PerfectScrollbar from "react-perfect-scrollbar";
-
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -21,21 +20,22 @@ const Drawer = styled(MuiDrawer)<DrawerProps>(({ theme }) => ({
   },
 }));
 
-const CommonDrawer = () => {
-
-    const [open, setOpen] = useState(true);
 
 
+type Props={
 
+    isOpen : boolean ; 
+    closeDrawer : ()=>void;
+    children:React.ReactNode;
+}
+const CommonDrawer = (props:Props) => {
 
-    const closeDrawer = () => {
+    
+  const { isOpen, closeDrawer,children } = props;
 
-        setOpen(!open)
-
-    }
-
+ 
   return (
-    <Drawer open={open} hideBackdrop anchor="right" variant="temporary">
+    <Drawer open={isOpen} hideBackdrop anchor="right" variant="temporary">
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
@@ -54,14 +54,14 @@ const CommonDrawer = () => {
           <Typography sx={{ color: "text.secondary" }}>sub tit</Typography>
         </Box>
         <Box>
-          <IconButton color="error"  onClick={()=>closeDrawer()}>
+          <IconButton color="error"  onClick={closeDrawer}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </Box>
       </Stack>
 
       <PerfectScrollbar>
-        <Box sx={{ padding: 4, marginBottom: 10 }}>content</Box>
+        <Box sx={{ padding: 4, marginBottom: 10 }}>{children}</Box>
       </PerfectScrollbar>
     </Drawer>
   );

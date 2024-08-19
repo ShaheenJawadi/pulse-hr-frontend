@@ -5,6 +5,7 @@ import {
   Avatar,
   AvatarGroup,
   Box,
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -21,6 +22,7 @@ import { title } from "process";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import InfoIcon from '@mui/icons-material/Info';
+import { useDrawerAction } from "@/components/drawer/drawer.context";
 type FakeDepartment = {
   id: number;
   name: string;
@@ -98,8 +100,18 @@ const columns: ColumnDef<FakeDepartment>[] = [
 ];
 
 const MyTable = () => {
+  const { openDrawer } = useDrawerAction();
+
+  const drawertest = () => {
+    openDrawer('test drawer');
+  }
+
+
+
   return (
     <Stack spacing={3}>
+
+      <Button onClick={drawertest}>sqdsqdqs</Button>
       <PagerHeader title="Départements" />
 
       <Paper className="mainPaper">

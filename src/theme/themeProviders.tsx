@@ -1,10 +1,10 @@
 'use client'
 import { ChildrenType } from '@/types/themeTypes' 
-import { CssBaseline, ThemeProvider } from '@mui/material'  
-import {  createTheme  } from '@mui/material/styles'
+import { CssBaseline, ThemeProvider } from '@mui/material'   
 import { Experimental_CssVarsProvider as CssVarsProvider ,  experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import themeOptions from '.' 
+import { DrawerProvider } from '@/components/drawer/drawer.context';
 const AppTheme = async ({ children }: ChildrenType) => {
  
   const theme = extendTheme(themeOptions())
@@ -15,7 +15,8 @@ const AppTheme = async ({ children }: ChildrenType) => {
        >
           <>
             <CssBaseline />
-            {children}
+            <DrawerProvider>   {children}</DrawerProvider>
+         
           </>
         </CssVarsProvider>
       </AppRouterCacheProvider>
