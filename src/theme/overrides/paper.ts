@@ -14,6 +14,11 @@ const MUIPaper = (): Theme['components'] => {
                   '&.MuiPaper-root.mainPaper': {
                     paddingTop: theme.spacing(5),
                     paddingBottom: theme.spacing(5),
+                    '& .topContent': {
+                      paddingRight:theme.spacing(5),
+                      paddingLeft:theme.spacing(5),  
+
+                    }
 
                   }
                 })

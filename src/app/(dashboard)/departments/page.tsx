@@ -15,13 +15,13 @@ import {
   Typography,
 } from "@mui/material";
 import GeneralTable from "@/ui/table/mainTable";
-
+import AddIcon from '@mui/icons-material/Add';
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";
 import { title } from "process";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import InfoIcon from '@mui/icons-material/Info';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import InfoIcon from "@mui/icons-material/Info";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
 type FakeDepartment = {
   id: number;
@@ -54,7 +54,6 @@ const departementMenu = [
     title: "Supprimer",
     icon: <DeleteIcon />,
   },
- 
 ];
 
 const columns: ColumnDef<FakeDepartment>[] = [
@@ -103,18 +102,20 @@ const MyTable = () => {
   const { openDrawer } = useDrawerAction();
 
   const drawertest = () => {
-    openDrawer("ADD_DEPARTMENT" ,  null);
-  }
-
-
+    openDrawer("ADD_DEPARTMENT", null);
+  };
 
   return (
     <Stack spacing={3}>
-
-      <Button onClick={drawertest}>sqdsqdqs</Button>
       <PagerHeader title="Départements" />
 
       <Paper className="mainPaper">
+        <Stack className="topContent" spacing={2} direction={"row"} justifyContent={"flex-end"}>
+          <Button  startIcon={<AddIcon />} size="large" variant="contained" onClick={drawertest}>
+            Ajouter un département
+          </Button>
+        </Stack>
+
         <GeneralTable columns={columns} data={data} />
       </Paper>
     </Stack>
