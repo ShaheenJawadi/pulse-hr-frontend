@@ -23,6 +23,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
+import { useDialogAction } from "@/components/dialog/dialog.context";
 type FakeDepartment = {
   id: number;
   name: string;
@@ -100,6 +101,8 @@ const columns: ColumnDef<FakeDepartment>[] = [
 
 const MyTable = () => {
   const { openDrawer } = useDrawerAction();
+  const { openDialog } = useDialogAction();
+
 
   const drawertest = () => {
     openDrawer("ADD_DEPARTMENT", null);
@@ -107,6 +110,9 @@ const MyTable = () => {
 
   return (
     <Stack spacing={3}>
+      <Button onClick={()=>openDialog("DIALOGTEST", null)}>
+        df
+      </Button>
       <PagerHeader title="Départements" />
 
       <Paper className="mainPaper">
