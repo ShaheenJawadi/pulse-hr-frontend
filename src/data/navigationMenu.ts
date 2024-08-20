@@ -6,7 +6,7 @@ import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import { ReactElement } from "react";
 import { SvgIconProps } from "@mui/material";
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
-
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 export const  navigationMenu:NavigationMenuType[] = [
 
@@ -35,8 +35,29 @@ export const  navigationMenu:NavigationMenuType[] = [
         title: 'Performance',
         icon: QueryStatsIcon,
         link: '/performance'
-    }
-
+    },
+    {
+        title: 'Gestion Admin',
+        icon: ManageAccountsIcon,      
+         link: '/gestionAdmin',
+         childs: [
+                {
+                    title: 'Utilisateurs',
+                    icon: ManageAccountsIcon,
+                    link: '/gestionAdmin/users'
+                },
+                {
+                    title: 'Roles',
+                    icon: ManageAccountsIcon,
+                    link: '/gestionAdmin/roles'
+                },
+                {
+                    title: 'Permissions',
+                    icon: ManageAccountsIcon,
+                    link: '/gestionAdmin/permissions'
+                }
+         ]
+    },
 
 
 ]

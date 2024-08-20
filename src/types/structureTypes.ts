@@ -7,5 +7,6 @@ export type NavigationMenuType = {
     title: string,
     icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>,
     link: string,
+    childs?: NavigationMenuType[];
 
 }
