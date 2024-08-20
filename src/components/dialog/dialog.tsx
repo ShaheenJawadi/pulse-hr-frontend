@@ -30,7 +30,7 @@ const CommonDialog = (props: Props) => {
 
   return (
     <Dialog onClose={closeDialog} open={isOpen}>
-      <DialogTitle sx={{ m: 0, p: 2 }}>{dialogTitle}</DialogTitle>
+      <DialogTitle>{dialogTitle}</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={closeDialog}

@@ -101,7 +101,6 @@ const columns: ColumnDef<FakeDepartment>[] = [
 
 const MyTable = () => {
   const { openDrawer } = useDrawerAction();
-  const { openDialog } = useDialogAction();
 
 
   const drawertest = () => {
@@ -110,9 +109,6 @@ const MyTable = () => {
 
   return (
     <Stack spacing={3}>
-      <Button onClick={()=>openDialog("DIALOGTEST", null)}>
-        df
-      </Button>
       <PagerHeader title="Départements" />
 
       <Paper className="mainPaper">
