@@ -22,9 +22,26 @@ export const  navigationMenu:NavigationMenuType[] = [
         link: '/employees'
     },
     {
-        title: 'Départements',
+        title: 'Structure',
         icon: MapsHomeWorkIcon,
-        link: '/departments'
+        link: '/departments',
+        childs: [
+            {
+                title: 'Départements',
+                icon: MapsHomeWorkIcon,
+                link: '/departments'
+            },
+            {
+                title: 'Postes',
+                icon: MapsHomeWorkIcon,
+                link: '/departments/postes'
+            },
+            {
+                title: 'Heures de Travail ',
+                icon: MapsHomeWorkIcon,
+                link: '/departments/shifts'
+            }
+     ]
     },
     {
         title: 'Recrutement',
