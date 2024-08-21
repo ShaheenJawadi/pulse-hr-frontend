@@ -1,54 +1,48 @@
-"use client"
+"use client";
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu, { MenuProps } from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import MoreVertIcon from "@mui/icons-material/MoreVert"; 
 import { styled } from "@mui/material";
+import { ListingMenuItemType } from "@/types/structureTypes";
 
 const StyledMenu = styled((props: MenuProps) => (
-    <Menu
-        elevation={0}
-        anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "right",
-        }}
-        transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-        }}
-        {...props}
-    />
-    ))(({ theme }) => ({
-    "& .MuiPaper-root": { 
-        minWidth: 180,
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "right",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "right",
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    minWidth: 180,
 
-        "& .MuiMenu-list": {
-        padding: "4px 0",
-        },
-        "& .MuiMenuItem-root": {
-        "& .MuiSvgIcon-root": {
-            fontSize: 21,
-            color: theme.palette.primary.main,
-            marginRight: theme.spacing(1.5),
-        },
-        },
+    "& .MuiMenu-list": {
+      padding: "4px 0",
     },
-    }));
-
-const options = ["op1 kjhck", "op2 iopbn"];
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 21,
+        color: theme.palette.primary.main,
+        marginRight: theme.spacing(1.5),
+      },
+    },
+  },
+}));
+ 
 type Props = {
+  menulist: ListingMenuItemType[];
+};
 
-menulist:
-    {title: string;
-    icon: React.ReactElement;}[]
-
-
-}
-
-const MenuOption = (props :Props) => {
-    const {menulist} = props;
+const MenuOption = (props: Props) => {
+  const { menulist } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -81,7 +75,7 @@ const MenuOption = (props :Props) => {
       >
         {menulist.map((option) => (
           <MenuItem key={option.title} onClick={handleClose}>
-            {option.icon} 
+            {option.icon}
             {option.title}
           </MenuItem>
         ))}

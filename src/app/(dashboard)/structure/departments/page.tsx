@@ -18,12 +18,11 @@ import GeneralTable from "@/ui/table/mainTable";
 import AddIcon from '@mui/icons-material/Add';
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";
-import { title } from "process";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
-import { useDialogAction } from "@/components/dialog/dialog.context";
+import { ListingMenuItemType } from "@/types/structureTypes";
 type FakeDepartment = {
   id: number;
   name: string;
@@ -42,7 +41,7 @@ const data: FakeDepartment[] = [
   },
 ];
 
-const departementMenu = [
+const departementMenu:ListingMenuItemType[] = [
   {
     title: "Détails",
     icon: <InfoIcon />,
