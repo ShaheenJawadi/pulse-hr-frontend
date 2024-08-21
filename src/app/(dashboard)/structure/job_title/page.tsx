@@ -7,15 +7,17 @@ import {
   Box,
   Button,
   Card,
+  CardActions,
   CardContent,
   CardHeader,
+  Grid,
   IconButton,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
 import GeneralTable from "@/ui/table/mainTable";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";
 import { title } from "process";
@@ -34,13 +36,12 @@ const data: FakePOSTES[] = [
   {
     id: 1,
     name: "ENG",
-     
+
     nb_emps: 54,
   },
 ];
 
 const departementMenu = [
- 
   {
     title: "Modifier",
     icon: <EditIcon />,
@@ -57,7 +58,7 @@ const columns: ColumnDef<FakePOSTES>[] = [
     accessorKey: "name",
     cell: ({ getValue }) => <strong>{getValue<string>()}</strong>,
   },
- 
+
   {
     header: "Eemployés",
     accessorKey: "nb_emps",
@@ -81,7 +82,6 @@ const columns: ColumnDef<FakePOSTES>[] = [
 const MyTable = () => {
   const { openDrawer } = useDrawerAction();
 
-
   const drawertest = () => {
     openDrawer("ADD_JOB_TITLE", null);
   };
@@ -90,9 +90,53 @@ const MyTable = () => {
     <Stack spacing={3}>
       <PagerHeader title="Postes" />
 
+      <Box>
+        <Grid container spacing={2}>
+          {[1, 2, 3, 4].map((item) => {
+            return (
+              <Grid item xs={3}>
+                <Card>
+                  <CardHeader
+                    className="reverse"
+                    title="Eng"
+                    subheader="Designation"
+                    action={<MenuOption menulist={departementMenu} />}
+                  />
+                  <CardContent>
+                    <Stack spacing={2}>
+                      <Box>
+                        <Typography variant="body1">
+                          Nombre d'employés
+                        </Typography>
+                        <AvatarGroup sx={{ justifyContent: "start" }} total={5}>
+                          <Avatar alt="name lastname" />
+                          <Avatar alt="name lastname" />
+                          <Avatar alt="name lastname" />
+                          <Avatar alt="name lastname" />
+                        </AvatarGroup>
+                      </Box>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
+
       <Paper className="mainPaper">
-        <Stack className="topContent" spacing={2} direction={"row"} justifyContent={"flex-end"}>
-          <Button  startIcon={<AddIcon />} size="large" variant="contained" onClick={drawertest}>
+        <Stack
+          className="topContent"
+          spacing={2}
+          direction={"row"}
+          justifyContent={"flex-end"}
+        >
+          <Button
+            startIcon={<AddIcon />}
+            size="large"
+            variant="contained"
+            onClick={drawertest}
+          >
             Ajouter un poste
           </Button>
         </Stack>
