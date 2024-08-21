@@ -12,18 +12,17 @@ const MUICard = (): Theme['components'] => {
         MuiCardHeader: {
             styleOverrides: {
                 root: ({ theme }) => ({
-                    padding: theme.spacing(6),
-                    '& + .MuiCardContent-root, & + .MuiCardActions-root': {
-                        paddingBlockStart: 0
+                    padding: theme.spacing(3.5),
+                    
+                    borderBottom: `1px solid var(--mui-palette-grey-300)`,
+                    '&.reverse .MuiCardHeader-content': {
+                       display:"flex",
+                       flexDirection:"column-reverse",
                     },
-                    '& + .MuiCollapse-root .MuiCardContent-root:first-child, & + .MuiCollapse-root .MuiCardActions-root:first-child':
-                    {
-                        paddingBlockStart: 0
-                    }
                 }),
 
                 title: ({ theme }) => ({
-                    ...theme.typography.h5,
+                    ...theme.typography.h6,
                   
                 }),
 
@@ -45,7 +44,7 @@ const MUICard = (): Theme['components'] => {
         MuiCardContent: {
             styleOverrides: {
                 root: ({ theme }) => ({
-                    padding: theme.spacing(6),
+                    padding: theme.spacing(4),
                     color: 'var(--mui-palette-text-secondary)',
                     '&:last-child': {
                         paddingBlockEnd: theme.spacing(6)
