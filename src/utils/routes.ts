@@ -32,8 +32,8 @@ export const ROUTING = {
         AUTH: {
             MAIN: "/auth",
             LOGIN: "/auth/login",
-            RESETPWS: "/auth/resetPWS",
-            FORGOTPWS: "/auth/forgotPws",
+            RESETPWS: "/auth/reset_pws",
+            FORGOTPWS: "/auth/forgot_pws",
 
 
         },
