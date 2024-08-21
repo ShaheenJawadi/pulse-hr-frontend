@@ -19,7 +19,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
-  overflowX: "hidden",
+  overflowX: "unset",
 });
 
 const closedMixin = (theme: Theme): CSSObject => ({
@@ -27,7 +27,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  overflowX: "hidden",
+  overflowX: "unset",
   width: `calc(${theme.spacing(12)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(18)} + 1px)`,
@@ -49,6 +49,10 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  "& .MuiPaper-root": {
+    overflowY: "unset",
+    maxHeight:"100vh",
+  },
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -97,17 +101,24 @@ export default function Navigation() {
         </Stack>
       </DrawerHeader>
       <Divider />
-      <Stack height={'100%'}>
+      <Stack height={"100%"}>
         <Box flex={1}>
           <NavigationMenu isOpen={open || isHovered} />
         </Box>
 
-        <Stack spacing={2} alignItems={"center"}>
-          <Image src="/telnet/logo.webp" width={120} height={30} alt="telnet logo" />
-          <Typography variant="caption">
-            © 2024 TELNET. Tous droits réservés.
-          </Typography>
-        </Stack>
+        {(open || isHovered) && (
+          <Stack spacing={2} alignItems={"center"}>
+            <Image
+              src="/telnet/logo.webp"
+              width={120}
+              height={30}
+              alt="telnet logo"
+            />
+            <Typography variant="caption">
+              © 2024 TELNET. Tous droits réservés.
+            </Typography>
+          </Stack>
+        )}
       </Stack>
     </Drawer>
   );

@@ -1,5 +1,4 @@
-"use client";
-import PerfectScrollbar from "react-perfect-scrollbar";
+"use client"; 
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";

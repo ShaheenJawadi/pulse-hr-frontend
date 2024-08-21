@@ -38,7 +38,7 @@ const NavigationMenu = ({ isOpen }: { isOpen: boolean }) => {
   const currentPath = usePathname();
 
   return (
-    <PerfectScrollbar>
+    <PerfectScrollbar  >
       <List>
         {navigationMenu.map((element, index) => (
           <FirstLevel
