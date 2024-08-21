@@ -10,6 +10,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import NavigationMenu from "./menu";
 import { Box, Stack, Typography } from "@mui/material";
+import { navigationFooterHeight, navigationHeaderHeight } from "@/theme/constatnt";
 
 const drawerWidth = 260;
 
@@ -51,7 +52,7 @@ const Drawer = styled(MuiDrawer, {
   boxSizing: "border-box",
   "& .MuiPaper-root": {
     overflowY: "unset",
-    maxHeight:"100vh",
+    maxHeight: "100vh",
   },
   ...(open && {
     ...openedMixin(theme),
@@ -85,7 +86,7 @@ export default function Navigation() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <DrawerHeader>
+      <DrawerHeader sx={{height:navigationHeaderHeight}}>
         <Stack direction={"row"} flex={1} justifyContent={"space-between"}>
           <LogoComponent isOpen={open || isHovered} />
 
@@ -102,23 +103,24 @@ export default function Navigation() {
       </DrawerHeader>
       <Divider />
       <Stack height={"100%"}>
-        <Box flex={1}>
+        <Box flex={1} sx={{maxHeight: `calc(100vh - ${navigationFooterHeight+navigationHeaderHeight+5}px)`}}>
           <NavigationMenu isOpen={open || isHovered} />
         </Box>
-
-        {(open || isHovered) && (
-          <Stack spacing={2} alignItems={"center"}>
-            <Image
-              src="/telnet/logo.webp"
-              width={120}
-              height={30}
-              alt="telnet logo"
-            />
-            <Typography variant="caption">
-              © 2024 TELNET. Tous droits réservés.
-            </Typography>
-          </Stack>
-        )}
+        <Box height={navigationFooterHeight}>
+          {(open || isHovered) && (
+            <Stack spacing={2} alignItems={"center"}>
+              <Image
+                src="/telnet/logo.webp"
+                width={120}
+                height={30}
+                alt="telnet logo"
+              />
+              <Typography variant="caption">
+                © 2024 TELNET. Tous droits réservés.
+              </Typography>
+            </Stack>
+          )}
+        </Box>
       </Stack>
     </Drawer>
   );
