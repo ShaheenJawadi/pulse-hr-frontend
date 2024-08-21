@@ -10,6 +10,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Chip,
   Grid,
   IconButton,
   Paper,
@@ -89,7 +90,21 @@ const MyTable = () => {
   return (
     <Stack spacing={3}>
       <PagerHeader title="Postes" />
-
+      <Stack
+        className="topContent"
+        spacing={2}
+        direction={"row"}
+        justifyContent={"flex-end"}
+      >
+        <Button
+          startIcon={<AddIcon />}
+          size="large"
+          variant="contained"
+          onClick={drawertest}
+        >
+          Ajouter un poste
+        </Button>
+      </Stack>
       <Box>
         <Grid container spacing={2}>
           {[1, 2, 3, 4].map((item) => {
@@ -115,6 +130,53 @@ const MyTable = () => {
                           <Avatar alt="name lastname" />
                         </AvatarGroup>
                       </Box>
+                      <Box>
+                        <Typography variant="body1">
+                        Département concerné
+                        </Typography>
+                        <Stack flexWrap={"wrap"} spacing={1}  direction={"row"}>
+                          <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                          <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                            <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                            <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                            <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                            <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                          <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                          <Chip
+                            label="dep 1"
+                            variant="outlined"
+                            color="primary"
+                          />
+                        </Stack>
+                      </Box>
                     </Stack>
                   </CardContent>
                 </Card>
@@ -123,26 +185,6 @@ const MyTable = () => {
           })}
         </Grid>
       </Box>
-
-      <Paper className="mainPaper">
-        <Stack
-          className="topContent"
-          spacing={2}
-          direction={"row"}
-          justifyContent={"flex-end"}
-        >
-          <Button
-            startIcon={<AddIcon />}
-            size="large"
-            variant="contained"
-            onClick={drawertest}
-          >
-            Ajouter un poste
-          </Button>
-        </Stack>
-
-        <GeneralTable columns={columns} data={data} />
-      </Paper>
     </Stack>
   );
 };
