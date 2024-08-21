@@ -2,6 +2,9 @@
 'use client'
 import CommonDrawer from ".";
 import { useDrawerAction, useDrawerState } from "./drawer.context";
+import dynamic from 'next/dynamic';
+
+const AddDepartment = dynamic(() => import('@/components/pages/department/add'));
 
  
 type DHType = {
@@ -28,7 +31,7 @@ const DrawerHolder = ( ) => {
  
       currentDrawer = {
 
-        component : <div>  departemnet section </div>,
+        component : <AddDepartment/>,
         title : "Département",
         subTitle : "Ajouter un nouveau département au système",
 
