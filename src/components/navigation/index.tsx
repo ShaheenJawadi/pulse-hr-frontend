@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import NavigationMenu from "./menu";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 const drawerWidth = 260;
 
@@ -97,7 +97,18 @@ export default function Navigation() {
         </Stack>
       </DrawerHeader>
       <Divider />
-      <NavigationMenu isOpen={open || isHovered} />
+      <Stack height={'100%'}>
+        <Box flex={1}>
+          <NavigationMenu isOpen={open || isHovered} />
+        </Box>
+
+        <Stack spacing={2} alignItems={"center"}>
+          <Image src="/telnet/logo.webp" width={120} height={30} alt="telnet logo" />
+          <Typography variant="caption">
+            © 2024 TELNET. Tous droits réservés.
+          </Typography>
+        </Stack>
+      </Stack>
     </Drawer>
   );
 }
