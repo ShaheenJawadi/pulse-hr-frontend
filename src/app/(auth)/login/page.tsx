@@ -12,6 +12,7 @@ import {
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LockIcon from "@mui/icons-material/Lock";
 import Link from "next/link";
+import { ROUTING } from "@/utils/routes";
 
 const Login = () => {
   return (
@@ -48,7 +49,7 @@ const Login = () => {
           Se connecter
         </Button>
 
-        <Link href={"/forgotPws"}>
+        <Link href={ROUTING.AUTH.FORGOTPWS}>
           <Typography variant="body2">Mot de passe oublié ?</Typography>
         </Link>
       </Stack>

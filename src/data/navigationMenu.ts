@@ -7,6 +7,7 @@ import { ReactElement } from "react";
 import { SvgIconProps } from "@mui/material";
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import { ROUTING } from "@/utils/routes";
 
 export const  navigationMenu:NavigationMenuType[] = [
 
@@ -14,64 +15,64 @@ export const  navigationMenu:NavigationMenuType[] = [
     {
         title: 'Tableau de bord',
         icon: DashboardIcon,      
-         link: '/dashboard',
+         link: ROUTING.DASHBOARD.MAIN,
     },
     {
         title: 'Employés',
         icon: PeopleIcon,
-        link: '/employees'
+        link: ROUTING.EMPLOYEE.MAIN
     },
     {
         title: 'Structure',
         icon: MapsHomeWorkIcon,
-        link: '/departments',
+        link: ROUTING.STRUCTURE.MAIN,
         childs: [
             {
                 title: 'Départements',
                 icon: MapsHomeWorkIcon,
-                link: '/departments'
+                link: ROUTING.STRUCTURE.DEPARTMENTS
             },
             {
                 title: 'Postes',
                 icon: MapsHomeWorkIcon,
-                link: '/departments/postes'
+                link:ROUTING.STRUCTURE.POSTES
             },
             {
                 title: 'Heures de Travail ',
                 icon: MapsHomeWorkIcon,
-                link: '/departments/shifts'
+                link:ROUTING.STRUCTURE.SHIFTS
             }
      ]
     },
     {
         title: 'Recrutement',
         icon: WorkIcon,
-        link: '/recruitment'
+        link: ROUTING.RECRUTEMENT.MAIN
     },
     {
         title: 'Performance',
         icon: QueryStatsIcon,
-        link: '/performance'
+        link: ROUTING.PERFORMACE.MAIN
     },
     {
         title: 'Gestion Admin',
         icon: ManageAccountsIcon,      
-         link: '/gestionAdmin',
+         link:ROUTING.ADMIN_MAANGMENT.MAIN,
          childs: [
                 {
                     title: 'Utilisateurs',
                     icon: ManageAccountsIcon,
-                    link: '/gestionAdmin/users'
+                    link:ROUTING.ADMIN_MAANGMENT.USERS
                 },
                 {
                     title: 'Roles',
                     icon: ManageAccountsIcon,
-                    link: '/gestionAdmin/roles'
+                    link:ROUTING.ADMIN_MAANGMENT.ROLES
                 },
                 {
                     title: 'Permissions',
                     icon: ManageAccountsIcon,
-                    link: '/gestionAdmin/permissions'
+                    link:ROUTING.ADMIN_MAANGMENT.PERMISSIONS
                 }
          ]
     },

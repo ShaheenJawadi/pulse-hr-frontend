@@ -13,13 +13,14 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LockIcon from "@mui/icons-material/Lock";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ROUTING } from "@/utils/routes";
 
 const ResetPws = () => {
   const router = useRouter();
 
   const openResetTest = () => {
 
-    router.push("/resetPws");
+    router.push(ROUTING.AUTH.RESETPWS);
 
   }
   
@@ -58,7 +59,7 @@ const ResetPws = () => {
           Réinitialiser 
         </Button>
 
-        <Link href={"/login"}>
+        <Link href={ROUTING.AUTH.LOGIN}>
           <Typography variant="body2">Se connecter !</Typography>
         </Link>
       </Stack>
