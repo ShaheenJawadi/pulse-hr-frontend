@@ -1,52 +1,60 @@
-
-'use client'
+"use client";
 import CommonDrawer from ".";
 import { useDrawerAction, useDrawerState } from "./drawer.context";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const AddDepartment = dynamic(() => import('@/components/pages/department/add'));
+const AddDepartment = dynamic(
+  () => import("@/components/pages/department/add")
+);
 
- 
+const AddJOBTitle = dynamic(
+  () => import("@/components/pages/job_title/add")
+);
+
+
 type DHType = {
+  component: React.ReactNode;
+  title: string;
+  subTitle?: string;
+};
 
-
-  component : React.ReactNode;
-  title  : string;
-  subTitle?  : string;
-
-}
-
-const DrawerHolder = ( ) => { 
-  const { isOpen,data , view } = useDrawerState();
+const DrawerHolder = () => {
+  const { isOpen, data, view } = useDrawerState();
   const { closeDrawer } = useDrawerAction();
 
-  let currentDrawer : DHType = {
-    component : null,
-    title : "",
-    subTitle : "",
-  } ;
+  let currentDrawer: DHType = {
+    component: null,
+    title: "",
+    subTitle: "",
+  };
 
-  switch(view) {
+  switch (view) {
     case "ADD_DEPARTMENT":
- 
       currentDrawer = {
-
-        component : <AddDepartment/>,
-        title : "Département",
-        subTitle : "Ajouter un nouveau département au système",
-
-      }
-     
+        component: <AddDepartment />,
+        title: "Département",
+        subTitle: "Ajouter un nouveau département au système",
+      };
+      break;
+    case "ADD_JOB_TITLE":
+      currentDrawer = {
+        component: <AddJOBTitle />,
+        title: "Poste",
+        subTitle: "Ajouter un nouveau poste au système",
+      };
+      break;
     default:
       break;
   }
 
-
-
   return (
-    <CommonDrawer closeDrawer={closeDrawer} isOpen={isOpen} drawerTitle={currentDrawer.title} drawerSubtitle={currentDrawer.subTitle}>
+    <CommonDrawer
+      closeDrawer={closeDrawer}
+      isOpen={isOpen}
+      drawerTitle={currentDrawer.title}
+      drawerSubtitle={currentDrawer.subTitle}
+    >
       {currentDrawer.component}
- 
     </CommonDrawer>
   );
 };

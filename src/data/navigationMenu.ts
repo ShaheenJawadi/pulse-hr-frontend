@@ -35,7 +35,7 @@ export const  navigationMenu:NavigationMenuType[] = [
             {
                 title: 'Postes',
                 icon: MapsHomeWorkIcon,
-                link:ROUTING.STRUCTURE.POSTES
+                link:ROUTING.STRUCTURE.JOB_TITLE
             },
             {
                 title: 'Heures de Travail ',

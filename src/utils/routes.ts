@@ -9,7 +9,7 @@ export const ROUTING = {
         MAIN: "/departments",
 
         DEPARTMENTS: "/departments",
-        POSTES: "/departments/postes",
+        JOB_TITLE: "/departments/job_title",
         SHIFTS: "/departments/shifts",
 
       },

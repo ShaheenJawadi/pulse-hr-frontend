@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 
 
-type DrawerViewType= "ADD_DEPARTMENT"|undefined ; 
+type DrawerViewType= "ADD_DEPARTMENT"|"ADD_JOB_TITLE"|undefined ; 
 
 interface State {
   isOpen: boolean;
