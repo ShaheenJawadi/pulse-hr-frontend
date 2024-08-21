@@ -6,11 +6,11 @@ export const ROUTING = {
         MAIN: "/employees",
       },
       STRUCTURE: {
-        MAIN: "/departments",
+        MAIN: "/structure",
 
-        DEPARTMENTS: "/departments",
-        JOB_TITLE: "/departments/job_title",
-        SHIFTS: "/departments/shifts",
+        DEPARTMENTS: "/structure/departments",
+        JOB_TITLE: "/structure/job_title",
+        SHIFTS: "/structure/shifts",
 
       },
 
