@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 
 
-type DrawerViewType= "ADD_DEPARTMENT"|"ADD_JOB_TITLE"|undefined ; 
+type DrawerViewType= "ADD_DEPARTMENT"|"ADD_JOB_TITLE"|"ADD_WORKING_SHIFT"|undefined; 
 
 interface State {
   isOpen: boolean;
@@ -16,7 +16,7 @@ type Action = { type: "open"; view : DrawerViewType ,  data?: any } | { type: "c
 const initialState: State = {
   isOpen: false,
   data:null,
-  view :undefined
+  view :undefined,
 };
 
 function drawerReducer(state: State, action: Action): State {
@@ -81,7 +81,7 @@ export function useDrawerAction() {
   }
 
   return {
-    openDrawer(view :any,data?: any) {
+    openDrawer(view :DrawerViewType,data?: any) {
       dispatch({ type: "open" , view:view  ,  data:data});
     },
     closeDrawer(returnClose?:any) {
