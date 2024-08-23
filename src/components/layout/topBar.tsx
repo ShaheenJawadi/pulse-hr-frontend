@@ -3,6 +3,7 @@ import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   IconButton,
   ListItemIcon,
@@ -17,24 +18,25 @@ import React from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import NotificationsIcon from "@mui/icons-material/Notifications"; 
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { navigationHeaderHeight } from "@/theme/constatnt";
+import PunchClockIcon from '@mui/icons-material/PunchClock';
+
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
   backgroundColor: theme.palette.primary.dark,
   color: theme.palette.primary.contrastText,
-  height: navigationHeaderHeight+1,
+  height: navigationHeaderHeight + 1,
   justifyContent: "center",
   display: "flex",
   flexDirection: "column",
-  '& .MuiIconButton-root': {
-    color: '#fff', 
-    '& .MuiSvgIcon-root': {
-      fontSize:28,
-   
-  }
-}
+  "& .MuiIconButton-root": {
+    color: "#fff",
+    "& .MuiSvgIcon-root": {
+      fontSize: 28,
+    },
+  },
 }));
 
 const TopBar = () => {
@@ -43,23 +45,29 @@ const TopBar = () => {
       <Stack
         alignItems={"center"}
         direction={"row"}
+        height={"100%"}
         justifyContent={"space-between"}
       >
         <Stack direction={"row"} spacing={2}>
-          <IconButton  >
-            <CalendarMonthIcon   />
+          <IconButton>
+            <CalendarMonthIcon />
           </IconButton>
-          <IconButton  >
-            <StickyNote2Icon   />
+          <IconButton>
+            <StickyNote2Icon />
           </IconButton>
-          <IconButton  >
-            <FormatListBulletedIcon   />
+          <IconButton>
+            <FormatListBulletedIcon />
           </IconButton>
-        
         </Stack>
+
         <Stack direction={"row"} spacing={2}>
-          <IconButton  >
-            <NotificationsIcon  />
+          <Stack justifyContent={"center"}>
+         {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
+          <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="success">Pointage de sortie</Button>
+
+          </Stack>
+          <IconButton>
+            <NotificationsIcon />
           </IconButton>
           <MenuProfile />
         </Stack>
