@@ -1,5 +1,5 @@
 import { Settings, Logout } from "@mui/icons-material";
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import {
   Avatar,
   Box,
@@ -10,31 +10,65 @@ import {
   MenuItem,
   Paper,
   Stack,
+  styled,
   Typography,
 } from "@mui/material";
 import React from "react";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import StickyNote2Icon from "@mui/icons-material/StickyNote2";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import NotificationsIcon from "@mui/icons-material/Notifications"; 
+import { navigationHeaderHeight } from "@/theme/constatnt";
+
+const TopBarWrapper = styled(Paper)(({ theme }) => ({
+  borderRadius: 0,
+  backgroundColor: theme.palette.primary.dark,
+  color: theme.palette.primary.contrastText,
+  height: navigationHeaderHeight+1,
+  justifyContent: "center",
+  display: "flex",
+  flexDirection: "column",
+  '& .MuiIconButton-root': {
+    color: '#fff', 
+    '& .MuiSvgIcon-root': {
+      fontSize:28,
+   
+  }
+}
+}));
 
 const TopBar = () => {
-
-
   return (
-    <Paper variant="elevation" sx={{ marginTop: 5, padding: 4 }}>
+    <TopBarWrapper variant="outlined">
       <Stack
         alignItems={"center"}
         direction={"row"}
         justifyContent={"space-between"}
       >
-        <Box>sqdqs</Box>
-        <Box>
+        <Stack direction={"row"} spacing={2}>
+          <IconButton  >
+            <CalendarMonthIcon   />
+          </IconButton>
+          <IconButton  >
+            <StickyNote2Icon   />
+          </IconButton>
+          <IconButton  >
+            <FormatListBulletedIcon   />
+          </IconButton>
+        
+        </Stack>
+        <Stack direction={"row"} spacing={2}>
+          <IconButton  >
+            <NotificationsIcon  />
+          </IconButton>
           <MenuProfile />
-        </Box>
+        </Stack>
       </Stack>
-    </Paper>
+    </TopBarWrapper>
   );
 };
 
 const MenuProfile = () => {
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -46,7 +80,9 @@ const MenuProfile = () => {
   return (
     <Box>
       <IconButton onClick={handleClick} size="medium">
-        <Avatar sx={{ width: 32, height: 32 }}>S</Avatar>
+        <Avatar variant="rounded" sx={{ width: 40, height: 40 }}>
+          S
+        </Avatar>
       </IconButton>
       <Menu
         anchorEl={anchorEl}
