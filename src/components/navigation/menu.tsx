@@ -26,6 +26,9 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps>(
     "&.selected:not(.sub)": {
       backgroundColor: theme.palette.primary.dark,
       color: theme.palette.primary.contrastText,
+      "& .MuiListItemText-root .MuiTypography-root  ": {
+        color:"#fff",
+      }
     },
     "&.selected.sub": {
       color: theme.palette.primary.main,
@@ -94,9 +97,9 @@ const FirstLevel = (props: FirstLevelProps) => {
             sx={{ fontSize: isOpen ? null : 30 }}
           />
         </ListItemIcon>
-        <ListItemText
+        <ListItemText 
           primary={element.title}
-          sx={{ display: isOpen ? "block" : "none" }}
+          sx={{ display: isOpen ? "block" : "none"  }}
         />
       </StyledListItemButton>
 
