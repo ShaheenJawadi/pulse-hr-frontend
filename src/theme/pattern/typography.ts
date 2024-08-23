@@ -2,6 +2,7 @@ import { Theme } from '@mui/material/styles'
 
 const Typography = () => {
   return {
+    fontFamily:'mukta',
     h1: {
       fontWeight: 500,
       letterSpacing: '-1.5px',

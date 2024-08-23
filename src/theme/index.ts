@@ -9,6 +9,7 @@ import Typography from './pattern/typography'
 const themeOptions = (): ThemeOptions => {
 
  return {
+  typography: Typography(),
   direction: 'ltr',
   components: Overrides(),
   palette: colorPalette(), 
