@@ -3,8 +3,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import BusinessTwoToneIcon from "@mui/icons-material/BusinessTwoTone";
-import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
-
+import WindowIcon from "@mui/icons-material/Window";
+import ViewStreamIcon from "@mui/icons-material/ViewStream";
 import SafetyCheckTwoToneIcon from "@mui/icons-material/SafetyCheckTwoTone";
 import {
   Button,
@@ -18,6 +18,11 @@ import {
   Stack,
   Chip,
   Divider,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  IconButton,
 } from "@mui/material";
 
 const LogoHolder = styled(Box)(({ theme }) => ({
@@ -36,17 +41,19 @@ const Home = () => {
             <Image src="/telnet/logo.webp" width={220} height={55} alt="" />
           </LogoHolder>
         </Box>
-        <Grid container>
+        <Grid container sx={{marginTop:3}}>
           <Grid item sm={3.5}>
             filter section
           </Grid>
           <Grid item sm={8.5}>
-            <JobListHeader/>
-            <Grid container spacing={3}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-                return <SingleGrid />;
-              })}
-            </Grid>
+            <Stack divider={<Divider/>} spacing={2}>
+              <JobListHeader />
+              <Grid container spacing={3}>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
+                  return <SingleGrid />;
+                })}
+              </Grid> 
+            </Stack>
           </Grid>
         </Grid>
       </Container>
@@ -101,12 +108,27 @@ const SingleGrid = () => {
   );
 };
 
+const JobListHeader = () => {
+  return (
+    <Stack justifyContent={"space-between"} direction={"row"}>
+      <Box>
+        <Typography variant="h5">8 emplois trouvés</Typography>
+      </Box>
+      <Stack alignItems={"center"} direction={"row"} spacing={2}>
+        <Typography typography={"body1"}>Trier par</Typography>
+        <FormControl size="small" sx={{ minWidth: 100 }}>
+          <Select value={0} autoWidth label="Age">
+            <MenuItem value={0}>Plus récent</MenuItem>
+            <MenuItem value={1}>Plus ancien</MenuItem>
+          </Select>
+        </FormControl>
 
-const JobListHeader=()=>{
-  return(
-    <Box>
-      <Typography variant="h4">header</Typography>
-    </Box>
-  )
-}
+        <IconButton color="primary">
+          <WindowIcon />
+          {/*      <ViewStreamIcon/> */}
+        </IconButton>
+      </Stack>
+    </Stack>
+  );
+};
 export default Home;
