@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
+
 import styles from "./page.module.css";
 import BusinessTwoToneIcon from "@mui/icons-material/BusinessTwoTone";
 import WindowIcon from "@mui/icons-material/Window";
@@ -96,7 +98,7 @@ const FilterSide = () => {
             </FormGroup>
           </Stack>
           <Stack spacing={1}>
-            <Typography>Type d'emploi</Typography>
+            <Typography>Type de contrat</Typography>
             <FormGroup>
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
@@ -138,7 +140,7 @@ const SingleGrid = () => {
             </Typography>
             <Stack direction={"row"} justifyContent={"space-between"}>
               <Stack direction={"row"}>
-                <BusinessTwoToneIcon color="success" />
+                <LocationOnTwoToneIcon color="success" />
                 <Typography variant="body1">Tunisie , tunis</Typography>
               </Stack>
 

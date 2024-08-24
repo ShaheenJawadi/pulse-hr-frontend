@@ -8,8 +8,14 @@ import {
   Typography,
   CardContent,
   Stack,
+  Grid,
 } from "@mui/material";
-
+import { info } from "console";
+import CorporateFareTwoToneIcon from "@mui/icons-material/CorporateFareTwoTone";
+import LanguageIcon from "@mui/icons-material/Language";
+import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
+import StickyNote2TwoToneIcon from "@mui/icons-material/StickyNote2TwoTone";
+import WorkHistoryTwoToneIcon from "@mui/icons-material/WorkHistoryTwoTone";
 const SingleJobPost = () => {
   return (
     <Box padding={2}>
@@ -37,32 +43,7 @@ const SingleJobPost = () => {
           </Typography>
         </Stack>
 
-        <Card>
-          <CardContent>
-            <Stack spacing={4} direction={"row"}>
-              <Stack flex={1} spacing={2}>
-                <Box>
-                  <Typography variant="h6">title</Typography>
-                  <Typography variant="subtitle1">info</Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h6">title</Typography>
-                  <Typography variant="subtitle1">info</Typography>
-                </Box>
-              </Stack>
-              <Stack flex={1} spacing={2}>
-                <Box>
-                  <Typography variant="h6">title</Typography>
-                  <Typography variant="subtitle1">info</Typography>
-                </Box>
-                <Box>
-                  <Typography variant="h6">title</Typography>
-                  <Typography variant="subtitle1">info</Typography>
-                </Box>
-              </Stack>
-            </Stack>
-          </CardContent>
-        </Card>
+        <BreifCard />
 
         <Stack spacing={4}>
           <Typography variant="h6">Description</Typography>
@@ -114,5 +95,55 @@ const SingleJobPost = () => {
   );
 };
 /* maybe add share btn and copy link  */
+
+const BreifCard = () => {
+  const data = [
+    {
+      title: "Emplacement",
+      info: "Tunis , tunisie",
+      icon: <LocationOnTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+    },
+    {
+      title: "Departement",
+      info: "IT",
+      icon: <CorporateFareTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+    },
+    {
+      title: "Expérience",
+      info: "2-3 ans",
+      icon: <WorkHistoryTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+    },
+    {
+      title: "Type de contrat",
+      info: "CDI",
+      icon: <StickyNote2TwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+    },
+  ];
+  return (
+    <Stack alignItems={"center"}>
+      <Card sx={{width:800}}>
+        <CardContent>
+          <Grid spacing={6} container>
+            {data.map((item) => {
+              return (
+                <Grid item sm={6}>
+                  <Stack direction={"row"} spacing={4}>
+                    {item.icon}
+                    <Stack spacing={2} >
+                      <Typography variant="body1">{item.title}</Typography>
+                      <Typography variant="h6" sx={{ color: "#000" }}>
+                        {item.info}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </CardContent>
+      </Card>
+    </Stack>
+  );
+};
 
 export default SingleJobPost;
