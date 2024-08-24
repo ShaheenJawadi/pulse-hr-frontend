@@ -14,8 +14,10 @@ const mode ='light' as PaletteMode;
     mode: mode,
     primary: {
       light: '#00B4D8',
-      main: '#0077B6',
-      dark: '#03045E',
+      main: '#22A2DD',
+      dark: '#1e1666',
+     /*  main: '#0077B6',
+      dark: '#03045E', */
       contrastText: '#FFF'
     },
     secondary: {
