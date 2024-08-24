@@ -19,7 +19,7 @@ const SingleJobPost = () => {
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Image src="/telnet/logo.webp" width={220} height={55} alt="" />
+          <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
           <Button variant="outlined" size="large" color="primary">
             Find more
           </Button>

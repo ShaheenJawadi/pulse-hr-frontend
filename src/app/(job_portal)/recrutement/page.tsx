@@ -43,7 +43,7 @@ const Home = () => {
         <Box position={"relative"}>
           <Image src="/job_portal/bg.jpg" width={1200} height={600} alt="" />
           <LogoHolder>
-            <Image src="/telnet/logo.webp" width={220} height={55} alt="" />
+            <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
           </LogoHolder>
         </Box>
         <Grid container spacing={4} sx={{ marginTop: 3 }}>
