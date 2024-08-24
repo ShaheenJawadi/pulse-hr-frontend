@@ -27,6 +27,8 @@ import {
   FormControlLabel,
   FormGroup,
 } from "@mui/material";
+import Link from "next/link";
+import { ROUTING } from "@/utils/routes";
 
 const LogoHolder = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -128,6 +130,8 @@ const SingleGrid = () => {
     <Grid item sm={6}>
       <Card variant="elevation">
         <CardContent>
+          <Link href={ROUTING.PUBLIC.JOBLISTING.SINGLEJOB}>
+        
           <Stack spacing={4}>
             <Typography variant="h5" sx={{ color: "#000" }}>
               jOBtITLE
@@ -173,7 +177,7 @@ const SingleGrid = () => {
               <Typography variant="body2">Il ya 5 jours </Typography>
               <Button variant="contained">Postuler</Button>
             </Stack>
-          </Stack>
+          </Stack>  </Link>
         </CardContent>
       </Card>
     </Grid>
