@@ -36,8 +36,8 @@ const LogoHolder = styled(Box)(({ theme }) => ({
 
 const Home = () => {
   return (
-    <Box sx={{ backgroundColor: "#fff" }}>
-      <Container sx={{ paddingBottom: 5 }}>
+ 
+      <>
         <Box position={"relative"}>
           <Image src="/job_portal/bg.jpg" width={1200} height={600} alt="" />
           <LogoHolder>
@@ -59,8 +59,8 @@ const Home = () => {
             </Stack>
           </Grid>
         </Grid>
-      </Container>
-    </Box>
+      </>
+   
   );
 };
 
