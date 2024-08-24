@@ -3,7 +3,9 @@ import { ChildrenType } from "@/types/themeTypes";
 
 const Layout = async ({ children }: ChildrenType) => {
   return (
-    <Box sx={{ backgroundColor: "#fff" }}  >
+    <Box   >
+   {/*  <Box sx={{ backgroundColor: "#fff" }}  > */}
+
         <Container sx={{ paddingBottom: 5 }}>
         {children}
  
