@@ -23,6 +23,9 @@ import {
   MenuItem,
   Select,
   IconButton,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
 } from "@mui/material";
 
 const LogoHolder = styled(Box)(({ theme }) => ({
@@ -41,23 +44,82 @@ const Home = () => {
             <Image src="/telnet/logo.webp" width={220} height={55} alt="" />
           </LogoHolder>
         </Box>
-        <Grid container sx={{marginTop:3}}>
+        <Grid container spacing={4} sx={{ marginTop: 3 }}>
           <Grid item sm={3.5}>
-            filter section
+            <FilterSide />
           </Grid>
           <Grid item sm={8.5}>
-            <Stack divider={<Divider/>} spacing={2}>
+            <Stack divider={<Divider />} spacing={2}>
               <JobListHeader />
               <Grid container spacing={3}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
                   return <SingleGrid />;
                 })}
-              </Grid> 
+              </Grid>
             </Stack>
           </Grid>
         </Grid>
       </Container>
     </Box>
+  );
+};
+
+const FilterSide = () => {
+  return (
+    <Card sx={{ backgroundColor: "#f5fcff" }}>
+      <CardContent>
+        <Stack divider={<Divider />} spacing={4}>
+          <Stack spacing={1}>
+            <Typography>Emplacement</Typography>
+            <FormControl fullWidth>
+              <Select value={10}>
+                <MenuItem value={10}>Tunis, tunisia</MenuItem>
+                <MenuItem value={20}>Sfax , tunisie</MenuItem>
+              </Select>
+            </FormControl>
+          </Stack>
+          <Stack spacing={1}>
+            <Typography>Expérience</Typography>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="1-2 ans"
+              />
+              <FormControlLabel
+                required
+                control={<Checkbox />}
+                label="2-4 ans"
+              />
+              <FormControlLabel control={<Checkbox />} label="+4 ans" />
+            </FormGroup>
+          </Stack>
+          <Stack spacing={1}>
+            <Typography>Type d'emploi</Typography>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Temps plein"
+              />
+              <FormControlLabel required control={<Checkbox />} label="CDD" />
+              <FormControlLabel control={<Checkbox />} label="CDI" />
+            </FormGroup>
+          </Stack>
+
+          <Stack direction={"row"} spacing={1}>
+            <Chip color="primary" label="tag1" />
+
+            <Chip color="primary" label="tag1" />
+
+            <Chip color="primary" label="tag1" />
+          </Stack>
+
+          <Stack spacing={2}>
+            <Button variant="contained">Appliquer le filtre</Button>
+            <Button variant="text">Réinitialiser le filtre</Button>
+          </Stack>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -72,12 +134,12 @@ const SingleGrid = () => {
             </Typography>
             <Stack direction={"row"} justifyContent={"space-between"}>
               <Stack direction={"row"}>
-                <BusinessTwoToneIcon color="primary" />
+                <BusinessTwoToneIcon color="success" />
                 <Typography variant="body1">Tunisie , tunis</Typography>
               </Stack>
 
               <Stack direction={"row"}>
-                <SafetyCheckTwoToneIcon color="primary" />
+                <SafetyCheckTwoToneIcon color="warning" />
                 <Typography variant="body1">full time </Typography>
               </Stack>
             </Stack>
@@ -88,8 +150,18 @@ const SingleGrid = () => {
               </Typography>
             </Box>
             <Stack spacing={1} direction={"row"}>
-              <Chip size="small" color="primary" label="tag1" />
-              <Chip size="small" color="primary" label="tag2" />
+              <Chip
+                variant="outlined"
+                size="small"
+                color="primary"
+                label="tag1"
+              />
+              <Chip
+                variant="outlined"
+                size="small"
+                color="primary"
+                label="tag2"
+              />
             </Stack>
 
             <Divider />
@@ -99,7 +171,7 @@ const SingleGrid = () => {
               justifyContent={"space-between"}
             >
               <Typography variant="body2">Il ya 5 jours </Typography>
-              <Button variant="outlined">Postuler</Button>
+              <Button variant="contained">Postuler</Button>
             </Stack>
           </Stack>
         </CardContent>
@@ -117,7 +189,7 @@ const JobListHeader = () => {
       <Stack alignItems={"center"} direction={"row"} spacing={2}>
         <Typography typography={"body1"}>Trier par</Typography>
         <FormControl size="small" sx={{ minWidth: 100 }}>
-          <Select value={0} autoWidth label="Age">
+          <Select value={0} autoWidth>
             <MenuItem value={0}>Plus récent</MenuItem>
             <MenuItem value={1}>Plus ancien</MenuItem>
           </Select>
