@@ -47,7 +47,7 @@ const Home = () => {
           </LogoHolder>
         </Box>
         <Grid container spacing={4} sx={{ marginTop: 3 }}>
-          <Grid item sm={3.5}>
+          <Grid position={"relative"} item sm={3.5}>
             <FilterSide />
           </Grid>
           <Grid item sm={8.5}>
@@ -68,7 +68,7 @@ const Home = () => {
 
 const FilterSide = () => {
   return (
-    <Card sx={{ backgroundColor: "#f5fcff" }}>
+    <Card sx={{ backgroundColor: "#f5fcff"  , position:"sticky" , top:5 }}>
       <CardContent>
         <Stack divider={<Divider />} spacing={4}>
           <Stack spacing={1}>
