@@ -3,19 +3,14 @@ import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   Avatar,
-  AvatarGroup,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  IconButton,
+  AvatarGroup, 
+  Button, 
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
 import GeneralTable from "@/ui/table/mainTable";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";
 import EditIcon from "@mui/icons-material/Edit";
@@ -41,7 +36,7 @@ const data: FakeDepartment[] = [
   },
 ];
 
-const departementMenu:ListingMenuItemType[] = [
+const departementMenu: ListingMenuItemType[] = [
   {
     title: "Détails",
     icon: <InfoIcon />,
@@ -99,28 +94,39 @@ const columns: ColumnDef<FakeDepartment>[] = [
 ];
 
 const MyTable = () => {
-  const { openDrawer } = useDrawerAction();
+  return (
+    <Stack spacing={3}>
+      <PagerHeader title="Départements" />
 
+      <Paper className="mainPaper">
+        <GeneralTable utils={<TableUtils />} columns={columns} data={data} />
+      </Paper>
+    </Stack>
+  );
+};
+
+const TableUtils = () => {
+  const { openDrawer } = useDrawerAction();
 
   const drawertest = () => {
     openDrawer("ADD_DEPARTMENT", null);
   };
 
   return (
-    <Stack spacing={3}>
-      <PagerHeader title="Départements" />
-
-      <Paper className="mainPaper">
-        <Stack className="topContent" spacing={2} direction={"row"} justifyContent={"flex-end"}>
-          <Button  startIcon={<AddIcon />} size="large" variant="contained" onClick={drawertest}>
-            Ajouter un département
-          </Button>
-        </Stack>
-
-        <GeneralTable columns={columns} data={data} />
-      </Paper>
+    <Stack 
+      spacing={2}
+      direction={"row"}
+      justifyContent={"flex-end"}
+    >
+      <Button
+        startIcon={<AddIcon />}
+        size="large"
+        variant="contained"
+        onClick={drawertest}
+      >
+        Ajouter un département
+      </Button>
     </Stack>
   );
 };
-
 export default MyTable;
