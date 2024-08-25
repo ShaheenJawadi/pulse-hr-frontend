@@ -27,14 +27,16 @@ import {
   InputLabel,
 } from "@mui/material";
 import TablePaginationComponent from "./pagination";
+import { SelectField } from "@/components/utils/SelectField";
+import { SelectDataTypes } from "@/types/structureTypes";
 
 interface GeneralTableProps {
   columns: ColumnDef<any, any>[];
-  data: any[]; 
+  data: any[];
   utils?: React.ReactNode;
 }
 
-const GeneralTable = ({ columns, data ,utils }: GeneralTableProps) => {
+const GeneralTable = ({ columns, data, utils }: GeneralTableProps) => {
   const table = useReactTable({
     data,
     columns,
@@ -43,28 +45,42 @@ const GeneralTable = ({ columns, data ,utils }: GeneralTableProps) => {
 
   const [rowsPerPage, setRowsPerPage] = React.useState<string>("20");
 
-  const handleChangeRowsPerPage = (event: SelectChangeEvent) => {
-    setRowsPerPage(event.target.value as string);
+  const handleChangeRowsPerPage = (value: any) => {
+    setRowsPerPage(value as string);
   };
+
+  const perPageList: SelectDataTypes[] = [
+    {
+      labelText: 20,
+      value: 20,
+    },
+    {
+      labelText: 30,
+      value: 30,
+    },
+    {
+      labelText: 50,
+      value: 50,
+    },
+    {
+      labelText: 100,
+      value: 100,
+    },
+  ];
 
   return (
     <Stack spacing={3}>
       <Stack paddingX={4} direction={"row"} justifyContent={"space-between"}>
-        <FormControl sx={{ minWidth: 120 }}>
-          <InputLabel>Ligne par page</InputLabel>
-          <Select
-            value={rowsPerPage}
-            label="Ligne par page"
+        <Box sx={{ minWidth: 120 }}>
+          <SelectField
+            dataValue={20}
             size="small"
-            onChange={handleChangeRowsPerPage}
-          >
-            <MenuItem value={20}>20</MenuItem>
-            <MenuItem value={30}>30</MenuItem>
+            label={"Ligne par page"}
+            getNewValue={(v) => handleChangeRowsPerPage(v)}
+            selectData={perPageList}
+          />
+        </Box>
 
-            <MenuItem value={50}>50</MenuItem>
-            <MenuItem value={100}>100</MenuItem>
-          </Select>
-        </FormControl>
         <Box> {utils} </Box>
       </Stack>
 

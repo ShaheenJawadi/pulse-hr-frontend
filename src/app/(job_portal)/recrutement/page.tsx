@@ -27,6 +27,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
+import { SelectField } from "@/components/utils/SelectField";
+import { SelectDataTypes } from "@/types/structureTypes";
 
 const LogoHolder = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -63,18 +65,25 @@ const Home = () => {
 };
 
 const FilterSide = () => {
+   const emplacementList: SelectDataTypes[] = [
+    {
+      labelText: "Tunis, tunisia",
+      value: "Tunis, tunisia",
+    },
+    {
+      labelText: "Sfax , tunisie",
+      value: "Sfax , tunisie",
+    },
+  ];
+
   return (
     <Card sx={{ backgroundColor: "#f5fcff", position: "sticky", top: 5 }}>
       <CardContent>
         <Stack divider={<Divider />} spacing={4}>
           <Stack spacing={1}>
             <Typography>Emplacement</Typography>
-            <FormControl fullWidth>
-              <Select value={10}>
-                <MenuItem value={10}>Tunis, tunisia</MenuItem>
-                <MenuItem value={20}>Sfax , tunisie</MenuItem>
-              </Select>
-            </FormControl>
+            <SelectField label={"Emplacement"} selectData={emplacementList} />
+          
           </Stack>
           <Stack spacing={1}>
             <Typography>Expérience</Typography>
@@ -181,6 +190,17 @@ const SingleGrid = () => {
 };
 
 const JobListHeader = () => {
+  const orderByList: SelectDataTypes[] = [
+    {
+      labelText: "Plus récent",
+      value: 0,
+    },
+    {
+      labelText: "Plus ancien",
+      value: 1,
+    },
+  ];
+
   return (
     <Stack justifyContent={"space-between"} direction={"row"}>
       <Box>
@@ -189,10 +209,9 @@ const JobListHeader = () => {
       <Stack alignItems={"center"} direction={"row"} spacing={2}>
         <Typography typography={"body1"}>Trier par</Typography>
         <FormControl size="small" sx={{ minWidth: 100 }}>
-          <Select value={0} autoWidth>
-            <MenuItem value={0}>Plus récent</MenuItem>
-            <MenuItem value={1}>Plus ancien</MenuItem>
-          </Select>
+        <SelectField dataValue={1} size="small"  selectData={orderByList} />
+          
+    
         </FormControl>
 
         <IconButton color="primary">

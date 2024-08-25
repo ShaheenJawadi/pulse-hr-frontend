@@ -27,7 +27,6 @@ import {
 import { UseFormRegisterReturn } from "react-hook-form";
 
 type Props = SelectProps & {
-  label: string;
   formRegistartion?: UseFormRegisterReturn;
   isError?: boolean;
   errorMessage?: string;
@@ -60,9 +59,8 @@ export const SelectField = (props: Props) => {
   };
 
   useEffect(() => {
-
-    setSelectVal(dataValue)
-}, [dataValue])
+    setSelectVal(dataValue);
+  }, [dataValue]);
 
   return (
     <FormControl fullWidth error={isError}>

@@ -24,3 +24,9 @@ export type StepperFormType = {
     icon?: ReactNode
 
 }
+
+export type SelectDataTypes = {
+    value: any;
+    labelText: any;
+
+}
