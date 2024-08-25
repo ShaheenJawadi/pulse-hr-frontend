@@ -10,9 +10,9 @@ import { StepperFormType } from "@/types/structureTypes";
 import { Stack, Paper, Grid, Box, Divider, Typography } from "@mui/material";
 import React from "react";
 
-import WorkIcon from '@mui/icons-material/Work';
-import InfoIcon from '@mui/icons-material/Info';
-import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+import WorkIcon from "@mui/icons-material/Work";
+import InfoIcon from "@mui/icons-material/Info";
+import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -61,16 +61,16 @@ const AddEmployeePage = () => {
             <Paper>
               <Stack spacing={2} padding={4}>
                 <Divider textAlign="left">
-                    <Stack direction={"row"} alignItems={"center"} spacing={2}>
-                        {steps[activeStep]?.icon}
+                  <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                    {steps[activeStep]?.icon}
 
-                  <Typography variant="h5" color={"secondary"}>{steps[activeStep]?.label}</Typography>
-
-
-                    </Stack>
+                    <Typography variant="h5" color={"secondary"}>
+                      {steps[activeStep]?.label}
+                    </Typography>
+                  </Stack>
                 </Divider>
 
-                {steps[activeStep]?.componentPage}
+                <Box padding={5}>{steps[activeStep]?.componentPage}</Box>
               </Stack>
             </Paper>
           </Grid>
