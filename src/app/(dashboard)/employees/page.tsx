@@ -1,12 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { 
-  Button, 
-  Paper,
-  Stack, 
-} from "@mui/material";
-import GeneralTable from "@/ui/table/mainTable";  
+import { Button, Paper, Stack } from "@mui/material";
+import GeneralTable from "@/ui/table/mainTable";
 import PagerHeader from "@/components/listingPages/pageHeader";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -53,27 +49,20 @@ const MyTable = () => {
       <PagerHeader title="Employés" />
 
       <Paper className="mainPaper">
-        <GeneralTable utils={<TableUtils/>} columns={columns} data={data} />
+        <GeneralTable utils={<TableUtils />} columns={columns} data={data} />
       </Paper>
     </Stack>
   );
 };
 
-
 const TableUtils = () => {
- 
   const router = useRouter();
 
   const addBtn = () => {
-
     router.push(ROUTING.EMPLOYEE.ADD);
-  }
+  };
   return (
-    <Stack 
-      spacing={2}
-      direction={"row"}
-      justifyContent={"flex-end"}
-    >
+    <Stack spacing={2} direction={"row"} justifyContent={"flex-end"}>
       <Button
         startIcon={<AddIcon />}
         size="large"
