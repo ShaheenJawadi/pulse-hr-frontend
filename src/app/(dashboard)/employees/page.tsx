@@ -1,20 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  IconButton,
+import { 
+  Button, 
   Paper,
-  Stack,
-  Typography,
+  Stack, 
 } from "@mui/material";
-import GeneralTable from "@/ui/table/mainTable";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import GeneralTable from "@/ui/table/mainTable";  
 import PagerHeader from "@/components/listingPages/pageHeader";
+
+import AddIcon from "@mui/icons-material/Add";
+import { useRouter } from "next/navigation";
+import { ROUTING } from "@/utils/routes";
 
 type Person = {
   id: number;
@@ -56,10 +53,36 @@ const MyTable = () => {
       <PagerHeader title="Employés" />
 
       <Paper className="mainPaper">
-        <GeneralTable columns={columns} data={data} />
+        <GeneralTable utils={<TableUtils/>} columns={columns} data={data} />
       </Paper>
     </Stack>
   );
 };
 
+
+const TableUtils = () => {
+ 
+  const router = useRouter();
+
+  const addBtn = () => {
+
+    router.push(ROUTING.EMPLOYEE.ADD);
+  }
+  return (
+    <Stack 
+      spacing={2}
+      direction={"row"}
+      justifyContent={"flex-end"}
+    >
+      <Button
+        startIcon={<AddIcon />}
+        size="large"
+        variant="contained"
+        onClick={addBtn}
+      >
+        Ajouter un employée
+      </Button>
+    </Stack>
+  );
+};
 export default MyTable;

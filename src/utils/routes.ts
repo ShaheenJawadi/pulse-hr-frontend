@@ -4,6 +4,8 @@ export const ROUTING = {
   },
   EMPLOYEE: {
     MAIN: "/employees",
+    ADD: "/employees/add",
+
   },
   STRUCTURE: {
     MAIN: "/structure",

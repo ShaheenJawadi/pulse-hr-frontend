@@ -108,7 +108,7 @@ const MyTable = () => {
 const TableUtils = () => {
   const { openDrawer } = useDrawerAction();
 
-  const drawertest = () => {
+  const addBtn = () => {
     openDrawer("ADD_DEPARTMENT", null);
   };
 
@@ -122,7 +122,7 @@ const TableUtils = () => {
         startIcon={<AddIcon />}
         size="large"
         variant="contained"
-        onClick={drawertest}
+        onClick={addBtn}
       >
         Ajouter un département
       </Button>
