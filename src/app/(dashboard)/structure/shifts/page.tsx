@@ -135,7 +135,7 @@ const CardItemContent = () => {
             <Typography flex={1} variant="body1">
               {shift.day}
             </Typography>
-            <Typography color={"var(--mui-palette-primary-dark)"} flex={1} variant="body1">
+            <Typography color={"secondary"} flex={1} variant="body1">
               {shift.time}
             </Typography>
           </Stack>

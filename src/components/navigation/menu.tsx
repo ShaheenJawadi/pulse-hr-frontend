@@ -24,7 +24,7 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps>(
     padding: 0,
     borderRadius: theme.shape.borderRadius,
     "&.selected:not(.sub)": {
-      backgroundColor: theme.palette.primary.dark,
+      backgroundColor: theme.palette.secondary.main,
       color: theme.palette.primary.contrastText,
       "& .MuiListItemText-root .MuiTypography-root  ": {
         color:"#fff",

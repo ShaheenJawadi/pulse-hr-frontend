@@ -1,12 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
-
-import styles from "./page.module.css";
-import BusinessTwoToneIcon from "@mui/icons-material/BusinessTwoTone";
+import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
 import WindowIcon from "@mui/icons-material/Window";
-import ViewStreamIcon from "@mui/icons-material/ViewStream";
 import SafetyCheckTwoToneIcon from "@mui/icons-material/SafetyCheckTwoTone";
 import {
   Button,
@@ -40,37 +36,35 @@ const LogoHolder = styled(Box)(({ theme }) => ({
 
 const Home = () => {
   return (
- 
-      <>
-        <Box position={"relative"}>
-          <Image src="/job_portal/bg.jpg" width={1200} height={600} alt="" />
-          <LogoHolder>
-            <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
-          </LogoHolder>
-        </Box>
-        <Grid container spacing={4} sx={{ marginTop: 3 }}>
-          <Grid position={"relative"} item sm={3.5}>
-            <FilterSide />
-          </Grid>
-          <Grid item sm={8.5}>
-            <Stack divider={<Divider />} spacing={2}>
-              <JobListHeader />
-              <Grid container spacing={3}>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-                  return <SingleGrid />;
-                })}
-              </Grid>
-            </Stack>
-          </Grid>
+    <>
+      <Box position={"relative"}>
+        <Image src="/job_portal/bg.jpg" width={1200} height={600} alt="" />
+        <LogoHolder>
+          <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
+        </LogoHolder>
+      </Box>
+      <Grid container spacing={4} sx={{ marginTop: 3 }}>
+        <Grid position={"relative"} item sm={3.5}>
+          <FilterSide />
         </Grid>
-      </>
-   
+        <Grid item sm={8.5}>
+          <Stack divider={<Divider />} spacing={2}>
+            <JobListHeader />
+            <Grid container spacing={3}>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
+                return <SingleGrid />;
+              })}
+            </Grid>
+          </Stack>
+        </Grid>
+      </Grid>
+    </>
   );
 };
 
 const FilterSide = () => {
   return (
-    <Card sx={{ backgroundColor: "#f5fcff"  , position:"sticky" , top:5 }}>
+    <Card sx={{ backgroundColor: "#f5fcff", position: "sticky", top: 5 }}>
       <CardContent>
         <Stack divider={<Divider />} spacing={4}>
           <Stack spacing={1}>
@@ -133,53 +127,53 @@ const SingleGrid = () => {
       <Card variant="elevation">
         <CardContent>
           <Link href={ROUTING.PUBLIC.JOBLISTING.SINGLEJOB}>
-        
-          <Stack spacing={4}>
-            <Typography variant="h5" sx={{ color: "#000" }}>
-              jOBtITLE
-            </Typography>
-            <Stack direction={"row"} justifyContent={"space-between"}>
-              <Stack direction={"row"}>
-                <LocationOnTwoToneIcon color="success" />
-                <Typography variant="body1">Tunisie , tunis</Typography>
-              </Stack>
-
-              <Stack direction={"row"}>
-                <SafetyCheckTwoToneIcon color="warning" />
-                <Typography variant="body1">full time </Typography>
-              </Stack>
-            </Stack>
-
-            <Box>
-              <Typography variant="subtitle1">
-                qsjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+            <Stack spacing={4}>
+              <Typography variant="h5" sx={{ color: "#000" }}>
+                jOBtITLE
               </Typography>
-            </Box>
-            <Stack spacing={1} direction={"row"}>
-              <Chip
-                variant="outlined"
-                size="small"
-                color="primary"
-                label="tag1"
-              />
-              <Chip
-                variant="outlined"
-                size="small"
-                color="primary"
-                label="tag2"
-              />
-            </Stack>
+              <Stack direction={"row"} justifyContent={"space-between"}>
+                <Stack direction={"row"}>
+                  <LocationOnTwoToneIcon color="success" />
+                  <Typography variant="body1">Tunisie , tunis</Typography>
+                </Stack>
 
-            <Divider />
-            <Stack
-              alignItems={"center"}
-              direction={"row"}
-              justifyContent={"space-between"}
-            >
-              <Typography variant="body2">Il ya 5 jours </Typography>
-              <Button variant="contained">Postuler</Button>
-            </Stack>
-          </Stack>  </Link>
+                <Stack direction={"row"}>
+                  <SafetyCheckTwoToneIcon color="warning" />
+                  <Typography variant="body1">full time </Typography>
+                </Stack>
+              </Stack>
+
+              <Box>
+                <Typography variant="subtitle1">
+                  qsjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                </Typography>
+              </Box>
+              <Stack spacing={1} direction={"row"}>
+                <Chip
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  label="tag1"
+                />
+                <Chip
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  label="tag2"
+                />
+              </Stack>
+
+              <Divider />
+              <Stack
+                alignItems={"center"}
+                direction={"row"}
+                justifyContent={"space-between"}
+              >
+                <Typography variant="body2">Il ya 5 jours </Typography>
+                <Button variant="contained">Postuler</Button>
+              </Stack>
+            </Stack>{" "}
+          </Link>
         </CardContent>
       </Card>
     </Grid>

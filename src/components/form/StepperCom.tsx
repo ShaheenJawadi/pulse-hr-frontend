@@ -1,18 +1,6 @@
 "use client";
-import PagerHeader from "@/components/listingPages/pageHeader";
 import { StepperFormType } from "@/types/structureTypes";
-import {
-  Stack,
-  Paper,
-  Grid,
-  Box,
-  Button,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Stack, Button, Step, StepLabel, Stepper } from "@mui/material";
 import React from "react";
 
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";

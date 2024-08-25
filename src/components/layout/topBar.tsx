@@ -25,7 +25,7 @@ import PunchClockIcon from '@mui/icons-material/PunchClock';
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
-  backgroundColor: theme.palette.primary.dark,
+  backgroundColor: theme.palette.secondary.main,
   color: theme.palette.primary.contrastText,
   height: navigationHeaderHeight + 1,
   justifyContent: "center",

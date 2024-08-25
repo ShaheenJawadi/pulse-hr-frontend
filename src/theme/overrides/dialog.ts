@@ -1,12 +1,12 @@
 // ** MUI Imports
 import { Theme } from '@mui/material/styles'
 
- 
-const MUIDialog  = (): Theme['components'] =>  {
+
+const MUIDialog = (): Theme['components'] => {
   return {
     MuiDialog: {
       styleOverrides: {
- 
+
       },
     },
     MuiDialogTitle: {
@@ -14,7 +14,7 @@ const MUIDialog  = (): Theme['components'] =>  {
         root: ({ theme }) => ({
           padding: theme.spacing(4),
           fontSize: theme.typography.h5.fontSize,
-          color: theme.palette.primary.dark, 
+          color: theme.palette.secondary.main,
           paddingLeft: theme.spacing(5),
         }),
       },
@@ -23,8 +23,8 @@ const MUIDialog  = (): Theme['components'] =>  {
       styleOverrides: {
         root: ({ theme }) => ({
           padding: theme.spacing(5),
-       
-       
+
+
         }),
       },
     },

@@ -9,21 +9,22 @@ const mode ='light' as PaletteMode;
     
     common: {
       black: '#000',
-      white: '#FFF'
+      white: '#FFF',
+
     },
     mode: mode,
     primary: {
-      light: '#00B4D8',
+      light: '#00bce1',
       main: '#22A2DD',
-      dark: '#1e1666',
+      dark: '#006fa6',
      /*  main: '#0077B6',
       dark: '#03045E', */
       contrastText: '#FFF'
     },
     secondary: {
-      light: '#d1ff33',
-      main: '#c6ff00',
-      dark: '#8ab200',
+      light: '#006bac',
+      main: '#1E1666',
+      dark: '#004391',
       contrastText: '#FFF'
     },
     success: {

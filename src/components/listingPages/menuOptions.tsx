@@ -55,7 +55,7 @@ const MenuOption = (props: Props) => {
   return (
     <div>
       <IconButton
-        sx={{ color: "var(--mui-palette-primary-dark)" }}
+        color="secondary"
         onClick={handleClick}
       >
         <MoreVertIcon />
