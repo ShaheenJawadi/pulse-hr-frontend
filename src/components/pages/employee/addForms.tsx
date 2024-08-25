@@ -66,11 +66,7 @@ const PersonalInfo = () => {
             <InputField label="Numéro de téléphone" />
           </Grid>
           <Grid item xs={6}>
-            <InputField
-              label="Date de naissance" 
-             
-              type="date"
-            />
+            <InputField label="Date de naissance" type="date" />
           </Grid>
 
           <Grid item xs={6}>
@@ -83,11 +79,93 @@ const PersonalInfo = () => {
 };
 
 const ProfessionalInfo = () => {
-  return <div>proff</div>;
+ 
+  const emplacementList: SelectDataTypes[] = [
+    {
+      labelText: "Homme",
+      value: "h",
+    },
+    {
+      labelText: "Femme",
+      value: "f",
+    },
+  ];
+  return (
+    <Stack direction={"row"} spacing={4} alignItems={"center"}>
+      <Box flex={1}>
+        <Grid container spacing={4}>
+          <Grid item xs={4}>
+            <SelectField label={"Departement"} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <SelectField label={"Poste"} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <SelectField label={"Superviseur"} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <SelectField label={"Horaire de Travail "} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField label="Date d'Embauche" type="date" />
+          </Grid>
+
+          <Grid item xs={4}>
+            <SelectField label={"Type de contrat"} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField label="Date de Fin de Contrat " type="date" />
+          </Grid>
+
+          <Grid item xs={4}>
+            <SelectField label={"Type d'emploi"} selectData={emplacementList} />
+          </Grid>
+        </Grid>
+      </Box>
+    </Stack>
+  );
 };
 
 const AdditionalInfo = () => {
-  return <div>Addit</div>;
+    const emplacementList: SelectDataTypes[] = [
+        {
+          labelText: "Homme",
+          value: "h",
+        },
+        {
+          labelText: "Femme",
+          value: "f",
+        },
+      ];
+      return (
+        <Stack direction={"row"} spacing={4} alignItems={"center"}>
+          <Box flex={1}>
+            <Grid container spacing={4}>
+              
+              <Grid item xs={4}> 
+                <InputField  label={"Nom du Contact d'Urgence"} />
+              </Grid>
+              <Grid item xs={4}> 
+                <InputField label={"Relation avec le Contact d'Urgence "}    />
+              </Grid>
+              <Grid item xs={4}>
+                <InputField label="Téléphone du Contact d'Urgence"   />
+              </Grid>
+    
+              <Grid item xs={4}>
+                <SelectField label={"État Civil"} selectData={emplacementList} />
+              </Grid>
+              <Grid item xs={4}>
+                <SelectField label={"groupe sanguin"} selectData={emplacementList} />
+              </Grid>
+            </Grid>
+          </Box>
+        </Stack>
+      );
 };
 
-export { PersonalInfo, ProfessionalInfo, AdditionalInfo };
+const Documents = () => {
+    return <div>Addit</div>;
+  };
+  
+export { PersonalInfo, ProfessionalInfo, AdditionalInfo,Documents };

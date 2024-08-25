@@ -5,11 +5,12 @@ import {
   PersonalInfo,
   ProfessionalInfo,
   AdditionalInfo,
+  Documents,
 } from "@/components/pages/employee/addForms";
 import { StepperFormType } from "@/types/structureTypes";
 import { Stack, Paper, Grid, Box, Divider, Typography } from "@mui/material";
 import React from "react";
-
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import WorkIcon from "@mui/icons-material/Work";
 import InfoIcon from "@mui/icons-material/Info";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
@@ -30,10 +31,17 @@ const AddEmployeePage = () => {
       icon: <WorkIcon color="secondary" />,
     },
     {
+      
+      label: "Documents",
+      componentPage: <Documents />,
+      icon: <DocumentScannerIcon color="secondary" />,
+    },
+    {
       label: "Informations Complémentaires",
       componentPage: <AdditionalInfo />,
       icon: <ImportContactsIcon color="secondary" />,
     },
+    
   ];
 
   const handleNext = () => {
