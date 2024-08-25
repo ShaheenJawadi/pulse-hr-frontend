@@ -1,5 +1,8 @@
 "use client";
+import SideStepper from "@/components/form/StepperCom";
 import PagerHeader from "@/components/listingPages/pageHeader";
+import { PersonalInfo, ProfessionalInfo, AdditionalInfo } from "@/components/pages/employee/addForms";
+import { StepperFormType } from "@/types/structureTypes";
 import {
   Stack,
   Paper,
@@ -13,15 +16,24 @@ import {
   Container,
 } from "@mui/material";
 import React from "react";
-
-const steps = [
-  "Informations Personnelles",
-
-  "Détails d'Emploi",
-  "Informations Complémentaires",
-];
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
+
+  const steps: StepperFormType[] = [
+    {
+      label: "Informations Personnelles",
+      componentPage: <PersonalInfo />,
+    },
+
+    {
+      label: "Détails d'Emploi",
+      componentPage: <ProfessionalInfo />,
+    },
+    {
+      label: "Informations Complémentaires",
+      componentPage: <AdditionalInfo />,
+    },
+  ];
 
   const handleNext = () => {
     const nextStep =
@@ -46,12 +58,13 @@ const AddEmployeePage = () => {
         <Grid container spacing={3}>
           <Grid item xs={8.5}>
             <Paper>
-              <Box> {activeStep + 1}</Box>
+              <Box> {steps[activeStep]?.componentPage}</Box>
             </Paper>
           </Grid>
           <Grid item xs={3.5}>
             <Paper>
               <SideStepper
+                steps={steps}
                 activeStep={activeStep}
                 handleNext={handleNext}
                 handleBack={handleBack}
@@ -62,47 +75,6 @@ const AddEmployeePage = () => {
         </Grid>
       </Box>
     </Stack>
-  );
-};
-
-type StepperProps = {
-  activeStep: number;
-  handleNext: () => void;
-  handleBack: () => void;
-  handleSubmit: () => void;
-};
-
-const SideStepper = (props: StepperProps) => {
-  const { activeStep, handleBack, handleNext, handleSubmit } = props;
-  return (
-    <Box padding={5}>
-      <Stepper orientation="vertical" activeStep={activeStep}>
-        {steps.map((label, index) => {
-          return (
-            <Step key={label} completed={false}>
-              <StepLabel optional={<></>}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-
-      <Stack direction={"row"} justifyContent={"space-between"}>
-        <Button
-          color="inherit"
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          sx={{ mr: 1 }}
-        >
-          Retour
-        </Button>
-
-        {activeStep === steps.length - 1 ? (
-          <Button onClick={handleSubmit}>Soumettre</Button>
-        ) : (
-          <Button onClick={handleNext}>Suivant</Button>
-        )}
-      </Stack>
-    </Box>
   );
 };
 
