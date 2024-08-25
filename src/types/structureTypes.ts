@@ -20,6 +20,7 @@ export type ListingMenuItemType = {
 
 export type StepperFormType = {
     label: string,
-    componentPage: ReactNode
+    componentPage: ReactNode, 
+    icon?: ReactNode
 
 }

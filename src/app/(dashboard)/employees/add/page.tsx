@@ -1,21 +1,19 @@
 "use client";
 import SideStepper from "@/components/form/StepperCom";
 import PagerHeader from "@/components/listingPages/pageHeader";
-import { PersonalInfo, ProfessionalInfo, AdditionalInfo } from "@/components/pages/employee/addForms";
-import { StepperFormType } from "@/types/structureTypes";
 import {
-  Stack,
-  Paper,
-  Grid,
-  Box,
-  Button,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-  Container,
-} from "@mui/material";
+  PersonalInfo,
+  ProfessionalInfo,
+  AdditionalInfo,
+} from "@/components/pages/employee/addForms";
+import { StepperFormType } from "@/types/structureTypes";
+import { Stack, Paper, Grid, Box, Divider, Typography } from "@mui/material";
 import React from "react";
+
+import WorkIcon from '@mui/icons-material/Work';
+import InfoIcon from '@mui/icons-material/Info';
+import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -23,15 +21,18 @@ const AddEmployeePage = () => {
     {
       label: "Informations Personnelles",
       componentPage: <PersonalInfo />,
+      icon: <InfoIcon color="secondary" />,
     },
 
     {
       label: "Détails d'Emploi",
       componentPage: <ProfessionalInfo />,
+      icon: <WorkIcon color="secondary" />,
     },
     {
       label: "Informations Complémentaires",
       componentPage: <AdditionalInfo />,
+      icon: <ImportContactsIcon color="secondary" />,
     },
   ];
 
@@ -58,7 +59,19 @@ const AddEmployeePage = () => {
         <Grid container spacing={3}>
           <Grid item xs={8.5}>
             <Paper>
-              <Box> {steps[activeStep]?.componentPage}</Box>
+              <Stack spacing={2} padding={4}>
+                <Divider textAlign="left">
+                    <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                        {steps[activeStep]?.icon}
+
+                  <Typography variant="h5" color={"secondary"}>{steps[activeStep]?.label}</Typography>
+
+
+                    </Stack>
+                </Divider>
+
+                {steps[activeStep]?.componentPage}
+              </Stack>
             </Paper>
           </Grid>
           <Grid item xs={3.5}>
