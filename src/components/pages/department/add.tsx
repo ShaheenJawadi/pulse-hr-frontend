@@ -1,4 +1,5 @@
 
+import { InputField } from "@/components/utils/InputField";
 import { 
   Button,  
   Stack,
@@ -9,12 +10,12 @@ import {
 const AddDepartment = () => {
   return (
     <Stack spacing={5} justifyContent={"center"} height={"100%"}>
-      <TextField
-        
-        sx={{ width: "100%" }}
-        label="Designation"
-        variant="outlined"
-      />
+       
+          <InputField 
+          label="Designation"
+          type={"text"}
+        />
+
  
       <Button variant="contained" size="large">
         Créer

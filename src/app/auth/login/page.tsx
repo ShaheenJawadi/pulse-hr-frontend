@@ -1,10 +1,9 @@
-
 import {
   Box,
   Button,
   Checkbox,
   FormControlLabel,
-  InputAdornment, 
+  InputAdornment,
   Stack,
   TextField,
   Typography,
@@ -13,36 +12,31 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LockIcon from "@mui/icons-material/Lock";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
+import { InputField } from "@/components/utils/InputField";
 
 const Login = () => {
   return (
     <Stack spacing={1} height={"100%"}>
       <Typography variant="h5">Se connecter</Typography>
       <Stack spacing={5} justifyContent={"center"} height={"100%"}>
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AlternateEmailIcon />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ width: "100%" }}
+        <InputField
+          startAdornment={
+            <InputAdornment position="start">
+              <AlternateEmailIcon />
+            </InputAdornment>
+          }
           label="Email"
-          variant="outlined"
+          type={"email"}
         />
-        <TextField
-          type="password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <LockIcon />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ width: "100%" }}
+
+        <InputField
+          startAdornment={
+            <InputAdornment position="start">
+              <LockIcon />
+            </InputAdornment>
+          }
           label="Mot de passe"
-          variant="outlined"
+          type={"password"}
         />
 
         <Button variant="contained" size="large">

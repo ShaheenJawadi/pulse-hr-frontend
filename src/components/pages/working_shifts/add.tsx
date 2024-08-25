@@ -1,3 +1,4 @@
+import { InputField } from "@/components/utils/InputField";
 import {
   Button,
   Stack,
@@ -10,12 +11,8 @@ import {
 const AddWorkingShift = () => {
   return (
     <Stack spacing={8} justifyContent={"center"} height={"100%"}>
-      <TextField
-        sx={{ width: "100%" }}
-        label="Designation"
-        variant="outlined"
-        type="text"
-      />
+      <InputField label="Designation" type={"text"} />
+
       <Box>
         <Stack spacing={3} divider={<Divider />}>
           <Stack spacing={2} direction={"row"} alignItems={"center"}>
@@ -28,37 +25,32 @@ const AddWorkingShift = () => {
             </Typography>
           </Stack>
 
-          {[
-            "Lundi",
-            "Mardi",
-            "Mercredi",
-            "Jeudi",
-            "Vendredi",
-            "Samedi", 
-          ].map((item) => {
-            return (
-              <Stack spacing={2} direction={"row"} alignItems={"center"}>
-                <Typography flex={1} variant="body1">
-                  {item}
-                </Typography>
-                <Box flex={3}>
-                  <TextField
-                    sx={{ width: "100%" }}
-                    variant="outlined"
-                    type="time"
-                  />
-                </Box>
+          {["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"].map(
+            (item) => {
+              return (
+                <Stack spacing={2} direction={"row"} alignItems={"center"}>
+                  <Typography flex={1} variant="body1">
+                    {item}
+                  </Typography>
+                  <Box flex={3}>
+                    <TextField
+                      sx={{ width: "100%" }}
+                      variant="outlined"
+                      type="time"
+                    />
+                  </Box>
 
-                <Box flex={3}>
-                  <TextField
-                    sx={{ width: "100%" }}
-                    variant="outlined"
-                    type="time"
-                  />
-                </Box>
-              </Stack>
-            );
-          })}
+                  <Box flex={3}>
+                    <TextField
+                      sx={{ width: "100%" }}
+                      variant="outlined"
+                      type="time"
+                    />
+                  </Box>
+                </Stack>
+              );
+            }
+          )}
         </Stack>
       </Box>
 

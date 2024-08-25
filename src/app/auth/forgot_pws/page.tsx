@@ -4,7 +4,7 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  InputAdornment, 
+  InputAdornment,
   Stack,
   TextField,
   Typography,
@@ -14,36 +14,35 @@ import LockIcon from "@mui/icons-material/Lock";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ROUTING } from "@/utils/routes";
+import { InputField } from "@/components/utils/InputField";
 
 const ForgotPws = () => {
   const router = useRouter();
 
   const openResetTest = () => {
-
     router.push(ROUTING.AUTH.RESETPWS);
+  };
 
-  }
-  
   return (
     <Stack spacing={1} height={"100%"}>
       <Typography variant="h5">Mot de passe oublié ?</Typography>
       <Stack spacing={5} justifyContent={"center"} height={"100%"}>
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AlternateEmailIcon />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ width: "100%" }}
+        <InputField
+          startAdornment={
+            <InputAdornment position="start">
+              <AlternateEmailIcon />
+            </InputAdornment>
+          }
           label="Veuillez entrer votre email"
-          variant="outlined"
+          type={"email"}
         />
-         
 
-        <Button onClick={()=>openResetTest()} variant="contained" size="large">
-          Réinitialiser 
+        <Button
+          onClick={() => openResetTest()}
+          variant="contained"
+          size="large"
+        >
+          Réinitialiser
         </Button>
 
         <Link href={ROUTING.AUTH.LOGIN}>
