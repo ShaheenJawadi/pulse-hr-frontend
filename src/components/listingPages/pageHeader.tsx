@@ -14,15 +14,15 @@ const PagerHeader = ({title}:{title:string}) => {
     <Paper>
         <Stack
           alignItems={"center"}
-          paddingX={5}
-          paddingY={3}
+          paddingX={4}
+          paddingY={2}
           spacing={5}
           direction={"row"}
         >
           <IconButton size="medium" color="primary">
             <ArrowBackIcon />
           </IconButton>
-          <Typography variant="h5">{title}</Typography>
+          <Typography variant="h6">{title}</Typography>
         </Stack>
       </Paper>
   );
