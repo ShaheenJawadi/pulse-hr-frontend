@@ -1,8 +1,9 @@
-"use client"; 
+"use client";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import PerfectScrollbar from "react-perfect-scrollbar";
+
 import MuiDialog, { DialogProps } from "@mui/material/Dialog";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -29,7 +30,7 @@ const CommonDialog = (props: Props) => {
 
   return (
     <Dialog onClose={closeDialog} open={isOpen}>
-      <DialogTitle sx={{padding:2}}>{dialogTitle}</DialogTitle>
+      <DialogTitle sx={{ padding: 2 }}>{dialogTitle}</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={closeDialog}
@@ -42,7 +43,9 @@ const CommonDialog = (props: Props) => {
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent dividers>{children}</DialogContent>
+      <PerfectScrollbar>
+        <DialogContent dividers>{children}</DialogContent>
+      </PerfectScrollbar>
     </Dialog>
   );
 };
