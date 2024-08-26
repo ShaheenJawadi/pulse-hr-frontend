@@ -18,6 +18,8 @@ export const ROUTING = {
 
   RECRUTEMENT: {
     MAIN: "/recruitment",
+    ADDJOB: "/recruitment/add",
+
   },
   PERFORMACE: {
     MAIN: "/performance",

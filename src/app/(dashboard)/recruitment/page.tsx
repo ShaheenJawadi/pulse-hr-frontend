@@ -30,6 +30,8 @@ import PreviewIcon from "@mui/icons-material/Preview";
 import CardListing from "@/components/listingPages/cardsListing";
 import LanguageIcon from "@mui/icons-material/Language";
 import { SelectField } from "@/components/utils/SelectField";
+import Link from "next/link";
+import { ROUTING } from "@/utils/routes";
 type FakePOSTES = {
   id: number;
   name: string;
@@ -82,9 +84,11 @@ const RecrutementPage = () => {
             selectData={orderByList}
           />
         </Box>
-        <Button startIcon={<AddIcon />} size="large" variant="contained">
-          Ajouter une offre d'emploi
-        </Button>
+        <Link href={ROUTING.RECRUTEMENT.ADDJOB}> 
+          <Button startIcon={<AddIcon />} size="large" variant="contained">
+            Ajouter une offre d'emploi
+          </Button>
+        </Link>
       </Stack>
       <Box>
         <Grid container spacing={2}>
