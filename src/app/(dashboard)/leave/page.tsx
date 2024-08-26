@@ -1,12 +1,13 @@
-"use client"; 
+"use client";
 
-import { 
+import {
   Box,
-  Button, 
+  Button,
+  ButtonGroup,
   Chip,
   Divider,
   Grid,
-  IconButton, 
+  IconButton,
   Stack,
   Typography,
 } from "@mui/material";
@@ -14,12 +15,47 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 import CardListing from "@/components/listingPages/cardsListing";
- 
+import { SelectField } from "@/components/utils/SelectField";
+import { SelectDataTypes } from "@/types/structureTypes";
 
 const LeavePage = () => {
+  const orderByList: SelectDataTypes[] = [
+    {
+      labelText: "Plus récent",
+      value: 0,
+    },
+    {
+      labelText: "Plus ancien",
+      value: 1,
+    },
+  ];
   return (
     <Stack spacing={3}>
       <PagerHeader title="Demande de congé" />
+
+      <Stack
+        direction={"row"}
+        divider={<Divider orientation="horizontal" />}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        spacing={2}
+      >
+        <Box minWidth={200}> 
+          
+            <SelectField label={"Trier par"} selectData={orderByList} />
+        
+        </Box>
+
+        <ButtonGroup variant="outlined">
+          <Button variant="contained" color="warning">
+            Non traité
+          </Button>
+          <Button color="success">Approuvée</Button>
+          <Button color="error">Rejetée</Button>
+          <Button color="secondary">Toutes</Button>
+        </ButtonGroup>
+      </Stack>
+
       <Stack
         className="topContent"
         spacing={2}
@@ -33,7 +69,12 @@ const LeavePage = () => {
               <Grid item xs={3}>
                 <CardListing
                   title={"Nom & prenom"}
-                  subTitle={<>departement <br/>poste</>}
+                  subTitle={
+                    <>
+                      departement <br />
+                      poste
+                    </>
+                  }
                   notReverse={true}
                   avatar="/utils/goat.jpg"
                   /*   approuver, rejeter */
@@ -77,16 +118,15 @@ const CardItemContent = () => {
         <Stack
           direction={"row"}
           alignItems={"center"}
-          justifyContent={"center"} 
+          justifyContent={"center"}
         >
-            <IconButton color={"success"}>
+          <IconButton color={"success"}>
             <AttachmentIcon />
           </IconButton>
-          <Typography color={"success"}> 
+          <Typography color={"success"}>
             Avec fichiers joints
             {/*       Sans fichiers joints */}
           </Typography>
-          
         </Stack>
       </Stack>
 
