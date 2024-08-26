@@ -19,18 +19,32 @@ type CardListingType = {
   children: React.ReactNode;
   title: string;
   subTitle: string;
-  menulist: ListingMenuItemType[];
+  menulist?: ListingMenuItemType[];
+  avatar?: string;
+  notReverse? : boolean
 };
 const CardListing = (props: CardListingType) => {
-  const { title, subTitle, menulist, children } = props;
+  const { title, subTitle, menulist, children ,avatar,notReverse} = props;
 
   return (
     <Card>
       <CardHeader
-        className="reverse"
+        className={!notReverse ?"reverse" : ""}
         title={title}
+        {...(avatar && {
+          avatar: (
+            <Avatar sx={{ width: 50, height: 50 }} src={avatar}/>
+          )
+        })}
+
+        
         subheader={subTitle}
-        action={<MenuOption menulist={menulist} />}
+
+        {...(menulist && {
+          action: (
+            <MenuOption menulist={menulist} />
+          )
+        })} 
       />
       <CardContent>
         <Stack spacing={2}>{children}</Stack>
