@@ -6,24 +6,63 @@ const MUICard = (): Theme['components'] => {
             defaultProps: {
                 variant: 'outlined'
             },
-            styleOverrides: {
-            }
+            variants: [
+                {
+                    props: { is: "bg-primary" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-primary-main)",
+                    },
+                },
+                {
+                    props: { is: "bg-secondary" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-secondary-main)",
+                    },
+                },
+                {
+                    props: { is: "bg-error" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-error-main)",
+                    },
+                },
+
+                {
+                    props: { is: "bg-warning" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-warning-main)",
+                    },
+                },
+
+                {
+                    props: { is: "bg-info" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-info-main)",
+                    },
+                },
+                {
+                    props: { is: "bg-success" },
+                    style: {
+                        backgroundColor: "var(--mui-palette-success-main)",
+                    },
+                },
+
+            ],
         },
         MuiCardHeader: {
             styleOverrides: {
                 root: ({ theme }) => ({
                     padding: theme.spacing(3.5),
-                    
+
                     borderBottom: `1px solid var(--mui-palette-grey-300)`,
                     '&.reverse .MuiCardHeader-content': {
-                       display:"flex",
-                       flexDirection:"column-reverse",
+                        display: "flex",
+                        flexDirection: "column-reverse",
                     },
                 }),
 
                 title: ({ theme }) => ({
                     ...theme.typography.h6,
-                  
+
                 }),
 
                 subheader: ({ theme }) => ({
