@@ -66,7 +66,7 @@ export const navigationMenu: NavigationMenuType[] = [
     {
         title: 'Congés',
         icon: EventRepeatIcon,
-        link: "next features"
+        link: ROUTING.LEAVE.MAIN
     }, 
     {
         title: 'Performance',

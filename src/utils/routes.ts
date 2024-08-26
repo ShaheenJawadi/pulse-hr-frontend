@@ -22,6 +22,12 @@ export const ROUTING = {
   PERFORMACE: {
     MAIN: "/performance",
   },
+
+  LEAVE: {
+    MAIN: "/leave",
+ 
+
+  },
   ADMIN_MAANGMENT: {
     MAIN: "/gestionAdmin",
 
