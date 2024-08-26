@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 import {
   Avatar,
@@ -21,13 +21,15 @@ type CardListingType = {
   subTitle: string;
   menulist?: ListingMenuItemType[];
   avatar?: string;
-  notReverse? : boolean
+  notReverse? : boolean,
+  customAction?: ReactNode;
 };
 const CardListing = (props: CardListingType) => {
-  const { title, subTitle, menulist, children ,avatar,notReverse} = props;
+  const { title, subTitle, menulist, children ,avatar,notReverse ,customAction} = props;
 
   return (
     <Card>
+      
       <CardHeader
         className={!notReverse ?"reverse" : ""}
         title={title}
@@ -36,15 +38,24 @@ const CardListing = (props: CardListingType) => {
             <Avatar sx={{ width: 50, height: 50 }} src={avatar}/>
           )
         })}
+        
+
 
         
         subheader={subTitle}
 
-        {...(menulist && {
+        {...((menulist && !customAction) && {
           action: (
             <MenuOption menulist={menulist} />
           )
         })} 
+        {...(( customAction &&!menulist) && {
+          action: (
+            <>{customAction}</>
+           
+          )
+        })} 
+
       />
       <CardContent>
         <Stack spacing={2}>{children}</Stack>
