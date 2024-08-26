@@ -17,6 +17,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
 import StickyNote2TwoToneIcon from "@mui/icons-material/StickyNote2TwoTone";
 import WorkHistoryTwoToneIcon from "@mui/icons-material/WorkHistoryTwoTone";
+import { ROUTING } from "@/utils/routes";
 const SingleJobPost = () => {
   return (
     <Box padding={2}>
@@ -27,8 +28,8 @@ const SingleJobPost = () => {
           alignItems={"center"}
         >
           <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
-          <Button variant="outlined" size="large" color="primary">
-            Find more
+          <Button href={ROUTING.PUBLIC.JOBLISTING.MAIN} variant="outlined" size="large" color="primary">
+            Trouver plus
           </Button>
         </Stack>
         <Stack spacing={4}>

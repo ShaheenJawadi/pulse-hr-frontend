@@ -50,8 +50,8 @@ export const ROUTING = {
 
     JOBLISTING:     {
 
-      MAIN: "/recrutement",
-      SINGLEJOB: "/recrutement/slug", 
+      MAIN: "/jobs",
+      SINGLEJOB: "/jobs/slug", 
     }
 
 
