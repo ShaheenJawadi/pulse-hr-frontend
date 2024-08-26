@@ -84,7 +84,7 @@ const RecrutementPage = () => {
             selectData={orderByList}
           />
         </Box>
-        <Link href={ROUTING.RECRUTEMENT.ADDJOB}> 
+        <Link href={ROUTING.RECRUTEMENT.ADDJOB}>
           <Button startIcon={<AddIcon />} size="large" variant="contained">
             Ajouter une offre d'emploi
           </Button>
