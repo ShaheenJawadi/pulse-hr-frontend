@@ -18,7 +18,7 @@ import { ListingMenuItemType } from "@/types/structureTypes";
 type CardListingType = {
   children: React.ReactNode;
   title: string;
-  subTitle: ReactNode;
+  subTitle?: ReactNode;
   menulist?: ListingMenuItemType[];
   avatar?: string;
   notReverse? : boolean,
@@ -38,10 +38,7 @@ const CardListing = (props: CardListingType) => {
             <Avatar sx={{ width: 50, height: 50 }} src={avatar}/>
           )
         })}
-        
-
-
-        
+ 
         subheader={subTitle}
 
         {...((menulist && !customAction) && {
