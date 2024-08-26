@@ -9,6 +9,7 @@ import {
   CardContent,
   Stack,
   Grid,
+  Chip,
 } from "@mui/material";
 import { info } from "console";
 import CorporateFareTwoToneIcon from "@mui/icons-material/CorporateFareTwoTone";
@@ -30,65 +31,88 @@ const SingleJobPost = () => {
             Find more
           </Button>
         </Stack>
-
-        <Stack spacing={4} alignItems={"center"}>
-          <Typography variant="h3" color={"#000"}>
-            {" "}
-            Job title ksqdkjlsq kdhkqjlh duioqs ydiusqd
-          </Typography>
-          <Typography variant="h6">
-            {" "}
-            short description qsk:jd lkqsjdkl sqjkd hkjsqdh ksqjkdhsqui dui
-            qskduyqs jdlksqjdkhsqkjdhuk sqgd jgsqjdg sqhgdsqhd ghqsfdhg
-          </Typography>
-        </Stack>
-
-        <BreifCard />
-
         <Stack spacing={4}>
-          <Typography variant="h6">Description</Typography>
-          <Typography variant="body1">
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-            qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh
-            kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh
-            dkjhsqjkd hjksqh kdjhsqkdhk
-          </Typography>
-        </Stack>
+          <Stack spacing={4} alignItems={"center"}>
+            <Typography variant="h3" color={"#000"}>
+              {" "}
+              Job title ksqdkjlsq kdhkqjlh duioqs ydiusqd
+            </Typography>
+            <Typography variant="h6">
+              {" "}
+              short description qsk:jd lkqsjdkl sqjkd hkjsqdh ksqjkdhsqui dui
+              qskduyqs jdlksqjdkhsqkjdhuk sqgd jgsqjdg sqhgdsqhd ghqsfdhg
+            </Typography>
 
-        <Stack alignItems={"center"}>
-          <Box>
-            <Button
-              color="primary"
-              size="large"
-              sx={{ paddingX: 25 }}
-              variant="contained"
-            >
-              Postuler
-            </Button>
-          </Box>
+            <Stack spacing={1} direction={"row"}>
+              <Chip
+                variant="outlined"
+                size="small"
+                color="primary"
+                label="tag1"
+              />
+              <Chip
+                variant="outlined"
+                size="small"
+                color="primary"
+                label="tag2"
+              />
+            </Stack>
+          </Stack>
+
+          <BreifCard />
+
+          <Card>
+            <CardContent>
+              <Stack spacing={4}>
+                <Typography variant="h6">Description</Typography>
+                <Typography variant="body1">
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
+                  hjksqh kdjhsqkdhk
+                </Typography>
+              </Stack>
+            </CardContent>
+          </Card>
+
+          <Stack alignItems={"center"}>
+            <Box>
+              <Button
+                color="primary"
+                size="large"
+                sx={{ paddingX: 25 }}
+                variant="contained"
+              >
+                Postuler
+              </Button>
+            </Box>
+          </Stack>
         </Stack>
       </Stack>
     </Box>
@@ -101,27 +125,27 @@ const BreifCard = () => {
     {
       title: "Emplacement",
       info: "Tunis , tunisie",
-      icon: <LocationOnTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+      icon: <LocationOnTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Departement",
       info: "IT",
-      icon: <CorporateFareTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+      icon: <CorporateFareTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Expérience",
       info: "2-3 ans",
-      icon: <WorkHistoryTwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+      icon: <WorkHistoryTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Type de contrat",
       info: "CDI",
-      icon: <StickyNote2TwoToneIcon  color="primary" sx={{fontSize:29}}/>,
+      icon: <StickyNote2TwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
   ];
   return (
     <Stack alignItems={"center"}>
-      <Card sx={{width:800}}>
+      <Card sx={{ width: 800 }}>
         <CardContent>
           <Grid spacing={6} container>
             {data.map((item) => {
@@ -129,7 +153,7 @@ const BreifCard = () => {
                 <Grid item sm={6}>
                   <Stack direction={"row"} spacing={4}>
                     {item.icon}
-                    <Stack spacing={2} >
+                    <Stack spacing={2}>
                       <Typography variant="body1">{item.title}</Typography>
                       <Typography variant="h6" sx={{ color: "#000" }}>
                         {item.info}
