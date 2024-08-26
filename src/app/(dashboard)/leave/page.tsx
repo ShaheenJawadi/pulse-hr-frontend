@@ -17,6 +17,7 @@ import AttachmentIcon from "@mui/icons-material/Attachment";
 import CardListing from "@/components/listingPages/cardsListing";
 import { SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
+import { useDialogAction } from "@/components/dialog/dialog.context";
 
 const LeavePage = () => {
   const orderByList: SelectDataTypes[] = [
@@ -98,6 +99,15 @@ const LeavePage = () => {
 };
 
 const CardItemContent = () => {
+
+    const { openDialog } = useDialogAction();
+
+ 
+
+    const openLeaveInfo = () => {
+
+       openDialog("PROCESS_LEAVE", { id: 1 });
+    }
   return (
     <>
       <Stack spacing={2}>
@@ -140,7 +150,7 @@ const CardItemContent = () => {
         <Box>
           <Typography> demandé il y'a 2 jours </Typography>
         </Box>
-        <Button color="primary" variant="contained">
+        <Button onClick={openLeaveInfo} color="primary" variant="contained">
           Traiter
         </Button>
       </Stack>

@@ -1,6 +1,11 @@
 "use client";
 import CommonDialog from "./dialog";
 import { useDialogAction, useDialogState } from "./dialog.context";
+import dynamic from "next/dynamic";
+
+const ProcessLeave = dynamic(
+  () => import("@/components/pages/leave/processLeave")
+);
 
 type DialogHType = {
   component: React.ReactNode;
@@ -17,10 +22,10 @@ const DialogHolder = () => {
   };
 
   switch (view) {
-    case "DIALOGTEST":
+    case "PROCESS_LEAVE":
       currentDialog = {
-        component: <div> DIALOG test </div>,
-        title: "Dialog test", 
+        component: <ProcessLeave/>,
+        title: "Traiter une demande de congé", 
       };
 
     default:

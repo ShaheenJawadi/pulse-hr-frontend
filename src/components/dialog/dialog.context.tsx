@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 
 
-type DialogViewType= "DIALOGTEST"|undefined ; 
+type DialogViewType= "PROCESS_LEAVE"|undefined ; 
 
 interface State {
   isOpen: boolean;
