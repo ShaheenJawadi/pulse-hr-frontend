@@ -18,7 +18,7 @@ import { ListingMenuItemType } from "@/types/structureTypes";
 type CardListingType = {
   children: React.ReactNode;
   title: string;
-  subTitle: string;
+  subTitle: ReactNode;
   menulist?: ListingMenuItemType[];
   avatar?: string;
   notReverse? : boolean,
