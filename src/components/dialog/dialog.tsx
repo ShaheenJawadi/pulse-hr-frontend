@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
+import { Divider } from "@mui/material";
 
 const Dialog = styled(MuiDialog)<DialogProps>(({ theme }) => ({
   "& .MuiDialog-paper": {
@@ -43,6 +44,7 @@ const CommonDialog = (props: Props) => {
       >
         <CloseIcon />
       </IconButton>
+      <Divider/>
       <PerfectScrollbar>
         <DialogContent dividers>{children}</DialogContent>
       </PerfectScrollbar>

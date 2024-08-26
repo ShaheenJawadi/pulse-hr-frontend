@@ -43,13 +43,13 @@ const LeavePage = () => {
       >
         <Box minWidth={200}> 
           
-            <SelectField label={"Trier par"} selectData={orderByList} />
+            <SelectField size="small" label={"Trier par"} selectData={orderByList} />
         
         </Box>
 
         <ButtonGroup variant="outlined">
           <Button variant="contained" color="warning">
-            Non traité
+          En attente
           </Button>
           <Button color="success">Approuvée</Button>
           <Button color="error">Rejetée</Button>
@@ -83,7 +83,7 @@ const LeavePage = () => {
                     <Chip
                       color="warning"
                       variant={"outlined"}
-                      label={"Non traité"}
+                      label={"En attente"}
                     />
                   }
                 >
@@ -119,7 +119,7 @@ const CardItemContent = () => {
         </Stack>
 
         <Stack direction={"row"} alignItems={"center"} spacing={1}>
-          <Typography variant="body2">Date:</Typography>
+          <Typography variant="body2">Période:</Typography>
           <Typography color={"secondary"}>12/12/2022 </Typography>
           <PlayArrowIcon color="secondary" sx={{ fontSize: 18 }} />
           <Typography color={"secondary"}>01/01/2023</Typography>
