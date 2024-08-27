@@ -11,6 +11,8 @@ import {
   Button,
   Typography,
   IconButton,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import QuillEditor from "@/components/utils/quillEditor";
@@ -90,7 +92,18 @@ const AddJob = () => {
               <Grid item xs={4}>
                 <InputField label="Date d'expiration" type="date" />
               </Grid>
-              
+              <Grid item xs={4}>
+                <FormControlLabel
+                  control={<Checkbox defaultChecked  disabled />}
+                  label="Demander un CV"
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <FormControlLabel
+                  control={<Checkbox defaultChecked={false} />}
+                  label="Demander une lettre de motivation"
+                />
+              </Grid>
             </Grid>
 
             <Stack alignContent={"center"} alignItems={"center"}>
@@ -130,13 +143,17 @@ const ExperianceYears = () => {
           {" "}
           <Typography>-</Typography>
           <InputField label="max" type="number" />{" "}
-          <IconButton onClick={()=>setIntervalle(false)}>
+          <IconButton onClick={() => setIntervalle(false)}>
             <CloseIcon />
           </IconButton>
         </>
       )}
       {!intervalle && (
-        <Button sx={{textWrap:"nowrap"}} onClick={() => setIntervalle(true)} size="small">
+        <Button
+          sx={{ textWrap: "nowrap" }}
+          onClick={() => setIntervalle(true)}
+          size="small"
+        >
           Intervalle ?
         </Button>
       )}
