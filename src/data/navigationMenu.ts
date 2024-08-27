@@ -16,7 +16,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import TroubleshootIcon from '@mui/icons-material/Troubleshoot';
-
+import SpeedIcon from '@mui/icons-material/Speed';
 
 export const navigationMenu: NavigationMenuType[] = [
 
@@ -59,7 +59,7 @@ export const navigationMenu: NavigationMenuType[] = [
     /* /////////// */
 
     {
-        title: 'Présence',
+        title: 'Présence -------',
         icon: PendingActionsIcon,
         link: "next features"
     },
@@ -69,12 +69,12 @@ export const navigationMenu: NavigationMenuType[] = [
         link: ROUTING.LEAVE.MAIN
     }, 
     {
-        title: 'Performance',
-        icon: InsertChartIcon,
+        title: 'Performance -------',
+        icon: SpeedIcon,
         link: ROUTING.PERFORMACE.MAIN
     },
     {
-        title: 'Récompenses',
+        title: 'Récompenses -------',
         icon: EmojiEventsIcon,
         link: "next features"
     },
@@ -85,7 +85,7 @@ export const navigationMenu: NavigationMenuType[] = [
     }
     ,
     {
-        title: 'Rapports et analyses',
+        title: 'Rapports et analyses -------',
         icon: TroubleshootIcon,
         link: "next features"
     },
@@ -114,12 +114,12 @@ export const navigationMenu: NavigationMenuType[] = [
     },
 
     {
-        title: 'Support',
+        title: 'Support -------',
         icon: SupportAgentIcon,
         link: "next features"
     },
     {
-        title: 'Paramètres',
+        title: 'Paramètres -------',
         icon: SettingsIcon,
         link: "next features"
     }

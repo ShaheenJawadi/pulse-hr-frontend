@@ -10,7 +10,10 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import NavigationMenu from "./menu";
 import { Box, Stack, Typography } from "@mui/material";
-import { navigationFooterHeight, navigationHeaderHeight } from "@/theme/constatnt";
+import {
+  navigationFooterHeight,
+  navigationHeaderHeight,
+} from "@/theme/constatnt";
 
 const drawerWidth = 260;
 
@@ -86,7 +89,7 @@ export default function Navigation() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <DrawerHeader sx={{height:navigationHeaderHeight}}>
+      <DrawerHeader sx={{ height: navigationHeaderHeight }}>
         <Stack direction={"row"} flex={1} justifyContent={"space-between"}>
           <LogoComponent isOpen={open || isHovered} />
 
@@ -103,24 +106,44 @@ export default function Navigation() {
       </DrawerHeader>
       <Divider />
       <Stack height={"100%"}>
-        <Box flex={1} sx={{maxHeight: `calc(100vh - ${navigationFooterHeight+navigationHeaderHeight+5}px)`}}>
+        <Box
+          flex={1}
+          sx={{
+            maxHeight: `calc(100vh - ${
+              navigationFooterHeight + navigationHeaderHeight + 5
+            }px)`,
+          }}
+        >
           <NavigationMenu isOpen={open || isHovered} />
         </Box>
-        <Box height={navigationFooterHeight}>
-          {(open || isHovered) && (
+      <Divider />
+
+        <Stack justifyContent={"center"} height={navigationFooterHeight}>
+          {open || isHovered ? (
+            (
+              <Stack spacing={2} alignItems={"center"}>
+                <Image
+                  src="/telnet/logo.webp"
+                  width={120}
+                  height={30}
+                  alt="telnet logo"
+                />
+                <Typography variant="caption">
+                  © 2024 TELNET 
+                </Typography>
+              </Stack>
+            )!
+          ) : (
             <Stack spacing={2} alignItems={"center"}>
               <Image
-                src="/telnet/logo.webp"
-                width={120}
-                height={30}
+                src="/telnet/logo_s.webp"
+                width={35}
+                height={35}
                 alt="telnet logo"
               />
-              <Typography variant="caption">
-                © 2024 TELNET. Tous droits réservés.
-              </Typography>
             </Stack>
           )}
-        </Box>
+        </Stack>
       </Stack>
     </Drawer>
   );

@@ -91,6 +91,7 @@ const FirstLevel = (props: FirstLevelProps) => {
             mr: isOpen ? 3 : "auto",
             justifyContent: "center",
             color: "inherit",
+            minWidth: "unset",
           }}
         >
           <element.icon
@@ -106,7 +107,7 @@ const FirstLevel = (props: FirstLevelProps) => {
       </StyledListItemButton>
 
       {element.childs && showChilds && isOpen && (
-        <List sx={{ marginInlineStart: 5, padding: 0 }}>
+        <List sx={{  padding: 0 }}>
           {element.childs.map((child, index) => (
             <SecondLevel
               element={child}
@@ -147,6 +148,7 @@ const SecondLevel = (props: FirstLevelProps) => {
             justifyContent: "center",
             color: "inherit",
             margin: 0,
+              minWidth: 40,
           }}
         >
           {" "}
