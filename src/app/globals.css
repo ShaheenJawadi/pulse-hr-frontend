@@ -3,3 +3,7 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.quill-editor .ql-container {
+    min-height: 400px;
+}

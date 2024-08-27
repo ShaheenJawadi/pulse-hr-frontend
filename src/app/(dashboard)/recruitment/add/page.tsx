@@ -3,9 +3,18 @@ import PagerHeader from "@/components/listingPages/pageHeader";
 import { InputField } from "@/components/utils/InputField";
 import { SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
-import { Stack, Box, Grid, Paper, Button } from "@mui/material";
-import SaveIcon from '@mui/icons-material/Save';
+import { Stack, Box, Grid, Paper, Button, Typography } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import QuillEditor from "@/components/utils/quillEditor";
+import { useState } from "react";
 const AddJob = () => {
+  const [jobRequirements, setJobRequirements] = useState<string>("");
+
+  const handleJobRequirementsChange = (content: string) => {
+    setJobRequirements(content);
+    console.log(content);
+  };
+
   const emplacementList: SelectDataTypes[] = [
     {
       labelText: "Homme",
@@ -16,6 +25,7 @@ const AddJob = () => {
       value: "f",
     },
   ];
+
   return (
     <Stack spacing={3}>
       <PagerHeader title=" Ajouter une offre d'emploi" />
@@ -46,22 +56,37 @@ const AddJob = () => {
                 />
               </Grid>
 
+
+
+
               <Grid item xs={4}>
                 <InputField label="Experiance" type="number" />
               </Grid>
+
+
+
+
+
+
+
+
+
               <Grid item xs={4}>
-                <InputField label="Type de contrat" placeholder="CDI,CDD ..." type="text" />
+                <InputField
+                  label="Type de contrat"
+                  placeholder="CDI,CDD ..."
+                  type="text"
+                />
               </Grid>
 
               <Grid item xs={4}>
                 <InputField label="Mots clés" type="text" />
               </Grid>
               <Grid item xs={12}>
-                <InputField
-                  label="Exigences"
-                  type="text"
-                  multiline
-                  rows={4}
+                <Typography fontSize={18}>Exigences du poste</Typography>
+                <QuillEditor
+                  value={jobRequirements}
+                  onChange={handleJobRequirementsChange}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -69,13 +94,19 @@ const AddJob = () => {
               </Grid>
             </Grid>
 
-<Stack alignContent={"center"} alignItems={"center"}>
-    <Box>
-         <Button size="large" startIcon={<SaveIcon/>} sx={{paddingX:8}} variant="contained" color="primary">Créer</Button>
-    </Box>
-     
-</Stack>
-      
+            <Stack alignContent={"center"} alignItems={"center"}>
+              <Box>
+                <Button
+                  size="large"
+                  startIcon={<SaveIcon />}
+                  sx={{ paddingX: 8 }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Créer
+                </Button>
+              </Box>
+            </Stack>
           </Box>
         </Stack>
       </Paper>
