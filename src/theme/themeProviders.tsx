@@ -9,7 +9,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import themeOptions from ".";
 import { DrawerProvider } from "@/components/drawer/drawer.context";
 import { DialogProvider } from "@/components/dialog/dialog.context";
-const AppTheme = async ({ children }: ChildrenType) => {
+const AppTheme =   ({ children }: ChildrenType) => {
   const theme = extendTheme(themeOptions());
 
   return (

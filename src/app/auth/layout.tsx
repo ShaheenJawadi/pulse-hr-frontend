@@ -3,7 +3,7 @@ import { Box, Card, Container, Dialog, Stack, Typography } from "@mui/material";
 import { ChildrenType } from "@/types/themeTypes";
 import Image from "next/image";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
-const Layout = async ({ children }: ChildrenType) => {
+const Layout =  ({ children }: ChildrenType) => {
   return (
     <Box
       display="flex"

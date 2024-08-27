@@ -15,7 +15,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import LanguageIcon from "@mui/icons-material/Language";
-const Layout = async ({ children }: ChildrenType) => {
+const Layout =   ({ children }: ChildrenType) => {
   return (
     <Box>
       <TopHeader />

@@ -6,7 +6,7 @@ import DrawerHolder from "@/components/drawer/drawer.holder";
 import DialogHolder from "@/components/dialog/dialog.holder";
 import LayoutWrapper from "@/components/layout/layoutWrapper";
 
-const Layout = async ({ children }: ChildrenType) => {
+const Layout =   ({ children }: ChildrenType) => {
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <Navigation />
