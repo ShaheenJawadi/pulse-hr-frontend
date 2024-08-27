@@ -61,5 +61,14 @@ export const ROUTING = {
   },
 
 
+  UTILITIES: {
+
+      KANBAN: "/tools/kanban", 
+   
+
+
+  },
+
+
 
 };

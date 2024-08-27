@@ -20,8 +20,10 @@ import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { navigationHeaderHeight } from "@/theme/constatnt";
-import PunchClockIcon from '@mui/icons-material/PunchClock';
-
+import PunchClockIcon from "@mui/icons-material/PunchClock";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import Link from "next/link";
+import { ROUTING } from "@/utils/routes";
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
@@ -58,13 +60,25 @@ const TopBar = () => {
           <IconButton>
             <FormatListBulletedIcon />
           </IconButton>
+
+          <Link href={ROUTING.UTILITIES.KANBAN}>
+            <IconButton>
+              <ViewKanbanIcon />
+            </IconButton>
+          </Link>
         </Stack>
 
         <Stack direction={"row"} spacing={2}>
           <Stack justifyContent={"center"}>
-         {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
-          <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="success">Pointage de sortie</Button>
-
+            {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<PunchClockIcon />}
+              color="success"
+            >
+              Pointage de sortie
+            </Button>
           </Stack>
           <IconButton>
             <NotificationsIcon />
