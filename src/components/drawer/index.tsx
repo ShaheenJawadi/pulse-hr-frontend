@@ -14,7 +14,7 @@ const Drawer = styled(MuiDrawer)<DrawerProps>(({ theme }) => ({
   "& .MuiDrawer-paper": {
     border: 0,
     maxWidth: "90%",
-    minWidth: 450,
+    minWidth: 400, 
     zIndex: theme.zIndex.modal,
     boxShadow: theme.shadows[5],
   },
@@ -29,15 +29,20 @@ type Props={
     children:React.ReactNode;
     drawerTitle:string;
     drawerSubtitle ?: string ;
+    maxWidth ?: number;
 }
 const CommonDrawer = (props:Props) => {
 
     
-  const { isOpen, closeDrawer,children , drawerTitle , drawerSubtitle } = props;
+  const { isOpen, closeDrawer,children , drawerTitle , drawerSubtitle,maxWidth } = props;
 
  
   return (
-    <Drawer open={isOpen} hideBackdrop anchor="right" variant="temporary">
+    <Drawer     sx={{
+      '& .MuiDrawer-paper': {
+        maxWidth: maxWidth? maxWidth :"90%",  // Override maxWidth using sx prop
+      },
+    }} open={isOpen} hideBackdrop anchor="right" variant="temporary">
       <Stack
         direction={"row"}
         justifyContent={"space-between"}

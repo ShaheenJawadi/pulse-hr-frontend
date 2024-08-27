@@ -19,6 +19,7 @@ type DHType = {
   component: React.ReactNode;
   title: string;
   subTitle?: string;
+  maxWidth?: number;
 };
 
 const DrawerHolder = () => {
@@ -58,6 +59,7 @@ const DrawerHolder = () => {
         component: <ApplyJob />,
         title: "Postuler",
         subTitle: "job title",
+        maxWidth: 500,
       };
       break;
     default:
@@ -66,6 +68,7 @@ const DrawerHolder = () => {
 
   return (
     <CommonDrawer
+    maxWidth={currentDrawer.maxWidth}
       closeDrawer={closeDrawer}
       isOpen={isOpen}
       drawerTitle={currentDrawer.title}
