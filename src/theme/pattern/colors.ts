@@ -1,12 +1,12 @@
- 
-import { PaletteMode } from '@mui/material' 
 
-const DefaultPalette = ( ) => {
-const mode ='light' as PaletteMode;
- 
-  const textColor =  '76, 78, 100' 
+import { PaletteMode } from '@mui/material'
+
+const DefaultPalette = () => {
+  const mode = 'light' as PaletteMode;
+
+  const textColor = '76, 78, 100'
   return {
-    
+
     common: {
       black: '#000',
       white: '#FFF',
@@ -17,38 +17,54 @@ const mode ='light' as PaletteMode;
       light: '#00bce1',
       main: '#22A2DD',
       dark: '#006fa6',
-     /*  main: '#0077B6',
-      dark: '#03045E', */
+      lighterOpacity: 'rgb(var(--mui-palette-primary-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-primary-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-primary-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     secondary: {
       light: '#006bac',
       main: '#1E1666',
       dark: '#004391',
+      lighterOpacity: 'rgb(var(--mui-palette-secondary-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-secondary-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-secondary-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     success: {
       light: '#33ddb7',
       main: '#00d5a6',
       dark: '#009574',
+      lighterOpacity: 'rgb(var(--mui-palette-success-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-success-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-success-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     error: {
       light: '#ff4569',
       main: '#ff1744',
       dark: '#b2102f',
+      lighterOpacity: 'rgb(var(--mui-palette-error-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-error-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-error-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     warning: {
       light: '#fdc353',
       main: '#FDB528',
       dark: '#b17e1c',
+      lighterOpacity: 'rgb(var(--mui-palette-warning-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-warning-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-warning-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     info: {
       light: '#33c7cd',
       main: '#00b9c1',
       dark: '#008187',
+      lighterOpacity: 'rgb(var(--mui-palette-info-mainChannel) / 0.08)',
+      lightOpacity: 'rgb(var(--mui-palette-info-mainChannel) / 0.16)',
+      mainOpacity: 'rgb(var(--mui-palette-info-mainChannel) / 0.24)',
       contrastText: '#FFF'
     },
     grey: {

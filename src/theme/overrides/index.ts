@@ -5,6 +5,7 @@ import MUIPaper from './paper'
 import MUITypography from './typography'
 import MUICard from './card'
 import MUIDialog from './dialog'
+import MUIChip from './chip'
 
 
 const Overrides = () => {
@@ -12,6 +13,7 @@ const Overrides = () => {
 
   return Object.assign(
     MUIPaper(),
+    MUIChip(),
     MUIDialog(),
     MUICard(),
     MUITypography(),
