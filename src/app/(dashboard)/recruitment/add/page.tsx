@@ -3,10 +3,19 @@ import PagerHeader from "@/components/listingPages/pageHeader";
 import { InputField } from "@/components/utils/InputField";
 import { SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
-import { Stack, Box, Grid, Paper, Button, Typography } from "@mui/material";
+import {
+  Stack,
+  Box,
+  Grid,
+  Paper,
+  Button,
+  Typography,
+  IconButton,
+} from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import QuillEditor from "@/components/utils/quillEditor";
 import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 const AddJob = () => {
   const [jobRequirements, setJobRequirements] = useState<string>("");
 
@@ -56,20 +65,9 @@ const AddJob = () => {
                 />
               </Grid>
 
-
-
-
               <Grid item xs={4}>
-                <InputField label="Experiance" type="number" />
+                <ExperianceYears />
               </Grid>
-
-
-
-
-
-
-
-
 
               <Grid item xs={4}>
                 <InputField
@@ -92,6 +90,7 @@ const AddJob = () => {
               <Grid item xs={4}>
                 <InputField label="Date d'expiration" type="date" />
               </Grid>
+              
             </Grid>
 
             <Stack alignContent={"center"} alignItems={"center"}>
@@ -110,6 +109,37 @@ const AddJob = () => {
           </Box>
         </Stack>
       </Paper>
+    </Stack>
+  );
+};
+
+const ExperianceYears = () => {
+  const [intervalle, setIntervalle] = useState<boolean>(false);
+
+  return (
+    <Stack
+      direction={"row"}
+      spacing={4}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
+      <Typography>Expérience</Typography>
+      <InputField label="min" type="number" />
+      {intervalle && (
+        <>
+          {" "}
+          <Typography>-</Typography>
+          <InputField label="max" type="number" />{" "}
+          <IconButton onClick={()=>setIntervalle(false)}>
+            <CloseIcon />
+          </IconButton>
+        </>
+      )}
+      {!intervalle && (
+        <Button sx={{textWrap:"nowrap"}} onClick={() => setIntervalle(true)} size="small">
+          Intervalle ?
+        </Button>
+      )}
     </Stack>
   );
 };
