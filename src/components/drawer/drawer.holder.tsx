@@ -13,6 +13,8 @@ const AddWorkingShift = dynamic(
   () => import("@/components/pages/working_shifts/add")
 );
 
+const ApplyJob = dynamic(() => import("@/components/pages/applyJob"));
+
 type DHType = {
   component: React.ReactNode;
   title: string;
@@ -44,13 +46,20 @@ const DrawerHolder = () => {
         subTitle: "Ajouter un nouveau poste au système",
       };
       break;
-      case "ADD_WORKING_SHIFT":
-        currentDrawer = {
-          component: <AddWorkingShift />,
-          title: "Heures de Travail",
-          subTitle: "Ajouter des Heures de Travail au système",
-        };
-        break;
+    case "ADD_WORKING_SHIFT":
+      currentDrawer = {
+        component: <AddWorkingShift />,
+        title: "Heures de Travail",
+        subTitle: "Ajouter des Heures de Travail au système",
+      };
+      break;
+    case "OPEN_APPLY_DRAWER":
+      currentDrawer = {
+        component: <ApplyJob />,
+        title: "Postuler",
+        subTitle: "job title",
+      };
+      break;
     default:
       break;
   }

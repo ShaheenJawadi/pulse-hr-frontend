@@ -15,9 +15,11 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import LanguageIcon from "@mui/icons-material/Language";
-const Layout =   ({ children }: ChildrenType) => {
+import DrawerHolder from "@/components/drawer/drawer.holder";
+const Layout = ({ children }: ChildrenType) => {
   return (
     <Box>
+      <DrawerHolder />
       <TopHeader />
       <Container sx={{ paddingBottom: 5 }}>{children}</Container>
       <Divider />

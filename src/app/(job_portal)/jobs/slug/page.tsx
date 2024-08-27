@@ -18,7 +18,17 @@ import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
 import StickyNote2TwoToneIcon from "@mui/icons-material/StickyNote2TwoTone";
 import WorkHistoryTwoToneIcon from "@mui/icons-material/WorkHistoryTwoTone";
 import { ROUTING } from "@/utils/routes";
+import { useDrawerAction } from "@/components/drawer/drawer.context";
 const SingleJobPost = () => {
+  const {openDrawer} = useDrawerAction()
+
+  const openApply = () => {
+
+    openDrawer("OPEN_APPLY_DRAWER" ,{id:1})
+
+
+  }
+ 
   return (
     <Box padding={2}>
       <Stack spacing={10}>
@@ -105,6 +115,7 @@ const SingleJobPost = () => {
           <Stack alignItems={"center"}>
             <Box>
               <Button
+              onClick={() => openApply()}
                 color="primary"
                 size="large"
                 sx={{ paddingX: 25 }}
