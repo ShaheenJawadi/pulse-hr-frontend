@@ -19,6 +19,7 @@ export const ROUTING = {
   RECRUTEMENT: {
     MAIN: "/recruitment",
     ADDJOB: "/recruitment/add",
+    APPLICATIONS: (id: string) => `/recruitment/applications/${id}`,
 
   },
   PERFORMACE: {

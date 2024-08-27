@@ -90,14 +90,18 @@ const RecrutementPage = () => {
           </Button>
         </Link>
       </Stack>
+
       <Box>
         <Grid container spacing={2}>
           {[1, 2, 3].map((item) => {
             return (
               <Grid item xs={4}>
-                <CardListing title={"jobtitle"} menulist={jobTitlesMenu}>
-                  <CardItemContent />
-                </CardListing>
+              
+                <Link href={ROUTING.RECRUTEMENT.APPLICATIONS("1")}>
+                  <CardListing title={"jobtitle"} menulist={jobTitlesMenu}>
+                    <CardItemContent />
+                  </CardListing>
+                </Link>
               </Grid>
             );
           })}
