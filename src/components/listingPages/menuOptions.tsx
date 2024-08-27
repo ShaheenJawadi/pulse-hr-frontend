@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert"; 
 import { styled } from "@mui/material";
 import { ListingMenuItemType } from "@/types/structureTypes";
+import { useRouter } from "next/navigation";
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -45,11 +46,16 @@ const MenuOption = (props: Props) => {
   const { menulist } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+   const router = useRouter();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClickMenu = (link?:string) => {
     setAnchorEl(null);
+
+    if(link){
+      router.push(link);
+    }
   };
 
   return (
@@ -63,7 +69,7 @@ const MenuOption = (props: Props) => {
       <StyledMenu
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={()=>setAnchorEl(null)}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
@@ -74,7 +80,7 @@ const MenuOption = (props: Props) => {
         }}
       >
         {menulist.map((option) => (
-          <MenuItem key={option.title} onClick={handleClose}>
+          <MenuItem key={option.title} onClick={()=>handleClickMenu(option.link)}>
             {option.icon}
             {option.title}
           </MenuItem>

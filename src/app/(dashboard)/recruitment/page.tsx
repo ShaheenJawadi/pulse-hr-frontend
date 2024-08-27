@@ -46,6 +46,7 @@ const jobTitlesMenu: ListingMenuItemType[] = [
   {
     title: "Candidatures",
     icon: <PreviewIcon />,
+    link: ROUTING.RECRUTEMENT.APPLICATIONS("1"),
   },
   {
     title: "Désactiver",
@@ -96,12 +97,10 @@ const RecrutementPage = () => {
           {[1, 2, 3].map((item) => {
             return (
               <Grid item xs={4}>
-              
-                <Link href={ROUTING.RECRUTEMENT.APPLICATIONS("1")}>
+               
                   <CardListing title={"jobtitle"} menulist={jobTitlesMenu}>
                     <CardItemContent />
-                  </CardListing>
-                </Link>
+                  </CardListing> 
               </Grid>
             );
           })}

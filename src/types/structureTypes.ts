@@ -14,7 +14,8 @@ export type NavigationMenuType = {
 
 export type ListingMenuItemType = {
     title: string;
-    icon: React.ReactElement
+    icon: React.ReactElement, 
+    link?:string,
 }
 
 
