@@ -23,6 +23,8 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps>(
     margin: theme.spacing(1, 2),
     padding: 0,
     borderRadius: theme.shape.borderRadius,
+    color: theme.palette.secondary.main,
+  
     "&.selected:not(.sub)": {
       backgroundColor: theme.palette.secondary.main,
       color: theme.palette.primary.contrastText,
@@ -31,7 +33,7 @@ const StyledListItemButton = styled(ListItemButton)<ListItemButtonProps>(
       }
     },
     "&.selected.sub": {
-      color: theme.palette.primary.main,
+      color: theme.palette.secondary.main,
       fontSize: 20,
     },
   })
