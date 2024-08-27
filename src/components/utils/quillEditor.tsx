@@ -9,9 +9,16 @@ interface QuillEditorProps {
 }
 
 const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
+  const [text, setText] = useState<string>(value);
  
- 
-    
+  
+  const handleChange = (content: string) => {
+    setText(content)
+    onChange(content);
+  }
+
+
+
   const modules = {
     toolbar: [
       [
@@ -44,8 +51,8 @@ const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
         className="quill-editor"
         theme="snow" 
         modules={modules}
-        onChange={onChange}  
-        value={value}  
+        onChange={handleChange}  
+        value={text}  
       />
     </Box>
   );

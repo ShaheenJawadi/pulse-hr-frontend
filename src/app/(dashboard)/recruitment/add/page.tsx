@@ -22,13 +22,9 @@ import QuillEditor from "@/components/utils/quillEditor";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AutocompleteTagsInput from "@/components/utils/AutocompleteTagsInput";
+import { text } from "stream/consumers";
 const AddJob = () => {
-  const [jobRequirements, setJobRequirements] = useState<string>("");
-
-  const handleJobRequirementsChange = (content: string) => {
-    setJobRequirements(content);
-    console.log(content);
-  };
+ 
 
   const emplacementList: SelectDataTypes[] = [
     {
@@ -89,8 +85,8 @@ const AddJob = () => {
               <Grid item xs={12}>
                 <Typography fontSize={18}>Exigences du poste</Typography>
                 <QuillEditor
-                  value={jobRequirements}
-                  onChange={handleJobRequirementsChange}
+                  value={""}
+                  onChange={(text) => console.log(text)}
                 />
               </Grid>
               <Grid item xs={4}>
