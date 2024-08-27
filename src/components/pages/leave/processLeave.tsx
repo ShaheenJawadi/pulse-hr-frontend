@@ -1,3 +1,4 @@
+import { CustomInfoData } from "@/components/utils/InfoDataCustom";
 import { InputField } from "@/components/utils/InputField";
 import {
   Avatar,
@@ -44,31 +45,18 @@ const ProcessLeave = () => {
         <CardContent>
           <Stack spacing={2}>
             <Typography variant="h6">Demande de congé</Typography>
-            <Stack direction={"row"} spacing={2}>
-              <Typography>Statut :</Typography>
-              <Chip label="En attente" color="warning" />
-            </Stack>
-            <Stack direction={"row"} spacing={2}>
-              <Typography>Date de début :</Typography>
-              <Typography color={"secondary"}>01/01/2022</Typography>
-            </Stack>
-            <Stack direction={"row"} spacing={2}>
-              <Typography>Date de fin :</Typography>
-              <Typography color={"secondary"}>01/01/2022</Typography>
-            </Stack>
-            <Stack direction={"row"} spacing={2}>
-              <Typography>Nombre de jours :</Typography>
-              <Typography color={"secondary"}>1</Typography>
-            </Stack>
-            <Stack direction={"row"} spacing={2}>
-              <Typography>Commentaire :</Typography>
-              <Typography color={"secondary"}>
-                qksjdhkjqshdqsjkdhksqjhdjkqshdkjqshdkjq hskdjhqskjdhsqjkdhkjsq
-                hd jkqhskjdhsqkjdhksqj qslodiopqodsoiduoqisudoiqsdioqs
-                dsqduiyqsiudyiuazodiuazoidu oaizudoiazud azdu azdazd
-                azdjksqhduiqsy dyqsiduyqsiudy
-              </Typography>
-            </Stack>
+
+            <CustomInfoData title={"Statut :"} info={ <Chip label="En attente" color="warning" />}/>
+            <CustomInfoData title={"Date de début :"} info={ "01/01/2022"}/>
+            <CustomInfoData title={"Date de fin :"} info={ "01/01/2022"}/>
+
+
+            <CustomInfoData title={"Nombre de jours :"} info={ "1"}/> 
+            <CustomInfoData title={"Commentaire :"} info={"qksjdhkjqshdqsjkdhksqjhdjkqshdkjqshdkjq hskdjhqskjdhsqjkdhkjsqhd jkqhskjdhsqkjdhksqj qslodiopqodsoiduoqis"}/>
+            
+         
+           
+           
             <Stack direction={"row"} spacing={2}>
               <Typography>Justificatif :</Typography>
               <Stack spacing={1} flex={1}>
