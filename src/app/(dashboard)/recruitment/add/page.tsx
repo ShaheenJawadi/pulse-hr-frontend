@@ -13,6 +13,9 @@ import {
   IconButton,
   Checkbox,
   FormControlLabel,
+  Autocomplete,
+  Chip,
+  TextField,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import QuillEditor from "@/components/utils/quillEditor";
@@ -20,6 +23,7 @@ import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 const AddJob = () => {
   const [jobRequirements, setJobRequirements] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
 
   const handleJobRequirementsChange = (content: string) => {
     setJobRequirements(content);
@@ -80,7 +84,33 @@ const AddJob = () => {
               </Grid>
 
               <Grid item xs={4}>
-                <InputField label="Mots clés" type="text" />
+                <Autocomplete
+                  multiple
+                  freeSolo
+                  options={[]}
+                  value={tags}
+                  onChange={(event, newValue) => {
+                    setTags(newValue);
+                  }}
+                  renderTags={(value: readonly string[], getTagProps) =>
+                    value.map((option: string, index: number) => (
+                      <Chip
+                        key={index}
+                        label={option}
+                        {...getTagProps({ index })}
+                        color="secondary"
+                      />
+                    ))
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="outlined"
+                      label="Mots clés"
+                      placeholder="Tapez et appuyez sur Entrée"
+                    />
+                  )}
+                />
               </Grid>
               <Grid item xs={12}>
                 <Typography fontSize={18}>Exigences du poste</Typography>
@@ -94,7 +124,7 @@ const AddJob = () => {
               </Grid>
               <Grid item xs={4}>
                 <FormControlLabel
-                  control={<Checkbox defaultChecked  disabled />}
+                  control={<Checkbox defaultChecked disabled />}
                   label="Demander un CV"
                 />
               </Grid>
