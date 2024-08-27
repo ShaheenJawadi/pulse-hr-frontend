@@ -9,6 +9,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import WorkIcon from '@mui/icons-material/Work';
 
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import UploadFileInput from "@/components/utils/UploadFile";
 const ApplyJob = () => {
   return (
     <Stack spacing={6}>
@@ -97,6 +98,15 @@ const ApplyJob = () => {
           type={"text"}
         />
       </Stack>
+      <Box>
+        <Typography variant="body1"  >
+          Veuillez télécharger votre CV
+        </Typography>
+        <UploadFileInput maxFiles={1}  maxSize={1}/>
+      </Box>
+
+  
+    
 
       <Button color="primary" variant="contained">
         Postuler
