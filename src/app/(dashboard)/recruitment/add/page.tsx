@@ -21,9 +21,9 @@ import SaveIcon from "@mui/icons-material/Save";
 import QuillEditor from "@/components/utils/quillEditor";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import AutocompleteTagsInput from "@/components/utils/AutocompleteTagsInput";
 const AddJob = () => {
   const [jobRequirements, setJobRequirements] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
 
   const handleJobRequirementsChange = (content: string) => {
     setJobRequirements(content);
@@ -84,33 +84,7 @@ const AddJob = () => {
               </Grid>
 
               <Grid item xs={4}>
-                <Autocomplete
-                  multiple
-                  freeSolo
-                  options={[]}
-                  value={tags}
-                  onChange={(event, newValue) => {
-                    setTags(newValue);
-                  }}
-                  renderTags={(value: readonly string[], getTagProps) =>
-                    value.map((option: string, index: number) => (
-                      <Chip
-                        key={index}
-                        label={option}
-                        {...getTagProps({ index })}
-                        color="secondary"
-                      />
-                    ))
-                  }
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      label="Mots clés"
-                      placeholder="Tapez et appuyez sur Entrée"
-                    />
-                  )}
-                />
+                <AutocompleteTagsInput onTagsChange={(vals)=>null } defaultTags={[]} />
               </Grid>
               <Grid item xs={12}>
                 <Typography fontSize={18}>Exigences du poste</Typography>
