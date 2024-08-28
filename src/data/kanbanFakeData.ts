@@ -1,0 +1,197 @@
+import { KanbanColumnType, KanbanTaskTagsType, KanbanTasksType } from "@/types/kanbanTypes";
+
+
+const kanbanColumn: KanbanColumnType[] = [
+    {
+        id: 1,
+        title: "À Faire"
+    },
+    {
+        id: 2,
+        title: "En Cours"
+    },
+    {
+        id: 3,
+        title: "En Révision "
+    }
+    ,
+    {
+        id: 4,
+        title: "Terminé"
+    }
+
+]
+
+
+const kanbanTaskTags: KanbanTaskTagsType[] = [
+    {
+        title: "Haute Priorité",
+        color: "error"
+    },
+    {
+        title: "Moyenne Priorité",
+        color: "warning"
+    },
+    {
+        title: "Basse Priorité",
+        color: "info"
+    },
+    {
+        title: "Urgent ",
+        color: "error"
+    },
+    {
+        title: "Amélioration",
+        color: "warning"
+    },
+    {
+        title: "Maintenance ",
+        color: "info"
+    }
+]
+
+
+
+
+
+const kanbanTasks: KanbanTasksType[] = [
+
+
+
+    {
+        id: 1,
+        columnId: 1,
+        title: "Créer un projet",
+        tags: [kanbanTaskTags[5], kanbanTaskTags[1]]
+    }
+    ,
+    {
+        id: 2,
+        columnId: 3,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[0], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 3,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[1], kanbanTaskTags[4]]
+    }
+    ,
+    {
+        id: 4,
+        columnId: 4,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[2], kanbanTaskTags[3]]
+    }
+    ,
+    {
+        id: 5,
+        columnId: 3,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[3], kanbanTaskTags[4]]
+    }
+    ,
+    {
+        id: 6,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[1], kanbanTaskTags[5]]
+    }
+    ,
+    {
+        id: 7,
+        columnId: 4,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[5], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 8,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[1], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 9,
+        columnId: 3,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[1], kanbanTaskTags[1]]
+    }
+    ,
+    {
+        id: 10,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[0], kanbanTaskTags[3]]
+    },
+        {
+        id: 11,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[0], kanbanTaskTags[1], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 12,
+        columnId: 2,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[0], kanbanTaskTags[1], kanbanTaskTags[5]]
+    }
+    ,
+    {
+        id: 13,
+        columnId: 2,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[1], kanbanTaskTags[4], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 14,
+        columnId: 3,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[5], kanbanTaskTags[3], kanbanTaskTags[1]]
+    }
+    ,
+    {
+        id: 15,
+        columnId: 3,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[4], kanbanTaskTags[1], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 16,
+        columnId: 1,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[3], kanbanTaskTags[1], kanbanTaskTags[4]]
+    }
+    ,
+    {
+        id: 17,
+        columnId: 2,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[0], kanbanTaskTags[1], kanbanTaskTags[3]]
+    }
+    ,
+    {
+        id: 18,
+        columnId: 2,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[3], kanbanTaskTags[4], kanbanTaskTags[2]]
+    }
+    ,
+    {
+        id: 19,
+        columnId: 2,
+        title: "Créer une application",
+        tags: [kanbanTaskTags[5], kanbanTaskTags[3], kanbanTaskTags[4]]
+    }
+ 
+]
+
+export { kanbanColumn, kanbanTaskTags, kanbanTasks }
+
+ 

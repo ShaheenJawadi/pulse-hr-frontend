@@ -1,22 +1,22 @@
 
-export type kanbanColumnType = {
+export type KanbanColumnType = {
 
     id: number,
     title: string,
 
 }
 
-export type kanbanTasksType = {
+export type KanbanTasksType = {
 
     id: number,
     columnId: number,
     title: string, 
-    tags: kanbanTaskTagsType[],
+    tags: KanbanTaskTagsType[],
 
 
 }
 
-export type kanbanTaskTagsType = {
+export type KanbanTaskTagsType = {
     title: string,
     color: "primary"| "secondary" | "error" | "warning" | "info" | "success",
 
