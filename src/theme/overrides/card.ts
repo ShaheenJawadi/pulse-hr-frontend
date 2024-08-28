@@ -86,7 +86,7 @@ const MUICard = (): Theme['components'] => {
                     padding: theme.spacing(4),
                     color: 'var(--mui-palette-text-secondary)',
                     '&:last-child': {
-                        paddingBlockEnd: theme.spacing(6)
+                        paddingBlockEnd: theme.spacing(4)
                     },
                     '& + .MuiCardHeader-root, & + .MuiCardContent-root, & + .MuiCardActions-root': {
                         paddingBlockStart: 0
