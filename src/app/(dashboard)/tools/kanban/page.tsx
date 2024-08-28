@@ -1,4 +1,5 @@
 "use client";
+import KanbanColumns from "@/components/pages/kanban/columns";
 import { Box, Stack } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
 const KanbanPage = () => {
@@ -7,31 +8,15 @@ const KanbanPage = () => {
     <PerfectScrollbar dir="horizontal">
  
       <Stack direction={"row"} spacing={4}>
-        <Box minWidth={250}>Col</Box>
 
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-        
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
-
-        <Box minWidth={250}>Col</Box>
+        {
+            [1,2,3].map((item, index) => {
+                return (
+                    <KanbanColumns/>
+                )
+            })
+        }
+    
       </Stack>
     </PerfectScrollbar>
     </Box>  
