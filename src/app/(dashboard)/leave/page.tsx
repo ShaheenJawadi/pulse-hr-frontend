@@ -125,6 +125,33 @@ const CardItemContent = () => {
           <Typography color={"secondary"}>01/01/2023</Typography>
         </Stack>
 
+
+<Stack spacing={2} >
+
+<Box>
+  <Chip label={"lightone"} color="primary" size="small" variant="lightone"/>
+</Box>
+
+<Box>
+  <Chip label={"lightone"} color="secondary" variant="lightone"/>
+</Box>
+
+<Box>
+  <Chip label={"lightone"} color="success" variant="lightone"/>
+</Box>
+
+<Box>
+  <Chip label={"lightone"} color="error" variant="lightone"/>
+</Box>
+
+<Box>
+  <Chip label={"lightone"} color="info" variant="lightone"/>
+</Box>
+<Box>
+  <Chip label={"lightone"} color="warning" variant="lightone"/>
+</Box>
+
+</Stack>
         <Stack
           direction={"row"}
           alignItems={"center"}
