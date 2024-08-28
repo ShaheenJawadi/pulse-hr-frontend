@@ -7,8 +7,7 @@ import {
   Divider,
   Stack,
   Typography,
-} from "@mui/material";
-import FilePresentIcon from "@mui/icons-material/FilePresent";
+} from "@mui/material"; 
 import ChatTwoToneIcon from "@mui/icons-material/ChatTwoTone";
 import FilePresentTwoToneIcon from "@mui/icons-material/FilePresentTwoTone";
 import { KanbanTasksType } from "@/types/kanbanTypes";
@@ -24,7 +23,7 @@ const KanbanTask = ( {task}:KanbanTaskProps ) => {
 
 
   return (
-    <Card   variant="elevation" sx={{ width: 300, maxWidth: 300 }}  >
+    <Card   variant="elevation" sx={{ width: 300, maxWidth: 300 , userSelect:"none" }}  >
       <CardContent>
         <Stack spacing={2}>
           <Stack direction={"row"} sx={{ flexWrap: "wrap" }} gap={2}>

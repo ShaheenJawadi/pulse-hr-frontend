@@ -1,8 +1,7 @@
+import React from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Stack,
   styled,
   Typography,
@@ -10,7 +9,8 @@ import {
 import KanbanTask from "./task";
 import AddIcon from "@mui/icons-material/Add";
 import { KanbanColumnType, KanbanTasksType } from "@/types/kanbanTypes";
- 
+import { Draggable } from "react-beautiful-dnd";
+
 const ColumnBox = styled(Box)(({ theme }) => ({
   padding: 10,
   backgroundColor: "var(--mui-palette-primary-mainOpacity)",
@@ -18,6 +18,7 @@ const ColumnBox = styled(Box)(({ theme }) => ({
   borderTopLeftRadius: 0,
   borderTopRightRadius: 0,
 }));
+
 const ColumnTitle = styled(Box)(({ theme }) => ({
   padding: 4,
   backgroundColor: "var(--mui-palette-secondary-lighterOpacity)",
@@ -28,16 +29,13 @@ const ColumnTitle = styled(Box)(({ theme }) => ({
 
 interface KanbanColumnsProps {
   column: KanbanColumnType;
-  tasks: KanbanTasksType[]; 
+  tasks: KanbanTasksType[];
 }
 
 const KanbanColumns = ({ column, tasks }: KanbanColumnsProps) => {
- 
-
-
   return (
-    <Stack className="list-handle">
-      <ColumnTitle >
+    <Stack  >
+      <ColumnTitle>
         <Typography
           textAlign={"center"}
           variant="h6"
@@ -51,13 +49,21 @@ const KanbanColumns = ({ column, tasks }: KanbanColumnsProps) => {
       <Stack spacing={2}>
         <ColumnBox>
           <Stack spacing={2}>
-
-          {tasks
+            {tasks
               .filter((task) => task.columnId === column.id)
-              .map((task) => (
-                <KanbanTask   task={task}  />
+              .map((task, index) => (
+                <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps} 
+                    >
+                      <KanbanTask task={task} />
+                    </div>
+                  )}
+                </Draggable>
               ))}
-            
           </Stack>
         </ColumnBox>
         <Button startIcon={<AddIcon />}>Ajouter une tâche</Button>
