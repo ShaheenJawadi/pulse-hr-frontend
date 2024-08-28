@@ -4,7 +4,7 @@ import { PaletteMode } from '@mui/material'
 const DefaultPalette = () => {
   const mode = 'light' as PaletteMode;
 
-  const textColor = '76, 78, 100'
+  const textColor = '59, 55, 75'
   return {
 
     common: {
@@ -84,7 +84,7 @@ const DefaultPalette = () => {
       A700: '#303030'
     },
     text: {
-      primary: `rgba(${textColor}, 0.87)`,
+      primary: `rgba(${textColor}, 0.9)`,
       secondary: `rgba(${textColor}, 0.68)`,
       disabled: `rgba(${textColor}, 0.38)`
     },
