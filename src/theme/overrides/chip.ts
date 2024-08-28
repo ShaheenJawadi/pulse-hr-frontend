@@ -4,9 +4,15 @@ import { Theme } from '@mui/material/styles'
 const MUIChip = (): Theme['components'] => {
    return {
     MuiChip: {
+      styleOverrides: {
+        root:({ theme }) => ({
+         borderRadius:theme.shape.borderRadius,
+        })
+      },
       defaultProps: {
         size: 'small',
         color:"primary",
+        
     },
         variants: [
           {
