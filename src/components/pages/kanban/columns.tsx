@@ -1,12 +1,13 @@
-import { Box, Card, CardContent, Stack, Typography } from "@mui/material"
-
+import { Box, Button, Card, CardContent, Stack, Typography } from "@mui/material"
+import KanbanTask from "./task";
+import AddIcon from '@mui/icons-material/Add';
 
 
 const KanbanColumns = () => {
 
 
     return (
-        <Stack  spacing={4} >
+        <Stack  padding={2} spacing={4} >
 
             <Stack paddingX={5} direction={"row"} justifyContent={"space-between"} alignItems={"center"} >
 
@@ -25,24 +26,15 @@ const KanbanColumns = () => {
 
             <Stack spacing={2} >
 
-                <Card sx={{width:300 , maxWidth:300}}>
-                    <CardContent>
-                        <Typography  >single task</Typography>
-                    </CardContent>
-                </Card>
+                {[1,2,3,4,5].map((item, index) => {
+                    return (
+                    <KanbanTask/>
+                    )
+                })}
 
-                <Card sx={{width:300 , maxWidth:300}}>
-                    <CardContent>
-                        <Typography  > single task</Typography>
-                    </CardContent>
-                </Card>
-
-                <Card sx={{width:300 , maxWidth:300}}>
-                    <CardContent>
-                        <Typography  > single task</Typography>
-                    </CardContent>
-                </Card>
-
+                <Button startIcon={ <AddIcon/> }>
+                Ajouter une tâche
+                </Button>
             </Stack>
             
 
