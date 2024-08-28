@@ -33,11 +33,11 @@ const KanbanTask = () => {
 
           <Stack alignItems={"center"} spacing={2} direction={"row"}>
             <Stack>
-              <FilePresentTwoToneIcon color="primary" fontSize="small" />
+              <FilePresentTwoToneIcon color="secondary" fontSize="small" />
             </Stack>
             <Stack spacing={1} direction={"row"} alignItems={"center"}>
-              <ChatTwoToneIcon color="primary" fontSize="small" />
-              <Typography color={"primary"} variant="body2" >2</Typography>
+              <ChatTwoToneIcon color="secondary" fontSize="small" />
+              <Typography color={"secondary"} variant="body2" >2</Typography>
             </Stack>
           </Stack>
           <Box>
@@ -54,7 +54,7 @@ const KanbanTask = () => {
               </Box>
               <Typography variant="body2" color="textSecondary">
                 <b>Attribué par:</b> <br />
-                <span>John Doe</span>
+                <span>Shaheen jawadi</span>
               </Typography>
             </Stack>{" "}
            
