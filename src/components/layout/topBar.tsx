@@ -14,7 +14,8 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import React from "react";
+import Popover from "@mui/material/Popover";
+import React, { useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -24,6 +25,7 @@ import PunchClockIcon from "@mui/icons-material/PunchClock";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
+import ItemPopover from "../utils/PopoverComponent";
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
@@ -148,23 +150,25 @@ const LeftSection = () => {
       {/*  <IconButton>
        <CalendarMonthIcon />
      </IconButton> */}
-      <IconButton>
-        <StickyNote2Icon />
-      </IconButton>
-      <IconButton>
-        <FormatListBulletedIcon />
-      </IconButton>
-
-      <Link href={ROUTING.UTILITIES.KANBAN}>
+      <ItemPopover title="Bloc-notes">
         <IconButton>
-          <ViewKanbanIcon />
+          <StickyNote2Icon />
         </IconButton>
-      </Link>
+      </ItemPopover>
+      <ItemPopover title="Tâches">
+        <IconButton>
+          <FormatListBulletedIcon />
+        </IconButton>
+      </ItemPopover>
+      <ItemPopover title="Kanban">
+        <Link href={ROUTING.UTILITIES.KANBAN}>
+          <IconButton>
+            <ViewKanbanIcon />
+          </IconButton>
+        </Link>
+      </ItemPopover>
     </Stack>
   );
 };
-
-
-
 
 export default TopBar;
