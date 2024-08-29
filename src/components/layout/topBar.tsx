@@ -50,41 +50,9 @@ const TopBar = () => {
         height={"100%"}
         justifyContent={"space-between"}
       >
-        <Stack direction={"row"} spacing={2}>
-          <IconButton>
-            <CalendarMonthIcon />
-          </IconButton>
-          <IconButton>
-            <StickyNote2Icon />
-          </IconButton>
-          <IconButton>
-            <FormatListBulletedIcon />
-          </IconButton>
+        <LeftSection />
 
-          <Link href={ROUTING.UTILITIES.KANBAN}>
-            <IconButton>
-              <ViewKanbanIcon />
-            </IconButton>
-          </Link>
-        </Stack>
-
-        <Stack direction={"row"} spacing={2}>
-          <Stack justifyContent={"center"}>
-            {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
-            <Button
-              variant="outlined"
-              size="small"
-              startIcon={<PunchClockIcon />}
-              color="success"
-            >
-              Pointage de sortie
-            </Button>
-          </Stack>
-          <IconButton>
-            <NotificationsIcon />
-          </IconButton>
-          <MenuProfile />
-        </Stack>
+        <RightSection />
       </Stack>
     </TopBarWrapper>
   );
@@ -102,7 +70,11 @@ const MenuProfile = () => {
   return (
     <Box>
       <IconButton onClick={handleClick} size="medium">
-        <Avatar variant="rounded" sx={{ width: 40, height: 40 }}>
+        <Avatar
+          variant="rounded"
+          src="/utils/goat.jpg"
+          sx={{ width: 40, height: 40 }}
+        >
           S
         </Avatar>
       </IconButton>
@@ -147,5 +119,52 @@ const MenuProfile = () => {
     </Box>
   );
 };
+
+const RightSection = () => {
+  return (
+    <Stack direction={"row"} spacing={2}>
+      <Stack justifyContent={"center"}>
+        {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
+        <Button
+          variant="outlined"
+          size="small"
+          startIcon={<PunchClockIcon />}
+          color="success"
+        >
+          Pointage de sortie
+        </Button>
+      </Stack>
+      <IconButton>
+        <NotificationsIcon />
+      </IconButton>
+      <MenuProfile />
+    </Stack>
+  );
+};
+
+const LeftSection = () => {
+  return (
+    <Stack direction={"row"} spacing={2}>
+      {/*  <IconButton>
+       <CalendarMonthIcon />
+     </IconButton> */}
+      <IconButton>
+        <StickyNote2Icon />
+      </IconButton>
+      <IconButton>
+        <FormatListBulletedIcon />
+      </IconButton>
+
+      <Link href={ROUTING.UTILITIES.KANBAN}>
+        <IconButton>
+          <ViewKanbanIcon />
+        </IconButton>
+      </Link>
+    </Stack>
+  );
+};
+
+
+
 
 export default TopBar;
