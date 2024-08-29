@@ -26,6 +26,7 @@ import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
 import ItemPopover from "../utils/PopoverComponent";
+import { useDialogAction } from "../dialog/dialog.context";
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
@@ -125,17 +126,7 @@ const MenuProfile = () => {
 const RightSection = () => {
   return (
     <Stack direction={"row"} spacing={2}>
-      <Stack justifyContent={"center"}>
-        {/*  <Button variant="outlined" size="small" startIcon={<PunchClockIcon/>} color="warning">Pointage d'entrée</Button> */}
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<PunchClockIcon />}
-          color="success"
-        >
-          Pointage de sortie
-        </Button>
-      </Stack>
+      <ClockInOut />
       <IconButton>
         <NotificationsIcon />
       </IconButton>
@@ -173,4 +164,34 @@ const LeftSection = () => {
   );
 };
 
+const ClockInOut = () => {
+  const { openDialog } = useDialogAction();
+
+  const clockIn = () => {
+    openDialog("CLOCK_IN", { id: 1 });
+  };
+  return (
+    <Stack justifyContent={"center"}>
+    
+        <Button
+          variant="outlined"
+          size="small"
+          startIcon={<PunchClockIcon />}
+          color="warning"
+          onClick={()=>clockIn()}
+        >
+          Pointage d'entrée
+        </Button>
+  
+      {/*    <Button
+      variant="outlined"
+      size="small"
+      startIcon={<PunchClockIcon />}
+      color="success"
+    >
+      Pointage de sortie
+    </Button> */}
+    </Stack>
+  );
+};
 export default TopBar;
