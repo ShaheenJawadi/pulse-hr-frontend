@@ -13,7 +13,10 @@ import {
   Typography,
   IconButton,
   Fab,
+  Button,
 } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
@@ -54,19 +57,22 @@ const NotePadPage = () => {
 const NotesList = () => {
   return (
     <Stack spacing={3}>
-         <Stack justifyContent={"space-between"} alignItems={"center"} direction={"row"}>
-         <Box>
-        <InputField
-          startAdornment={<SearchIcon />}
-          size="small"
-          label={"Recherche"}
-        />
-      </Box>
-        <Fab variant="circular"  color="secondary" size="medium">
+      <Stack
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        direction={"row"}
+      >
+        <Box>
+          <InputField
+            startAdornment={<SearchIcon />}
+            size="small"
+            label={"Recherche"}
+          />
+        </Box>
+        <Fab variant="circular" color="secondary" size="medium">
           <NoteAddIcon />
         </Fab>
       </Stack>
-     
 
       <Box>
         <Stack spacing={2}>
@@ -130,7 +136,6 @@ const NotesList = () => {
 const NoteContent = () => {
   return (
     <Stack spacing={3}>
-   
       <Card sx={{ height: "100%", padding: 3 }} variant="outlined">
         <Stack spacing={2}>
           <Typography variant="h6" color={"primary"}>
@@ -175,6 +180,36 @@ const NoteContent = () => {
           </Box>
         </Stack>
       </Card>
+
+      <Stack
+        direction={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <Stack direction={"row"} >
+          <IconButton color="primary"  >
+            <CircleIcon sx={{fontSize:18}} />
+          </IconButton>
+          <IconButton color="secondary">
+            <CircleIcon  sx={{fontSize:18}} />
+          </IconButton>
+          <IconButton color="success">
+            <CircleIcon  sx={{fontSize:18}} />
+          </IconButton>
+          <IconButton color="error">
+            <CircleIcon sx={{fontSize:18}}  />
+          </IconButton>
+          <IconButton color="info">
+            <CircleIcon  sx={{fontSize:18}} />
+          </IconButton>
+          <IconButton color="warning">
+            <CircleIcon  sx={{fontSize:18}} />
+          </IconButton>
+        </Stack>
+        <Box>
+          <Button startIcon={<ModeEditIcon />}>Modifier</Button>
+        </Box>
+      </Stack>
     </Stack>
   );
 };
