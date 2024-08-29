@@ -54,13 +54,19 @@ const NotePadPage = () => {
 const NotesList = () => {
   return (
     <Stack spacing={3}>
-      <Box>
+         <Stack justifyContent={"space-between"} alignItems={"center"} direction={"row"}>
+         <Box>
         <InputField
           startAdornment={<SearchIcon />}
           size="small"
           label={"Recherche"}
         />
       </Box>
+        <Fab variant="circular"  color="secondary" size="medium">
+          <NoteAddIcon />
+        </Fab>
+      </Stack>
+     
 
       <Box>
         <Stack spacing={2}>
@@ -121,5 +127,59 @@ const NotesList = () => {
   );
 };
 
+const NoteContent = () => {
+  return (
+    <Stack spacing={3}>
+   
+      <Card sx={{ height: "100%", padding: 3 }} variant="outlined">
+        <Stack spacing={2}>
+          <Typography variant="h6" color={"primary"}>
+            title lksqjdlksqjdiosqdioqsdsqd,qs ldkjsqlkd
+          </Typography>
+          <Box>
+            <div>
+              <h4>qsjkld klqskldsqkldj </h4>
 
+              <p>qsqskldjlksq dkjsqlkd jlsqkdjklsqdl qskld</p>
+
+              <ol>
+                <li data-list="bullet">
+                  <span></span>sqkldlkqsdqsdqskd q
+                </li>
+                <li data-list="bullet">
+                  <span></span>dqsmlkdqmlskdmlqsd
+                </li>
+                <li data-list="bullet">
+                  <span></span>qsmkldmsqldkmqsd
+                </li>
+              </ol>
+
+              <p>
+                lmqsjkdmlsqdqsdqlmskd mlksqmldkmlsqkdmlqksmldkqmlsd kpoza doaz
+                jdlk ajzaljdlkasjd oasjdlksqdsqdqsdqsdqskjdklqsjdioiozajdlksqj
+                dklsqjlkdhsqkld jlmsqkjdklsqjldmjioazd
+              </p>
+
+              <ol>
+                <li data-list="ordered">
+                  <span></span>qsdmlksqmld
+                </li>
+                <li data-list="ordered">
+                  <span></span>dsqmlkdmlsqd
+                </li>
+                <li data-list="ordered">
+                  <span></span>qsmlkdmlqsd
+                </li>
+              </ol>
+            </div>
+          </Box>
+        </Stack>
+      </Card>
+    </Stack>
+  );
+};
+
+const CreateEditNote = () => {
+  return <Stack></Stack>;
+};
 export default NotePadPage;
