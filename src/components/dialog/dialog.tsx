@@ -16,7 +16,7 @@ import { Divider } from "@mui/material";
 
 const Dialog = styled(MuiDialog)<DialogProps>(({ theme }) => ({
   "& .MuiDialog-paper": {
-    minWidth: 600,
+    
   },
 }));
 
@@ -25,12 +25,13 @@ type Props = {
   closeDialog: () => void;
   children: React.ReactNode;
   dialogTitle: string;
+  size:"lg"|"md"|"sm"|"xl"|"xs";
 };
 const CommonDialog = (props: Props) => {
-  const { isOpen, closeDialog, children, dialogTitle } = props;
+  const { isOpen, closeDialog, children, dialogTitle , size } = props;
 
   return (
-    <Dialog onClose={closeDialog} open={isOpen}>
+    <Dialog maxWidth={size} onClose={closeDialog} open={isOpen}>
       <DialogTitle sx={{ padding: 2 }}>{dialogTitle}</DialogTitle>
       <IconButton
         aria-label="close"

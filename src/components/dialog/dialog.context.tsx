@@ -9,14 +9,17 @@ interface State {
   isOpen: boolean;
   data:any;
   view: DialogViewType;
+  size:"lg" | "md" | "sm" | "xl" | "xs";
 }
 
-type Action = { type: "open"; view : DialogViewType ,  data?: any } | { type: "close" };
+type Action = { type: "open"; view : DialogViewType ,  data?: any , size?:"lg" | "md" | "sm" | "xl" | "xs" } | { type: "close" };
 
 const initialState: State = {
   isOpen: false,
   data:null,
-  view :undefined
+  view :undefined,
+  size:"xs",
+
 };
 
 function dialogReducer(state: State, action: Action): State {
@@ -27,6 +30,7 @@ function dialogReducer(state: State, action: Action): State {
         isOpen: true,
         view: action.view,
         data: action.data,
+        size:action.size || "xs", 
       };
 
     case "close":
@@ -81,8 +85,8 @@ export function useDialogAction() {
   }
 
   return {
-    openDialog(view :any,data?: any) {
-      dispatch({ type: "open" , view:view  ,  data:data});
+    openDialog(view :any,data?: any , size?:"lg" | "md" | "sm" | "xl" | "xs") {
+      dispatch({ type: "open" , view:view  ,  data:data , size:size });
     },
     closeDialog(returnClose?:any) {
         dispatch({ type: 'close'  });

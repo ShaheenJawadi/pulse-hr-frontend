@@ -14,7 +14,7 @@ type DialogHType = {
 };
 
 const DialogHolder = () => {
-  const { isOpen, data, view } = useDialogState();
+  const { isOpen, data, view, size } = useDialogState();
   const { closeDialog } = useDialogAction();
 
   let currentDialog: DialogHType = {
@@ -44,10 +44,11 @@ const DialogHolder = () => {
 
   return (
     <CommonDialog
+      size={size}
       closeDialog={closeDialog}
       isOpen={isOpen}
       dialogTitle={currentDialog.title}
-    >
+    > 
       {currentDialog.component}
     </CommonDialog>
   );

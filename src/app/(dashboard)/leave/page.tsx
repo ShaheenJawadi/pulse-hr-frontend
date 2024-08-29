@@ -106,7 +106,7 @@ const CardItemContent = () => {
 
     const openLeaveInfo = () => {
 
-       openDialog("PROCESS_LEAVE", { id: 1 });
+       openDialog("PROCESS_LEAVE", { id: 1 } , "sm");
     }
   return (
     <>
