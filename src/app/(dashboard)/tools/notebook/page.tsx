@@ -1,3 +1,4 @@
+"use client";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import columns from "@/components/pages/kanban/columns";
 import { InputField } from "@/components/utils/InputField";
@@ -20,6 +21,8 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import SaveIcon from '@mui/icons-material/Save';
+import QuillEditor from "@/components/utils/quillEditor";
 
 const NotePadPage = () => {
   return (
@@ -136,6 +139,7 @@ const NotesList = () => {
 const NoteContent = () => {
   return (
     <Stack spacing={3}>
+{/*       <CreateEditNote /> */}
       <Card sx={{ height: "100%", padding: 3 }} variant="outlined">
         <Stack spacing={2}>
           <Typography variant="h6" color={"primary"}>
@@ -186,24 +190,24 @@ const NoteContent = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <Stack direction={"row"} >
-          <IconButton color="primary"  >
-            <CircleIcon sx={{fontSize:18}} />
+        <Stack direction={"row"}>
+          <IconButton color="primary">
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
           <IconButton color="secondary">
-            <CircleIcon  sx={{fontSize:18}} />
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
           <IconButton color="success">
-            <CircleIcon  sx={{fontSize:18}} />
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
           <IconButton color="error">
-            <CircleIcon sx={{fontSize:18}}  />
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
           <IconButton color="info">
-            <CircleIcon  sx={{fontSize:18}} />
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
           <IconButton color="warning">
-            <CircleIcon  sx={{fontSize:18}} />
+            <CircleIcon sx={{ fontSize: 18 }} />
           </IconButton>
         </Stack>
         <Box>
@@ -215,6 +219,12 @@ const NoteContent = () => {
 };
 
 const CreateEditNote = () => {
-  return <Stack></Stack>;
+  return (
+    <Stack spacing={1}>
+      <InputField label="Titre" />
+      <QuillEditor value={""} onChange={(text) => console.log(text)} />
+      <Button startIcon={<SaveIcon />}>Enregistrer</Button>
+    </Stack>
+  );
 };
 export default NotePadPage;
