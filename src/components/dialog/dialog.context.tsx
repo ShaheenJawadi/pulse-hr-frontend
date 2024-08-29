@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 
 
-type DialogViewType= "PROCESS_LEAVE"|"CLOCK_IN"|undefined ; 
+type DialogViewType= "PROCESS_LEAVE"|"CLOCK_IN"|"CLOCK_OUT"|undefined ; 
 
 interface State {
   isOpen: boolean;

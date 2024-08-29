@@ -170,6 +170,12 @@ const ClockInOut = () => {
   const clockIn = () => {
     openDialog("CLOCK_IN", { id: 1 });
   };
+
+  const clockOut = () => {
+    openDialog("CLOCK_OUT", { id: 1 });
+  };
+
+
   return (
     <Stack justifyContent={"center"}>
     
@@ -182,15 +188,16 @@ const ClockInOut = () => {
         >
           Pointage d'entrée
         </Button>
-  
-      {/*    <Button
+  {/* 
+         <Button
       variant="outlined"
       size="small"
       startIcon={<PunchClockIcon />}
       color="success"
+      onClick={()=>clockOut()}
     >
       Pointage de sortie
-    </Button> */}
+    </Button>   */}
     </Stack>
   );
 };

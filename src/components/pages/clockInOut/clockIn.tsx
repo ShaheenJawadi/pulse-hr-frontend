@@ -51,7 +51,7 @@ const ClockInDialog = () => {
         <CardContent>
           <Stack spacing={1}>
             <Typography variant="h6">Pointage d'entrée</Typography>
-            <CustomInfoData title={"Temps:"} info={"197.150.12.4"}/>
+            <CustomInfoData title={"Votre IP:"} info={"197.150.12.4"}/>
 
 
             <CustomInfoData title={"Temps:"} info={`${hours}:${minutes}:${seconds}`}/>
@@ -71,7 +71,7 @@ const ClockInDialog = () => {
 
       <Stack alignSelf={"center"} direction={"row"} spacing={2}>
         <Button startIcon={ <LoginIcon/> } variant="contained" color="primary">
-          Pointer
+        Entrez
         </Button>
        
       </Stack>

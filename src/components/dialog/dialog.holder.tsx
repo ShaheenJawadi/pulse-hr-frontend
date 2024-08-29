@@ -1,5 +1,6 @@
 "use client";
 import ClockInDialog from "../pages/clockInOut/clockIn";
+import ClockOutDialog from "../pages/clockInOut/clockOut";
 import CommonDialog from "./dialog";
 import { useDialogAction, useDialogState } from "./dialog.context";
 import dynamic from "next/dynamic";
@@ -37,6 +38,13 @@ const DialogHolder = () => {
       };
 
       break;
+    case "CLOCK_OUT":
+      currentDialog = {
+        component: <ClockOutDialog />,
+        title: "Pointer",
+      };
+
+      break;
 
     default:
       break;
@@ -48,7 +56,7 @@ const DialogHolder = () => {
       closeDialog={closeDialog}
       isOpen={isOpen}
       dialogTitle={currentDialog.title}
-    > 
+    >
       {currentDialog.component}
     </CommonDialog>
   );
