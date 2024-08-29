@@ -151,9 +151,11 @@ const LeftSection = () => {
        <CalendarMonthIcon />
      </IconButton> */}
       <ItemPopover title="Bloc-notes">
-        <IconButton>
-          <StickyNote2Icon />
-        </IconButton>
+        <Link href={ROUTING.UTILITIES.NOTEBOOK}>
+          <IconButton>
+            <StickyNote2Icon />
+          </IconButton>{" "}
+        </Link>
       </ItemPopover>
       <ItemPopover title="Tâches">
         <IconButton>

@@ -28,7 +28,7 @@ export const ROUTING = {
 
   LEAVE: {
     MAIN: "/leave",
- 
+
 
   },
   ADMIN_MAANGMENT: {
@@ -51,10 +51,10 @@ export const ROUTING = {
 
   PUBLIC: {
 
-    JOBLISTING:     {
+    JOBLISTING: {
 
       MAIN: "/jobs",
-      SINGLEJOB: "/jobs/slug", 
+      SINGLEJOB: "/jobs/slug",
     }
 
 
@@ -63,8 +63,10 @@ export const ROUTING = {
 
   UTILITIES: {
 
-      KANBAN: "/tools/kanban", 
-   
+    KANBAN: "/tools/kanban",
+    NOTEBOOK: "/tools/notebook",
+
+
 
 
   },
