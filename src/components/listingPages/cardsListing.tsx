@@ -35,7 +35,7 @@ const CardListing = (props: CardListingType) => {
         title={title}
         {...(avatar && {
           avatar: (
-            <Avatar sx={{ width: 50, height: 50 }} src={avatar}/>
+            <Avatar sx={{ width: 35, height: 35 }} src={avatar}/>
           )
         })}
  
