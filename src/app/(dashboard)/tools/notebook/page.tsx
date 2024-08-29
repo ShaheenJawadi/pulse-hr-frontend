@@ -27,7 +27,7 @@ import QuillEditor from "@/components/utils/quillEditor";
 const NotePadPage = () => {
   return (
     <Stack spacing={3}>
-      <PagerHeader title="Départements" />
+      <PagerHeader title="Bloc notes" />
 
       <Paper className="mainPaper">
         <Box paddingX={3}>
