@@ -1,5 +1,6 @@
-import axios from 'axios';
- 
+import axios, { AxiosRequestHeaders } from 'axios';
+import { getTokenCookie } from './authCookies';
+
 
 const http = axios.create({
     baseURL: 'http://localhost:8000/api/',
@@ -10,5 +11,21 @@ const http = axios.create({
 
     },
 });
+
+ 
+
+http.interceptors.request.use(
+    (config) => {
+        const token = getTokenCookie();
+        if (token) {
+            config.headers.set('Authorization', `Bearer ${token}`);
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
 
 export default http;
