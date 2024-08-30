@@ -24,6 +24,7 @@ export const InputField = (props: Props) => {
       <InputLabel>{label}</InputLabel>
       <OutlinedInput {...props} inputProps={formRegistartion} />
       <FormHelperText>{errorMessage}</FormHelperText>
+      {}
     </FormControl>
   );
 };
