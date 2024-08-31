@@ -22,6 +22,11 @@ const AddDepartment = () => {
 
   const mutation = DepService.useCreateMutation();
 
+  const handleSuccess = (data: any) => {
+    console.log("Form submitted successfully!", data);
+    // Perform any additional actions on success
+  };
+
   const {
     register,
     handleSubmit,
@@ -30,7 +35,10 @@ const AddDepartment = () => {
   } = useFormWithMutation(
     { name: "", location: "" },
     schema,
-    mutation.mutateAsync
+    mutation.mutateAsync,
+    () => {
+      console.log("Form submitted successfully!");
+    }
   );
 
   return (
