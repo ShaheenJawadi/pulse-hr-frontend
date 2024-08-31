@@ -10,7 +10,8 @@ export const API_ENDPOINTS = {
   };
 
   export const API_SECTIONS = {
-    employee: "/employee"
+    employee: "/employee",
+    auth:"/auth",
    
   };
   
