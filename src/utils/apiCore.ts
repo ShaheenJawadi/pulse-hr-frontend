@@ -25,11 +25,9 @@ export class CoreApi {
                 data
             );
 
-            if (res.data.success) {
-                return res.data.data;
-            } else {
-                throw new Error('Échec de la création');
-            }
+          
+                return res.data;
+           
         } catch (err) {
             throw err;
         }
@@ -49,12 +47,9 @@ export class CoreApi {
                 `${this.base_path}${API_ENDPOINTS.UPDATE}`,
                 data
             );
-
-            if (res.data.success) {
-                return res.data.data;
-            } else {
-                throw new Error('Échec de la mise à jour');
-            }
+ 
+                return res.data;
+           
         } catch (err) {
             throw err;
         }
