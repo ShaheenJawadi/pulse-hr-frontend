@@ -20,12 +20,8 @@ class DeparmentServiceClass {
 
     useCreateMutation = () => { 
         return useMutation(this.create, {
-            onSuccess: (data) => {  
-                alert('success');
-            },
-            onError: (error) => {
-                alert("error");
-            },
+            onSuccess: (data) => {    },
+            onError: (error) => {  },
         });
     };
 
