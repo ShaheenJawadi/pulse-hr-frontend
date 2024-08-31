@@ -1,10 +1,10 @@
 export const API_ENDPOINTS = {
 
-      CREATE:'/create/',
+      CREATE:'/add/',
       UPDATE:'/update/',
-      SINGLE:'/single/',
+      SINGLE:'/show/',
       DELETE:'/delete',
-      LIST:'/list/',
+      LIST:'/lister/',
          
   
   };
