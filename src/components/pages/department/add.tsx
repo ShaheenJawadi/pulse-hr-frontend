@@ -1,28 +1,66 @@
-
+ 
+import { Box, Button, Stack, TextField } from "@mui/material";
+ 
 import { InputField } from "@/components/utils/InputField";
-import { 
-  Button,  
-  Stack,
-  TextField, 
-} from "@mui/material";
- 
 
+import * as yup from "yup";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AuthService } from "@/services/auth";
+import { DepService } from "@/services/department";
+
+interface FormData {
+  name: string;
+  location: string;
+}
 const AddDepartment = () => {
-  return (
-    <Stack spacing={5} justifyContent={"center"} height={"100%"}>
-       
-          <InputField 
-          label="Designation"
-          type={"text"}
-        />
 
+  let schema = yup.object().shape({
+    name: yup
+      .string() 
+      .required('Entrer une designation'),
+
+    location: yup
+      .string() 
+      .required('Entrer une location'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+    getValues,
+
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: "",
+      location: "",
+    },
+  });
  
-      <Button variant="contained" size="large">
-        Créer
-      </Button>
+  const deparmentMutation = DepService.useCreateMutation();
 
-    
-    </Stack>
+  const onSubmit =  (data: FormData) => { 
+    deparmentMutation.mutate(data);
+  };
+
+
+  return (
+    <Box component={"form"}  onSubmit={handleSubmit(onSubmit)}>
+      <Stack spacing={5} justifyContent={"center"} height={"100%"}>
+        <InputField   formRegistartion={register("name")}
+            isError={errors?.name ? true : false}
+            errorMessage={errors?.name?.message} label="Designation" type={"text"} />
+     <InputField   formRegistartion={register("location")}
+            isError={errors?.location ? true : false}
+            errorMessage={errors?.location?.message} label="Location" type={"text"} />
+        <Button type="submit" variant="contained" size="large">
+          Créer
+        </Button>
+      </Stack>{" "}
+    </Box>
   );
 };
 
