@@ -3,17 +3,17 @@ import { API_SECTIONS } from '@/utils/apiEndpoints';
 import { useMutation } from 'react-query';
 
 
-class DeparmentServiceClass {
+class WorkPositionServiceClass {
 
-    protected DepService;
+    protected WpService;
     constructor() {
-        this.DepService = new CoreApi(API_SECTIONS.structure.department);
+        this.WpService = new CoreApi(API_SECTIONS.structure.positions);
 
     }
 
 
     create = async (data: any) => {
-        const response = await this.DepService.create(data);
+        const response = await this.WpService.create(data);
 
         return response.data;
     };
@@ -28,6 +28,6 @@ class DeparmentServiceClass {
 
 }
 
-const DepService = new DeparmentServiceClass();
+const WpService = new WorkPositionServiceClass();
 
-export { DepService };
+export { WpService };
