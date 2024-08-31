@@ -9,20 +9,31 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import themeOptions from ".";
 import { DrawerProvider } from "@/components/drawer/drawer.context";
 import { DialogProvider } from "@/components/dialog/dialog.context";
-const AppTheme =   ({ children }: ChildrenType) => {
+import { useRef } from "react";
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const AppTheme = ({ children }: ChildrenType) => {
   const theme = extendTheme(themeOptions());
 
+  const queryClientRef = useRef<any>();
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
+  
   return (
-    <AppRouterCacheProvider>
-      <CssVarsProvider theme={theme}>
-        <>
-          <CssBaseline />
-          <DrawerProvider>
-            <DialogProvider> {children}</DialogProvider>
-          </DrawerProvider>
-        </>
-      </CssVarsProvider>
-    </AppRouterCacheProvider>
+    <QueryClientProvider client={queryClientRef.current}>
+      <AppRouterCacheProvider>
+        <CssVarsProvider theme={theme}>
+          <>
+            <CssBaseline />
+            <DrawerProvider>
+              <DialogProvider> {children}</DialogProvider>
+            </DrawerProvider>
+          </>
+        </CssVarsProvider>
+      </AppRouterCacheProvider>{" "}
+    </QueryClientProvider>
   );
 };
 
