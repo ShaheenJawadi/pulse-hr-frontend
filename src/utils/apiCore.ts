@@ -5,9 +5,9 @@ import { API_ENDPOINTS } from './apiEndpoints';
 
 type responseType = {
 
-    success:boolean;
-    data:any;
-    message:string;
+    success: boolean;
+    data: any;
+    message: string;
 
 }
 
@@ -25,9 +25,9 @@ export class CoreApi {
                 data
             );
 
-          
-                return res.data;
-           
+
+            return res.data;
+
         } catch (err) {
             throw err;
         }
@@ -47,9 +47,9 @@ export class CoreApi {
                 `${this.base_path}${API_ENDPOINTS.UPDATE}`,
                 data
             );
- 
-                return res.data;
-           
+
+            return res.data;
+
         } catch (err) {
             throw err;
         }
@@ -74,5 +74,13 @@ export class CoreApi {
         } catch (err) {
             throw err;
         }
+    }
+
+
+
+    postReq(endPoint: string, data?: any) {
+        return this.http
+            .post(`${this.base_path}${endPoint}`, data)
+            .then((res) => res.data);
     }
 }
