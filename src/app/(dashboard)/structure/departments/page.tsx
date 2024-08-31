@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   Avatar,
-  AvatarGroup, 
-  Button, 
+  AvatarGroup,
+  Box,
+  Button,
+  Card,
+  Chip,
+  Grid,
   Paper,
   Stack,
   Typography,
@@ -18,6 +22,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import InfoIcon from "@mui/icons-material/Info";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
 import { ListingMenuItemType } from "@/types/structureTypes";
+import CardListing from "@/components/listingPages/cardsListing";
 type FakeDepartment = {
   id: number;
   name: string;
@@ -51,56 +56,16 @@ const departementMenu: ListingMenuItemType[] = [
   },
 ];
 
-const columns: ColumnDef<FakeDepartment>[] = [
-  {
-    header: "Designation",
-    accessorKey: "name",
-    cell: ({ getValue }) => <strong>{getValue<string>()}</strong>,
-  },
-
-  {
-    header: "Manager",
-    accessorKey: "lastName",
-    cell: ({ getValue }) => (
-      <Stack
-        direction={"row"}
-        spacing={2}
-        alignItems={"center"}
-        style={{ color: "var(--mui-palette-primary-main)" }}
-      >
-        <Avatar alt="name lastname" sx={{ width: 30, height: 30 }} />
-        <Typography variant="body1"> name lastname</Typography>
-      </Stack>
-    ),
-  },
-  {
-    header: "Eemployés",
-    accessorKey: "nb_emps",
-    cell: ({ getValue }) => (
-      <AvatarGroup sx={{ justifyContent: "start" }} total={getValue<number>()}>
-        <Avatar alt="name lastname" />
-        <Avatar alt="name lastname" />
-        <Avatar alt="name lastname" />
-        <Avatar alt="name lastname" />
-      </AvatarGroup>
-    ),
-  },
-  {
-    header: "Actions",
-    accessorKey: "action",
-    cell: ({ row }) => <MenuOption menulist={departementMenu} />,
-    enableSorting: false,
-  },
-];
-
 const MyTable = () => {
   return (
     <Stack spacing={3}>
       <PagerHeader title="Départements" />
-
-      <Paper className="mainPaper">
-        <GeneralTable utils={<TableUtils />} columns={columns} data={data} />
-      </Paper>
+      <TableUtils />
+      <Grid container spacing={2}>
+        {[1, 2, 3, 4].map((item) => {
+          return <DepartmentCard />;
+        })}
+      </Grid>
     </Stack>
   );
 };
@@ -113,11 +78,7 @@ const TableUtils = () => {
   };
 
   return (
-    <Stack 
-      spacing={2}
-      direction={"row"}
-      justifyContent={"flex-end"}
-    >
+    <Stack spacing={2} direction={"row"} justifyContent={"flex-end"}>
       <Button
         startIcon={<AddIcon />}
         size="large"
@@ -127,6 +88,56 @@ const TableUtils = () => {
         Ajouter un département
       </Button>
     </Stack>
+  );
+};
+
+const DepartmentCard = () => {
+  return (
+    <Grid item xs={3}>
+      <CardListing
+        menulist={departementMenu}
+        title={"Department name"}
+        notReverse={true}
+      >
+        <Stack spacing={2} alignItems={"center"}>
+          <Box>
+            <Card
+              color={"secondary"}
+              variant="lightone"
+              sx={{
+                padding: 2,
+                backgroundColor: "secondary",
+                width: "fit-content",
+                minWidth: 300,
+              }}
+            >
+              <Stack direction={"row"} spacing={4}>
+                <Box>
+                  <Avatar
+                    sx={{ width: 60, height: 60 }}
+                    variant="rounded"
+                    src={"/utils/goat.jpg"}
+                  />
+                </Box>
+                <Stack spacing={1}>
+                  <Typography variant="body2" color={"secondary"}>
+                    Manager:{" "}
+                  </Typography>
+                  <Typography> nom & prenom</Typography>
+                </Stack>
+              </Stack>
+            </Card>
+          </Box>
+          <AvatarGroup sx={{ justifyContent: "start" }} total={10}>
+            <Avatar sx={{bgcolor:"var(--mui-palette-secondary-main)"}} alt="name lastname"  />
+            <Avatar sx={{bgcolor:"var(--mui-palette-error-main)"}}  alt="name lastname" />
+            <Avatar sx={{bgcolor:"var(--mui-palette-warning-main)"}}  alt="name lastname" />
+            <Avatar sx={{bgcolor:"var(--mui-palette-success-main)"}}  alt="name lastname" />
+            <Avatar sx={{bgcolor:"var(--mui-palette-primary-main)"}}  alt="name lastname" /> 
+          </AvatarGroup>
+        </Stack>
+      </CardListing>
+    </Grid>
   );
 };
 export default MyTable;
