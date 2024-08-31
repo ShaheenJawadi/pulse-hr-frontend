@@ -2,44 +2,33 @@ import { Box, Button, Stack, TextField } from "@mui/material";
 
 import { InputField } from "@/components/utils/InputField";
 
-import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { AuthService } from "@/services/auth";
 import { DepService } from "@/services/department";
 import useFormWithMutation from "@/hooks/postFormHook";
+import {
+  createDepartmentSchema,
+  departmentDefaultValues,
+} from "@/modules/Department";
+import { useDrawerAction } from "@/components/drawer/drawer.context";
 
-interface FormData {
-  name: string;
-  location: string;
-}
 const AddDepartment = () => {
-  let schema = yup.object().shape({
-    name: yup.string().required("Entrer une designation"),
-
-    location: yup.string(),
-  });
-
   const mutation = DepService.useCreateMutation();
-
-  const handleSuccess = (data: any) => {
-    console.log("Form submitted successfully!", data);
-    // Perform any additional actions on success
-  };
-
+  const { closeDrawer } = useDrawerAction();
   const {
     register,
     handleSubmit,
     formState: { errors },
     onSubmit,
   } = useFormWithMutation(
-    { name: "", location: "" },
-    schema,
+    departmentDefaultValues,
+    createDepartmentSchema,
     mutation.mutateAsync,
-    () => {
-      console.log("Form submitted successfully!");
-    }
+    ()=> handleSuccess(),
+    "Department créé avec succès"
   );
+
+  const handleSuccess =()=>{ 
+    closeDrawer();
+  }
 
   return (
     <Box component={"form"} onSubmit={handleSubmit(onSubmit)}>

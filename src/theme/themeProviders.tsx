@@ -11,6 +11,7 @@ import { DrawerProvider } from "@/components/drawer/drawer.context";
 import { DialogProvider } from "@/components/dialog/dialog.context";
 import { useRef } from "react";
 import { QueryClient, QueryClientProvider } from 'react-query';
+import ReactToastify from "./toast";
 
 const AppTheme = ({ children }: ChildrenType) => {
   const theme = extendTheme(themeOptions());
@@ -30,6 +31,7 @@ const AppTheme = ({ children }: ChildrenType) => {
             <DrawerProvider>
               <DialogProvider> {children}</DialogProvider>
             </DrawerProvider>
+            <ReactToastify />
           </>
         </CssVarsProvider>
       </AppRouterCacheProvider>{" "}
