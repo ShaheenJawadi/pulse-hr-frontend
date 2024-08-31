@@ -19,6 +19,7 @@ import { InputField } from "@/components/utils/InputField";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { AuthService } from "@/services/auth";
 
 interface FormData {
   email: string;
@@ -52,9 +53,12 @@ const Login = () => {
       password: "",
     },
   });
+ 
+  const loginMutation = AuthService.useLoginMutation();
 
-  const onSubmit = (data: FormData) => {
-    alert("oeky");
+
+  const onSubmit =  (data: FormData) => { 
+    loginMutation.mutate(data);
   };
 
   return (
