@@ -12,8 +12,12 @@ const SingleJobGrid = ({single}:{single:JobOffer}) => {
       </Typography>
     </Box>
     <Box>
-      <Chip variant="filled" size="small" color="secondary" label="tag1" />
-      <Chip variant="outlined" size="small" color="secondary" label="tag2" />
+      {
+        single?.tags.map((tag, index) => (
+          <Chip key={index} variant="outlined" size="small" color="secondary" label={tag} />
+        ))
+      }
+ 
     </Box>
     <Stack direction={"row"} justifyContent={"space-between"}>
       <Stack direction={"row"}>

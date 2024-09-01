@@ -24,6 +24,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { CustomInfoData } from "@/components/utils/InfoDataCustom";
 import { JobOfferService } from "@/services/jobOffer";
+import { Candidate } from "@/modules/Candidate";
 
 const ApplicationsListPage = () => {
 
@@ -59,8 +60,8 @@ const ApplicationsListPage = () => {
                   <Button color="secondary">Toutes</Button>
                 </ButtonGroup>
               </Stack>
-              {[1, 2, 3].map((item) => {
-                return <SingleApplication />;
+              {data?.candidates?.map((item) => {
+                return <SingleApplication single={item} />;
               })}
             </Stack>
           </Grid>
@@ -70,7 +71,8 @@ const ApplicationsListPage = () => {
   );
 };
 
-const SingleApplication = () => {
+const SingleApplication = ({single}:{single:Candidate}) => {
+
   const [openInfo, setOpenInfo] = useState(false);
 
   return (
@@ -86,10 +88,10 @@ const SingleApplication = () => {
           >
             <Stack spacing={1}>
               <Typography variant="body1" color={"secondary"}>
-                Nom & prenom
+                {single.full_name} 
               </Typography>
               <Typography color={"secondaryy"}>
-                jawadishaheen@gmail.com
+                {single.email}
               </Typography>
               <Box>
                 {/*  <Chip
@@ -112,31 +114,30 @@ const SingleApplication = () => {
           </Stack>
           <Divider />
         </Box>
-        {openInfo && <CandidatInfo />}
+        {openInfo && <CandidatInfo single={single} />}
       </Card>
     </Stack>
   );
 };
 
-const CandidatInfo = () => {
+const CandidatInfo = ({single}:{single:Candidate}) => {
   return (
     <CardContent>
       <Stack spacing={1}>
-        <CustomInfoData title={"Nom :"} info={"Jawadi"} />
-        <CustomInfoData title={"Prenom :"} info={"shaheen"} />
-        <CustomInfoData title={"Email :"} info={"jawadishaheen@gmail.com"} />
-        <CustomInfoData title={"Télephone :"} info={"52723344"} />
-        <CustomInfoData title={"Date de naissance  :"} info={"12/04/1998"} />
-        <CustomInfoData title={"Poste actuel  :"} info={"Full Stack dev"} />
-        <CustomInfoData title={"LinkedIn :"} info={"linkedin.com/"} />
+        <CustomInfoData title={"Nom & Prenom :"} info={single.full_name} />
+        <CustomInfoData title={"Email :"} info={single.email} />
+        <CustomInfoData title={"Télephone :"} info={single.phone} />
+        <CustomInfoData title={"Date de naissance  :"} info={single.birthday} />
+        <CustomInfoData title={"Poste actuel  :"} info={single.actual_position} />
+        <CustomInfoData title={"LinkedIn :"} info={single.linkedin_profile} />
         <CustomInfoData
           title={"Github :"}
-          info={"https://github.com/ShaheenJawadi"}
+          info={single.github_profile}
         />
         <CustomInfoData
           title={"Motivation :"}
           info={
-            "qsjkhd jsqdtgq sgduy za g uagyz gyuyzagdhgza jd fzaudfazfdhzagfduyzfa ud uzyfduyazhdigajkzgdjzahgduyazgdjaghzduyg azudyfajhzgfdsqghfdhgfqshdqydtazdapodjmlasdjoiqji"
+            single.motivation
           }
         />
 
