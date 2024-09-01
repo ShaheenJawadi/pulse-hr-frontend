@@ -1,6 +1,7 @@
+import { WorkPOsition } from '@/modules/WorkPosition';
 import { CoreApi } from '@/utils/apiCore';
 import { API_SECTIONS } from '@/utils/apiEndpoints';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 
 class WorkPositionServiceClass {
@@ -24,6 +25,25 @@ class WorkPositionServiceClass {
             onError: (error) => { },
         });
     };
+
+/* ////////////////////////// */
+
+
+fetchWorkPositionsList = async () => {
+
+    const list = await this.WpService.list();
+
+    return {
+      positions: list?.data as WorkPOsition[], 
+    };
+  };
+   
+  useDepartmentListQuery = () => {
+    return useQuery<{ positions: WorkPOsition[] }, Error>(
+      [API_SECTIONS.structure.positions+"#list"],
+      this.fetchWorkPositionsList
+    );
+  };
 
 
 }
