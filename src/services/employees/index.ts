@@ -1,22 +1,33 @@
 import { CoreApi } from '@/utils/apiCore';
 import { API_SECTIONS } from '@/utils/apiEndpoints';
+import { useMutation } from 'react-query';
+
 
 class EmployeeServiceClass {
 
-    protected EMPLOYEE_Service;
-    
+    protected service;
     constructor() {
-        this.EMPLOYEE_Service = new CoreApi(API_SECTIONS.employee);
+        this.service = new CoreApi(API_SECTIONS.employee);
+
     }
- 
-    private fetchList = async (): Promise<any> => {
-        const list = await this.EMPLOYEE_Service.list();
-        return list; 
+
+
+    create = async (data: any) => {
+        const response = await this.service.create(data);
+
+        return response.data;
     };
 
- 
+    useCreateMutation = () => {
+        return useMutation(this.create, {
+            onSuccess: (data) => { },
+            onError: (error) => { },
+        });
+    };
+
+
 }
 
-const BankService = new EmployeeServiceClass();
+const EmpService = new EmployeeServiceClass();
 
-export { BankService };
+export { EmpService };

@@ -10,33 +10,25 @@ import {
 import { StepperFormType } from "@/types/structureTypes";
 import { Stack, Paper, Grid, Box, Divider, Typography } from "@mui/material";
 import React from "react";
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import WorkIcon from "@mui/icons-material/Work";
 import InfoIcon from "@mui/icons-material/Info";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import { useDrawerAction } from "@/components/drawer/drawer.context";
-import { InputField } from "@/components/utils/InputField";
-import useFormWithMutation from "@/hooks/postFormHook";
-import {
-  WorkPositionDefaultValues,
-  createWorkPositionSchema,
-} from "@/modules/WorkPosition";
 
-import { WpService } from "@/services/workPosition"; 
+import useFormWithMutation from "@/hooks/postFormHook";
+
 import { EmployeeDefaultValues, EmployeeSchema } from "@/modules/Employee";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { ROUTING } from "@/utils/routes";
+import { EmpService } from "@/services/employees";
 
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-const router = useRouter();
+  const router = useRouter();
 
-
-
-
-  const mutation = WpService.useCreateMutation();
+  const mutation = EmpService.useCreateMutation();
   const {
     register,
     handleSubmit,
@@ -51,8 +43,6 @@ const router = useRouter();
     "Employée créé avec succès"
   );
 
-
-
   const steps: StepperFormType[] = [
     {
       label: "Informations Personnelles",
@@ -66,28 +56,24 @@ const router = useRouter();
       icon: <WorkIcon color="secondary" />,
     },
     {
-      
       label: "Documents",
-      componentPage: <Documents errors={errors} register={register}  />,
+      componentPage: <Documents errors={errors} register={register} />,
       icon: <DocumentScannerIcon color="secondary" />,
     },
     {
       label: "Informations Complémentaires",
-      componentPage: <AdditionalInfo  errors={errors} register={register} />,
+      componentPage: <AdditionalInfo errors={errors} register={register} />,
       icon: <ImportContactsIcon color="secondary" />,
     },
-    
   ];
 
-
-
-  const handleNext = async () => { 
-     const isStepValid = await trigger(); 
+  const handleNext = async () => {
+    const isStepValid = await trigger();
     if (isStepValid) {
       setActiveStep((prevStep) => prevStep + 1);
     } else {
       toast.error("Veuillez remplir les champs obligatoires");
-    }  
+    }
   };
 
   const handleBack = () => {
@@ -97,7 +83,6 @@ const router = useRouter();
   const handleSuccess = () => {
     router.push(ROUTING.EMPLOYEE.MAIN);
   };
-
 
   return (
     <Stack spacing={3}>
@@ -129,7 +114,7 @@ const router = useRouter();
                 activeStep={activeStep}
                 handleNext={handleNext}
                 handleBack={handleBack}
-                handleSubmit={()=>null}
+                handleSubmit={() => null}
               />
             </Paper>
           </Grid>
