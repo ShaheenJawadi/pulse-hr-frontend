@@ -17,6 +17,7 @@ export const API_SECTIONS = {
     positions: "/structure/position",
 
   },
+  jobOffer: "/JobOffer",
 
 
 };
