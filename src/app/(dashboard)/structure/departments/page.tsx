@@ -23,6 +23,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
 import { ListingMenuItemType } from "@/types/structureTypes";
 import CardListing from "@/components/listingPages/cardsListing";
+import { DepService } from "@/services/department";
+import { Department } from "@/modules/Department";
 type FakeDepartment = {
   id: number;
   name: string;
@@ -56,14 +58,20 @@ const departementMenu: ListingMenuItemType[] = [
   },
 ];
 
+
 const MyTable = () => {
+
+  const { data, error, isLoading } = DepService.useDepartmentListQuery();
+
+
+ 
   return (
     <Stack spacing={3}>
       <PagerHeader title="Départements" />
       <TableUtils />
       <Grid container spacing={2}>
-        {[1, 2, 3, 4].map((item) => {
-          return <DepartmentCard />;
+        {data?.departments.map((item) => {
+          return <DepartmentCard department={item} />;
         })}
       </Grid>
     </Stack>
@@ -91,12 +99,12 @@ const TableUtils = () => {
   );
 };
 
-const DepartmentCard = () => {
+const DepartmentCard = ({department}:{department:Department}) => {
   return (
     <Grid item xs={3}>
       <CardListing
         menulist={departementMenu}
-        title={"Department name"}
+        title={department.name}
         notReverse={true}
       >
         <Stack spacing={2} alignItems={"center"}>
