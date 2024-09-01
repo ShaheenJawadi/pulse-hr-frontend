@@ -1,24 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
-import { Box } from "@mui/material";
+import { Box, FormControl, FormHelperText, InputLabel } from "@mui/material";
+import { useForm, Controller, Control, useController } from "react-hook-form";
 
-interface QuillEditorProps {
-  value: string;
-  onChange: (content: string) => void;
-}
-
-const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
-  const [text, setText] = useState<string>(value);
  
-  
-  const handleChange = (content: string) => {
-    setText(content)
-    onChange(content);
-  }
-
-
-
+interface Props {
+  control: any;
+  name: string;
+}
+const QuillEditor = (props: Props) => {
+  const { control, name } = props;
+ 
   const modules = {
     toolbar: [
       [
@@ -39,22 +32,45 @@ const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
       ["link"],
       ["clean"],
     ],
-    clipboard: { 
+    clipboard: {
       matchVisual: true,
     },
   };
 
+  const {
+    field: { onChange, onBlur, value },
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+    defaultValue: "",  
+  });
   return (
-    <Box  >
-      <ReactQuill
-      placeholder="Écrivez quelque chose..."
-        className="quill-editor"
-        theme="snow" 
-        modules={modules}
-        onChange={handleChange}  
-        value={text}  
-      />
-    </Box>
+    <>
+      <FormControl
+        fullWidth={true}
+        error={error ? true : false}
+        variant="outlined"
+      >
+        <Box
+          sx={{
+            border: `2px solid ${error && "var(--mui-palette-error-main)"}`, // Red border if there's an error, otherwise light gray
+          }}
+        >
+    
+          <ReactQuill
+            placeholder="Écrivez quelque chose..."
+            className="quill-editor"
+            theme="snow"
+            modules={modules}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+          />
+        </Box>{" "}
+        <FormHelperText>{error?.message}</FormHelperText>{" "}
+      </FormControl>
+    </>
   );
 };
 
