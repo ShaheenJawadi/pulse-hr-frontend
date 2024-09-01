@@ -2,7 +2,7 @@ import { CoreApi } from "@/utils/apiCore";
 import { API_SECTIONS } from "@/utils/apiEndpoints";
 import { useMutation } from "react-query";
 
-class JobOfferloyeeServiceClass {
+class JobOfferServiceClass {
   protected service;
   constructor() {
     this.service = new CoreApi(API_SECTIONS.jobOffer);
@@ -22,6 +22,6 @@ class JobOfferloyeeServiceClass {
   };
 }
 
-const JobOfferService = new JobOfferloyeeServiceClass();
+const JobOfferService = new JobOfferServiceClass();
 
 export { JobOfferService };
