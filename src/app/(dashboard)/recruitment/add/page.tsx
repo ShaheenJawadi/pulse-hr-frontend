@@ -53,11 +53,11 @@ const AddJob = () => {
   const emplacementList: SelectDataTypes[] = [
     {
       labelText: "Homme",
-      value: "h",
+      value: 3,
     },
     {
       labelText: "Femme",
-      value: "f",
+      value:2,
     },
   ];
 
@@ -126,9 +126,13 @@ const AddJob = () => {
                 </Grid>
 
                 <Grid item xs={4}>
-                  <AutocompleteTagsInput
-                    onTagsChange={(vals) => null}
+                  <AutocompleteTagsInput 
+                    name="Tags"
+                    formRegistration={register("tags")}
+                    isError={!!errors.tags}
+                    errorMessage={errors.tags?.message}
                     defaultTags={[]}
+                  
                   />
                 </Grid>
                 <Grid item xs={12}>

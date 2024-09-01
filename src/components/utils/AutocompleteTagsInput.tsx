@@ -1,44 +1,71 @@
-import { Autocomplete, Chip, TextField } from "@mui/material";
-import { useState } from "react";
+import React from 'react';
+import { Autocomplete, Chip, TextField, FormControl, FormHelperText } from '@mui/material';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-type AutocompleteTagsInputProps ={
-  onTagsChange: (tags: string[]) => void;
-  defaultTags:string[];
+interface AutocompleteTagsInputProps {
+  formRegistration?: UseFormRegisterReturn;
+  isError?: boolean;
+  errorMessage?: string;
+  defaultTags?: string[];
+  name:string 
 }
 
-const AutocompleteTagsInput =({ onTagsChange,defaultTags}:AutocompleteTagsInputProps)=>{
-    const [tags, setTags] = useState<string[]>(defaultTags);
+const AutocompleteTagsInput: React.FC<AutocompleteTagsInputProps> = ({
+  formRegistration,
+  isError,
+  errorMessage,
+  defaultTags = [],
+  name
+}) => {
+  const [tags, setTags] = React.useState<string[]>(defaultTags);
 
-    return (
-        <Autocomplete
-                  multiple
-                  freeSolo
-                  options={[]}
-                  value={tags}
-                  onChange={(event, newValue) => {
-                    setTags(newValue);
-                    onTagsChange(newValue);
-                  }}
-                  renderTags={(value: readonly string[], getTagProps) =>
-                    value.map((option: string, index: number) => (
-                      <Chip 
-                        label={option}
-                        {...getTagProps({ index })}
-                        color="secondary"
-                      />
-                    ))
-                  }
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      label="Mots clés"
-                      placeholder="Tapez et appuyez sur Entrée"
-                    />
-                  )}
-                />
-    )
-}
+  const handleTagsChange = (event: React.ChangeEvent<{}>, newValue: string[]) => {
+    setTags(newValue);
 
+    if (formRegistration) { 
+      const customEvent = {
+        target: {
+          name: formRegistration.name,
+          value: newValue,
+        },
+      };
+      formRegistration.onChange(customEvent as any);
+    }
+  };
+
+  return (
+    <FormControl fullWidth={true} error={isError} variant="outlined">
+      <Autocomplete
+        multiple
+        freeSolo
+        options={[]}
+        value={tags}
+
+        onChange={handleTagsChange}
+        renderTags={(value: readonly string[], getTagProps) =>
+          value.map((option: string, index: number) => (
+            <Chip
+              label={option}
+              {...getTagProps({ index })}
+              color="secondary"
+            />
+          ))
+        }
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            error={isError}
+           
+            placeholder="Type and press Enter"
+            inputRef={formRegistration?.ref}
+            label={name}
+          />
+        )}
+      />
+      {isError && <FormHelperText>{errorMessage}</FormHelperText>}
+    </FormControl>
+  );
+};
 
 export default AutocompleteTagsInput;
