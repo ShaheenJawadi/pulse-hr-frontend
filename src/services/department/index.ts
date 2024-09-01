@@ -1,9 +1,10 @@
+import { Department } from '@/modules/Department';
 import { CoreApi } from '@/utils/apiCore';
 import { API_SECTIONS } from '@/utils/apiEndpoints';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 
-class DeparmentServiceClass {
+class DepartmentServiceClass {
 
     protected DepService;
     constructor() {
@@ -25,9 +26,28 @@ class DeparmentServiceClass {
         });
     };
 
+/* ////////////////////////// */
+
+
+ fetchDepartmentList = async () => {
+
+    const list = await this.DepService.list();
+
+    return {
+      departments: list?.data as Department[], 
+    };
+  };
+   
+  useDepartmentListQuery = () => {
+    return useQuery<{ departments: Department[] }, Error>(
+      [API_SECTIONS.structure.department+"#list"],
+      this.fetchDepartmentList
+    );
+  };
+
 
 }
 
-const DepService = new DeparmentServiceClass();
+const DepService = new DepartmentServiceClass();
 
 export { DepService };

@@ -55,13 +55,13 @@ export class CoreApi {
         }
     }
 
-    async list(params: any = {}): Promise<any[]> {
+    async list(params: any = {}): Promise<any> {
         try {
             const res: AxiosResponse<responseType> = await this.http.get(
                 `${this.base_path}${API_ENDPOINTS.LIST}`,
                 { params }
             );
-            return res.data.data;
+            return res.data;
         } catch (err) {
             throw err;
         }
