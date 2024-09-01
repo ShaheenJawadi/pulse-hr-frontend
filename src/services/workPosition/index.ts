@@ -38,7 +38,7 @@ fetchWorkPositionsList = async () => {
     };
   };
    
-  useDepartmentListQuery = () => {
+  useListerQuery = () => {
     return useQuery<{ positions: WorkPOsition[] }, Error>(
       [API_SECTIONS.structure.positions+"#list"],
       this.fetchWorkPositionsList

@@ -25,6 +25,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
 import { ListingMenuItemType } from "@/types/structureTypes";
 import CardListing from "@/components/listingPages/cardsListing";
+import { WpService } from "@/services/workPosition";
+import { WorkPOsition } from "@/modules/WorkPosition";
 type FakePOSTES = {
   id: number;
   name: string;
@@ -51,6 +53,8 @@ const JobTitlesList = () => {
     openDrawer("ADD_JOB_TITLE", null);
   };
 
+  const { data, error, isLoading } = WpService.useListerQuery();
+
   return (
     <Stack spacing={3}>
       <PagerHeader title="Postes" />
@@ -71,12 +75,12 @@ const JobTitlesList = () => {
       </Stack>
       <Box>
         <Grid container spacing={2}>
-          {[1, 2, 3, 4].map((item) => {
+          {data?.positions?.map((item) => {
             return (
               <Grid item xs={3}>
-                <CardListing  title={"eng--j title"} subTitle={"Designation"} menulist={jobTitlesMenu}>
+                <CardListing  title={item.designation} subTitle={"Designation"} menulist={jobTitlesMenu}>
 
-                  <CardItemContent/>
+                  <CardItemContent single={item}/>
                 </CardListing>
              
               </Grid>
@@ -88,7 +92,7 @@ const JobTitlesList = () => {
   );
 };
 
-const CardItemContent = () => {
+const CardItemContent = ({single}:{single:WorkPOsition}) => {
   return (
     <>
       <Box>
