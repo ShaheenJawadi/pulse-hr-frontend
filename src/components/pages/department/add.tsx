@@ -9,6 +9,8 @@ import {
   departmentDefaultValues,
 } from "@/modules/Department";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
+import { SelectField } from "@/components/utils/SelectField";
+import { SelectDataTypes } from "@/types/structureTypes";
 
 const AddDepartment = () => {
   const mutation = DepService.useCreateMutation();
@@ -22,13 +24,24 @@ const AddDepartment = () => {
     departmentDefaultValues,
     createDepartmentSchema,
     mutation.mutateAsync,
-    ()=> handleSuccess(),
+    () => handleSuccess(),
     "Department créé avec succès"
   );
 
-  const handleSuccess =()=>{ 
+  const handleSuccess = () => {
     closeDrawer();
-  }
+  };
+
+  const emplacementList: SelectDataTypes[] = [
+    {
+      labelText: "Homme",
+      value: 3,
+    },
+    {
+      labelText: "Femme",
+      value: 5,
+    },
+  ];
 
   return (
     <Box component={"form"} onSubmit={handleSubmit(onSubmit)}>
@@ -39,6 +52,13 @@ const AddDepartment = () => {
           errorMessage={errors?.name?.message}
           label="Designation"
           type={"text"}
+        />
+        <SelectField
+          label={"Manager"}
+          selectData={emplacementList}
+          formRegistartion={register("manager_id")}
+          isError={errors?.manager_id ? true : false}
+          errorMessage={errors?.manager_id?.message}
         />
         <InputField
           formRegistartion={register("location")}
