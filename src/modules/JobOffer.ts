@@ -24,11 +24,19 @@ export const createJobOfferSchema = yup.object().shape({
     contract_type_id: yup.number().positive().integer(),
     location: yup.string().required("Le lieu est requis"),
     min_experience: yup.number().required("L'expérience minimale est requise").positive().integer(),
-    max_experience: yup.number().positive().integer(), 
+ 
+    max_experience: yup
+    .number()
+    .positive()
+    .integer()
+    .when("intervalle", {
+      is: true,
+      then: (schema) => schema.required("L'expérience maximale est requise"),
+    }),
     tags: yup.array().of(yup.string()),
     short_description: yup.string().required("La description courte est requise"),
     requirements: yup.string().required("Les exigences sont requises"),
-    expire_at: yup.date(),
+    expire_at: yup.string(),
     status: yup.string().required("Le statut est requis").oneOf(["open", "closed"], "Le statut doit être 'active' ou 'inactive'"),
 });
 export const jobOfferDefaultValues: JobOffer = {

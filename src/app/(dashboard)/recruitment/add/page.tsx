@@ -28,11 +28,13 @@ import {
 } from "@/modules/JobOffer";
 import { useRouter } from "next/navigation";
 import { ROUTING } from "@/utils/routes";
+import { UseFormRegisterReturn, UseFormSetValue } from "react-hook-form";
 const AddJob = () => {
   const mutation = JobOfferService.useCreateMutation();
 
   const router = useRouter();
   const {
+    setValue, 
     control,
     register,
     handleSubmit,
@@ -57,7 +59,7 @@ const AddJob = () => {
     },
     {
       labelText: "Femme",
-      value:2,
+      value: 2,
     },
   ];
 
@@ -111,7 +113,19 @@ const AddJob = () => {
                 </Grid>
 
                 <Grid item xs={4}>
-                  <ExperianceYears />
+                  <ExperianceYears
+                  setValue={setValue}
+                    minExperienceProps={{
+                      formRegistartion: register("min_experience"),
+                      isError: !!errors.min_experience,
+                      errorMessage: errors.min_experience?.message,
+                    }}
+                    maxExperienceProps={{
+                      formRegistartion: register("max_experience"),
+                      isError: !!errors.max_experience,
+                      errorMessage: errors.max_experience?.message,
+                    }}
+                  />
                 </Grid>
 
                 <Grid item xs={4}>
@@ -126,20 +140,17 @@ const AddJob = () => {
                 </Grid>
 
                 <Grid item xs={4}>
-                  <AutocompleteTagsInput 
+                  <AutocompleteTagsInput
                     name="Tags"
                     formRegistration={register("tags")}
                     isError={!!errors.tags}
                     errorMessage={errors.tags?.message}
                     defaultTags={[]}
-                  
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <Typography fontSize={18}>Exigences du poste</Typography>
-                  <QuillEditor
-                        control={control} name="requirements"
-                  />
+                  <QuillEditor control={control} name="requirements" />
                 </Grid>
                 <Grid item xs={4}>
                   <InputField
@@ -186,8 +197,33 @@ const AddJob = () => {
   );
 };
 
-const ExperianceYears = () => {
+type ExperianceYearsProps = {
+  minExperienceProps: {
+    formRegistartion: UseFormRegisterReturn;
+    isError: boolean;
+    errorMessage?: string;
+  };
+  maxExperienceProps: {
+    formRegistartion: UseFormRegisterReturn;
+    isError: boolean;
+    errorMessage?: string;
+  };
+  setValue: UseFormSetValue<any>;
+};
+
+const ExperianceYears = ({
+  minExperienceProps,
+  maxExperienceProps,
+  setValue,
+}: ExperianceYearsProps) => {
   const [intervalle, setIntervalle] = useState<boolean>(false);
+
+  const handleToggleIntervalle = (n: boolean) => {
+    setIntervalle(n);
+    if (!n) {
+      setValue("max_experience", null);
+    }
+  };
 
   return (
     <Stack
@@ -197,13 +233,24 @@ const ExperianceYears = () => {
       justifyContent={"center"}
     >
       <Typography>Expérience</Typography>
-      <InputField label="min" type="number" />
+      <InputField
+        label="min"
+        type="number"
+        formRegistartion={minExperienceProps.formRegistartion}
+        isError={minExperienceProps.isError}
+        errorMessage={minExperienceProps.errorMessage}
+      />
       {intervalle && (
         <>
-          {" "}
           <Typography>-</Typography>
-          <InputField label="max" type="number" />{" "}
-          <IconButton onClick={() => setIntervalle(false)}>
+          <InputField
+            label="max"
+            type="number"
+            formRegistartion={maxExperienceProps.formRegistartion}
+            isError={maxExperienceProps.isError}
+            errorMessage={maxExperienceProps.errorMessage}
+          />
+          <IconButton onClick={() => handleToggleIntervalle(false)}>
             <CloseIcon />
           </IconButton>
         </>
@@ -211,7 +258,7 @@ const ExperianceYears = () => {
       {!intervalle && (
         <Button
           sx={{ textWrap: "nowrap" }}
-          onClick={() => setIntervalle(true)}
+          onClick={() => handleToggleIntervalle(true)}
           size="small"
         >
           Intervalle ?
