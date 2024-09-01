@@ -1,10 +1,13 @@
-export interface JobOffer {
+interface JobOffer {
     id?: number;
     title: string;
-    description: string;
+    department_id: number;
+    location: string;
+    min_experience: number;
+    max_experience: number;
+    tags: string;
+    short_description: string;
     requirements: string;
-    posting_date: string;
-    status: 'open' | 'closed';
-    created_at?: string;
-    updated_at?: string;
+    expire_at: string;
+    status: string;
 }

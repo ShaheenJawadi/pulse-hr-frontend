@@ -1,7 +1,6 @@
-export interface ReviewReport {
+interface ReviewReport {
     id?: number;
     review_id: number;
-    report_path?: string;
-    created_at?: string;
-    updated_at?: string;
+    report_path: string;
+    created_at: string;
 }
