@@ -25,12 +25,13 @@ import {
 import { WpService } from "@/services/workPosition"; 
 import { EmployeeDefaultValues, EmployeeSchema } from "@/modules/Employee";
 import { toast } from "react-toastify";
-
+import { useRouter } from "next/navigation";
+import { ROUTING } from "@/utils/routes";
 
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
-
+const router = useRouter();
 
 
 
@@ -80,13 +81,12 @@ const AddEmployeePage = () => {
 
 
 
-  const handleNext = async () => {
-   /*  setActiveStep((prevStep) => prevStep + 1); */
+  const handleNext = async () => { 
      const isStepValid = await trigger(); 
     if (isStepValid) {
       setActiveStep((prevStep) => prevStep + 1);
     } else {
-      toast.error('err');
+      toast.error("Veuillez remplir les champs obligatoires");
     }  
   };
 
@@ -95,7 +95,7 @@ const AddEmployeePage = () => {
   };
 
   const handleSuccess = () => {
-    alert("submitted");
+    router.push(ROUTING.EMPLOYEE.MAIN);
   };
 
 

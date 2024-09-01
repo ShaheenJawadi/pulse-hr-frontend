@@ -11,13 +11,13 @@ export type EmployeeType = {
     avatar?: string | null;
     hire_date: string;
     end_contract?: string | null;
-    contract_type_id: number;
-    department_id: number;
-    shift_id: number;
+    contract_type_id: number | null;
+    department_id: number | null;
+    shift_id: number | null;
     supervisor_id?: number | null;
-    position_id: number;
+    position_id: number | null;
     additional_infos?: EmergencyContactType | null;
-    user_id?: number;
+    user_id?: number | null;
 };
   type EmergencyContactType = {
     contactName: string;
@@ -40,11 +40,11 @@ export const EmployeeDefaultValues: EmployeeType = {
     avatar: null,
     hire_date: "",
     end_contract: null,
-    contract_type_id: 0,
-    department_id: 0,
-    shift_id: 0,
+    contract_type_id: null,
+    department_id: null,
+    shift_id: null,
     supervisor_id: null,
-    position_id: 0, 
+    position_id: null, 
     additional_infos: {
         contactName: "",
         contactRelation: "",
@@ -52,7 +52,7 @@ export const EmployeeDefaultValues: EmployeeType = {
         maritalStatus: "",
         bloodGroup: ""
       },
-    user_id: 0,
+    user_id: null,
 };
 
 
@@ -114,7 +114,7 @@ export const EmployeeSchema = yup.object().shape({
  const EmployeeSchemaStep4 = yup.object().shape({
 
     additional_infos: yup.object().shape({
-        contactName: yup.string().required("Entrez un nom pour le contact d'urgence"),
+        contactName: yup.string().email('sdemail').required("Entrez un nom pour le contact d'urgence"),
         contactRelation: yup.string().required("Entrez une relation pour le contact d'urgence"),
         contactPhone: yup.string().required("Entrez un numéro de téléphone pour le contact d'urgence"),
         maritalStatus: yup.string().required("Sélectionnez un état civil"),
