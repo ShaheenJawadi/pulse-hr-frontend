@@ -114,11 +114,11 @@ export const EmployeeSchema = yup.object().shape({
  const EmployeeSchemaStep4 = yup.object().shape({
 
     additional_infos: yup.object().shape({
-        contactName: yup.string().required("Entrez un nom pour le contact d'urgence"),
-        contactRelation: yup.string().required("Entrez une relation pour le contact d'urgence"),
-        contactPhone: yup.string().required("Entrez un numéro de téléphone pour le contact d'urgence"),
-        maritalStatus: yup.string().required("Sélectionnez un état civil"),
-        bloodGroup: yup.string().required("Sélectionnez un groupe sanguin"),
+        contactName: yup.string(),
+        contactRelation: yup.string(),
+        contactPhone: yup.string(),
+        maritalStatus: yup.string(),
+        bloodGroup: yup.string(),
       })
  
 });
