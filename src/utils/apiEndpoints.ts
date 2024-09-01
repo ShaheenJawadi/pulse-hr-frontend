@@ -19,5 +19,10 @@ export const API_SECTIONS = {
   },
   jobOffer: "/JobOffer",
 
+  publicListing: {
+    apply: "/publicListing/apply", 
+
+  },
+
 
 };
