@@ -16,9 +16,17 @@ export type EmployeeType = {
     shift_id: number;
     supervisor_id?: number | null;
     position_id: number;
-    additional_infos?: string | null;
+    additional_infos?: EmergencyContactType | null;
     user_id?: number;
 };
+  type EmergencyContactType = {
+    contactName: string;
+    contactRelation: string;
+    contactPhone: string;
+    maritalStatus: string;
+    bloodGroup: string;
+  };
+  
 
 
 
@@ -36,8 +44,14 @@ export const EmployeeDefaultValues: EmployeeType = {
     department_id: 0,
     shift_id: 0,
     supervisor_id: null,
-    position_id: 0,
-    additional_infos: null,
+    position_id: 0, 
+    additional_infos: {
+        contactName: "",
+        contactRelation: "",
+        contactPhone: "",
+        maritalStatus: "",
+        bloodGroup: ""
+      },
     user_id: 0,
 };
 
@@ -99,9 +113,14 @@ export const EmployeeSchema = yup.object().shape({
 
  const EmployeeSchemaStep4 = yup.object().shape({
 
-
-
-    additional_infos: yup.string().nullable().defined(),
+    additional_infos: yup.object().shape({
+        contactName: yup.string().required("Entrez un nom pour le contact d'urgence"),
+        contactRelation: yup.string().required("Entrez une relation pour le contact d'urgence"),
+        contactPhone: yup.string().required("Entrez un numéro de téléphone pour le contact d'urgence"),
+        maritalStatus: yup.string().required("Sélectionnez un état civil"),
+        bloodGroup: yup.string().required("Sélectionnez un groupe sanguin"),
+      })
+ 
 });
 
 
