@@ -14,13 +14,12 @@ import {
 import Image from "next/image";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-interface PersonalInfoProps {
+interface Props {
   register: UseFormRegister<EmployeeType>;
   errors: FieldErrors<EmployeeType>;
 }
 
-const PersonalInfo = ( props:PersonalInfoProps) => {
-
+const PersonalInfo = (props: Props) => {
   const { register, errors } = props;
   const photoSize = 250;
   const emplacementList: SelectDataTypes[] = [
@@ -63,25 +62,38 @@ const PersonalInfo = ( props:PersonalInfoProps) => {
       <Box flex={1}>
         <Grid container spacing={4}>
           <Grid item xs={6}>
-            <InputField label="Nom"  formRegistartion={register("name")}
-          isError={errors?.name ? true : false}
-          errorMessage={errors?.name?.message} />
+            <InputField
+              label="Nom"
+              formRegistartion={register("name")}
+              isError={errors?.name ? true : false}
+              errorMessage={errors?.name?.message}
+            />
           </Grid>
           <Grid item xs={6}>
-            <InputField label="Prenom" />
+            <InputField label="Prenom"   formRegistartion={register("last_name")}
+              isError={errors?.last_name ? true : false}
+              errorMessage={errors?.last_name?.message}/>
           </Grid>
           <Grid item xs={6}>
-            <InputField label="Email" type="email" />
+            <InputField label="Email" type="email"   formRegistartion={register("email")}
+              isError={errors?.email ? true : false}
+              errorMessage={errors?.email?.message} />
           </Grid>
           <Grid item xs={6}>
-            <InputField label="Numéro de téléphone" />
+            <InputField label="Numéro de téléphone"   formRegistartion={register("phone")}
+              isError={errors?.phone ? true : false}
+              errorMessage={errors?.phone?.message}/>
           </Grid>
           <Grid item xs={6}>
-            <InputField label="Date de naissance" type="date" />
+            <InputField label="Date de naissance"   formRegistartion={register("birthday")}
+              isError={errors?.birthday ? true : false}
+              errorMessage={errors?.birthday?.message} type="date" />
           </Grid>
 
           <Grid item xs={6}>
-            <SelectField label={"Genre"} selectData={emplacementList} />
+            <SelectField label={"Genre"} selectData={emplacementList}   formRegistartion={register("sexe")}
+              isError={errors?.sexe ? true : false}
+              errorMessage={errors?.sexe?.message} />
           </Grid>
         </Grid>
       </Box>
@@ -89,8 +101,9 @@ const PersonalInfo = ( props:PersonalInfoProps) => {
   );
 };
 
-const ProfessionalInfo = () => {
- 
+const ProfessionalInfo = (props: Props) => {
+  const { register, errors } = props;
+
   const emplacementList: SelectDataTypes[] = [
     {
       labelText: "Homme",
@@ -106,30 +119,48 @@ const ProfessionalInfo = () => {
       <Box flex={1}>
         <Grid container spacing={4}>
           <Grid item xs={4}>
-            <SelectField label={"Departement"} selectData={emplacementList} />
+            <SelectField label={"Departement"}   formRegistartion={register("department_id")}
+              isError={errors?.department_id ? true : false}
+              errorMessage={errors?.department_id?.message} selectData={emplacementList} />
           </Grid>
           <Grid item xs={4}>
-            <SelectField label={"Poste"} selectData={emplacementList} />
+            <SelectField label={"Poste"}   formRegistartion={register("position_id")}
+              isError={errors?.position_id ? true : false}
+              errorMessage={errors?.position_id?.message} selectData={emplacementList} />
           </Grid>
           <Grid item xs={4}>
-            <SelectField label={"Superviseur"} selectData={emplacementList} />
+            <SelectField label={"Superviseur"} formRegistartion={register("supervisor_id")}
+              isError={errors?.supervisor_id ? true : false}
+              errorMessage={errors?.supervisor_id?.message}   selectData={emplacementList} />
           </Grid>
           <Grid item xs={4}>
-            <SelectField label={"Horaire de Travail "} selectData={emplacementList} />
+            <SelectField
+              label={"Horaire de Travail "}
+              formRegistartion={register("shift_id")}
+              isError={errors?.shift_id ? true : false}
+              errorMessage={errors?.shift_id?.message} 
+              selectData={emplacementList}
+            />
           </Grid>
           <Grid item xs={4}>
-            <InputField label="Date d'Embauche" type="date" />
+            <InputField label="Date d'Embauche" formRegistartion={register("hire_date")}
+              isError={errors?.hire_date ? true : false}
+              errorMessage={errors?.hire_date?.message}  type="date" />
           </Grid>
 
           <Grid item xs={4}>
-            <SelectField label={"Type de contrat"} selectData={emplacementList} />
+            <SelectField
+              label={"Type de contrat"}
+              formRegistartion={register("contract_type_id")}
+              isError={errors?.contract_type_id ? true : false}
+              errorMessage={errors?.contract_type_id?.message} 
+              selectData={emplacementList}
+            />
           </Grid>
           <Grid item xs={4}>
-            <InputField label="Date de Fin de Contrat " type="date" />
-          </Grid>
-
-          <Grid item xs={4}>
-            <SelectField label={"Type d'emploi"} selectData={emplacementList} />
+            <InputField label="Date de Fin de Contrat " formRegistartion={register("end_contract")}
+              isError={errors?.end_contract ? true : false}
+              errorMessage={errors?.end_contract?.message}  type="date" />
           </Grid>
         </Grid>
       </Box>
@@ -137,46 +168,53 @@ const ProfessionalInfo = () => {
   );
 };
 
-const AdditionalInfo = () => {
-    const emplacementList: SelectDataTypes[] = [
-        {
-          labelText: "Homme",
-          value: "h",
-        },
-        {
-          labelText: "Femme",
-          value: "f",
-        },
-      ];
-      return (
-        <Stack direction={"row"} spacing={4} alignItems={"center"}>
-          <Box flex={1}>
-            <Grid container spacing={4}>
-              
-              <Grid item xs={4}> 
-                <InputField  label={"Nom du Contact d'Urgence"} />
-              </Grid>
-              <Grid item xs={4}> 
-                <InputField label={"Relation avec le Contact d'Urgence "}    />
-              </Grid>
-              <Grid item xs={4}>
-                <InputField label="Téléphone du Contact d'Urgence"   />
-              </Grid>
-    
-              <Grid item xs={4}>
-                <SelectField label={"État Civil"} selectData={emplacementList} />
-              </Grid>
-              <Grid item xs={4}>
-                <SelectField label={"groupe sanguin"} selectData={emplacementList} />
-              </Grid>
-            </Grid>
-          </Box>
-        </Stack>
-      );
+const AdditionalInfo = (props: Props) => {
+  const { register, errors } = props;
+
+  const emplacementList: SelectDataTypes[] = [
+    {
+      labelText: "Homme",
+      value: "h",
+    },
+    {
+      labelText: "Femme",
+      value: "f",
+    },
+  ];
+
+  return (
+    <Stack direction={"row"} spacing={4} alignItems={"center"}>
+      <Box flex={1}>
+        <Grid container spacing={4}>
+          <Grid item xs={4}>
+            <InputField label={"Nom du Contact d'Urgence"} />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField label={"Relation avec le Contact d'Urgence "} />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField label="Téléphone du Contact d'Urgence" />
+          </Grid>
+
+          <Grid item xs={4}>
+            <SelectField label={"État Civil"} selectData={emplacementList} />
+          </Grid>
+          <Grid item xs={4}>
+            <SelectField
+              label={"groupe sanguin"}
+              selectData={emplacementList}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+    </Stack>
+  );
 };
 
-const Documents = () => {
-    return <div>Addit</div>;
-  };
-  
-export { PersonalInfo, ProfessionalInfo, AdditionalInfo,Documents };
+const Documents = (props: Props) => {
+  const { register, errors } = props;
+
+  return <div>Addit</div>;
+};
+
+export { PersonalInfo, ProfessionalInfo, AdditionalInfo, Documents };

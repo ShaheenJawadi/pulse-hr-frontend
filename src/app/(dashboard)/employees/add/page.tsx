@@ -44,7 +44,7 @@ const AddEmployeePage = () => {
     trigger,
   } = useFormWithMutation(
     EmployeeDefaultValues,
-    EmployeeSchema,
+    EmployeeSchema[activeStep],
     mutation.mutateAsync,
     () => handleSuccess(),
     "Employée créé avec succès"
@@ -61,18 +61,18 @@ const AddEmployeePage = () => {
 
     {
       label: "Détails d'Emploi",
-      componentPage: <ProfessionalInfo />,
+      componentPage: <ProfessionalInfo errors={errors} register={register} />,
       icon: <WorkIcon color="secondary" />,
     },
     {
       
       label: "Documents",
-      componentPage: <Documents />,
+      componentPage: <Documents errors={errors} register={register}  />,
       icon: <DocumentScannerIcon color="secondary" />,
     },
     {
       label: "Informations Complémentaires",
-      componentPage: <AdditionalInfo />,
+      componentPage: <AdditionalInfo  errors={errors} register={register} />,
       icon: <ImportContactsIcon color="secondary" />,
     },
     
@@ -81,12 +81,13 @@ const AddEmployeePage = () => {
 
 
   const handleNext = async () => {
-    const isStepValid = await trigger(); 
+   /*  setActiveStep((prevStep) => prevStep + 1); */
+     const isStepValid = await trigger(); 
     if (isStepValid) {
       setActiveStep((prevStep) => prevStep + 1);
     } else {
       toast.error('err');
-    }
+    }  
   };
 
   const handleBack = () => {
