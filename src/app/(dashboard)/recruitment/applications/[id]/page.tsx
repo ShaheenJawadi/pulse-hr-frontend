@@ -25,10 +25,12 @@ import { useState } from "react";
 import { CustomInfoData } from "@/components/utils/InfoDataCustom";
 import { JobOfferService } from "@/services/jobOffer";
 import { Candidate } from "@/modules/Candidate";
+import { useRouter } from "next/router";
 
-const ApplicationsListPage = () => {
-
-  const { data, error, isLoading } = JobOfferService.useSingleQuery(1);
+const ApplicationsListPage = ({ params }: { params: { id: number } }) => {
+ 
+  
+  const { data, error, isLoading } = JobOfferService.useSingleQuery(params.id);
   return (
     <Stack spacing={3}>
       <PagerHeader title={'liste des candidatures pour "Full Stack Dev"'} />
