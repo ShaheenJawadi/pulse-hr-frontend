@@ -10,6 +10,7 @@ interface JobOffer {
     max_experience: null|number;
     tags: string;
     short_description: string;
+    contract_type_id: number | null;
     requirements: string;
     expire_at: string;
     status: string;
@@ -19,6 +20,8 @@ interface JobOffer {
 export const createJobOfferSchema = yup.object().shape({
     title: yup.string().required("Le titre est requis"),
     department_id: yup.number().required("Le département est requis").positive().integer(),
+   
+    contract_type_id: yup.number().positive().integer(),
     location: yup.string().required("Le lieu est requis"),
     min_experience: yup.number().required("L'expérience minimale est requise").positive().integer(),
     max_experience: yup.number().required("L'expérience maximale est requise").positive().integer(),
@@ -34,6 +37,7 @@ export const jobOfferDefaultValues: JobOffer = {
     location: "",
     min_experience: null,
     max_experience: null,
+    contract_type_id: null,
     tags: "",
     short_description: "",
     requirements: "",
