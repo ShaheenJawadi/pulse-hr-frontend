@@ -23,15 +23,22 @@ import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { CustomInfoData } from "@/components/utils/InfoDataCustom";
+import { JobOfferService } from "@/services/jobOffer";
 
 const ApplicationsListPage = () => {
+
+  const { data, error, isLoading } = JobOfferService.useSingleQuery(1);
   return (
     <Stack spacing={3}>
       <PagerHeader title={'liste des candidatures pour "Full Stack Dev"'} />
       <Box>
         <Grid spacing={2} container>
           <Grid item sm={5}>
-            <JobDescripton />
+            <Card>
+              <CardContent>
+                <SingleJobGrid single={data!} />
+              </CardContent>
+            </Card>
           </Grid>
           <Grid item sm={7}>
             <Stack spacing={2}>
@@ -58,25 +65,6 @@ const ApplicationsListPage = () => {
             </Stack>
           </Grid>
         </Grid>
-      </Box>
-    </Stack>
-  );
-};
-
-const JobDescripton = () => {
-  return (
-    <Stack
-      sx={{ position: "sticky", top: 30 }}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <Box sx={{ width: "100%" }}>
-        <Card>
-          <CardContent>
-        
-            <SingleJobGrid />
-          </CardContent>
-        </Card>
       </Box>
     </Stack>
   );
@@ -132,7 +120,7 @@ const SingleApplication = () => {
 
 const CandidatInfo = () => {
   return (
-    <CardContent >
+    <CardContent>
       <Stack spacing={1}>
         <CustomInfoData title={"Nom :"} info={"Jawadi"} />
         <CustomInfoData title={"Prenom :"} info={"shaheen"} />
@@ -141,29 +129,37 @@ const CandidatInfo = () => {
         <CustomInfoData title={"Date de naissance  :"} info={"12/04/1998"} />
         <CustomInfoData title={"Poste actuel  :"} info={"Full Stack dev"} />
         <CustomInfoData title={"LinkedIn :"} info={"linkedin.com/"} />
-        <CustomInfoData title={"Github :"} info={"https://github.com/ShaheenJawadi"} />
-        <CustomInfoData title={"Motivation :"} info={"qsjkhd jsqdtgq sgduy za g uagyz gyuyzagdhgza jd fzaudfazfdhzagfduyzfa ud uzyfduyazhdigajkzgdjzahgduyazgdjaghzduyg azudyfajhzgfdsqghfdhgfqshdqydtazdapodjmlasdjoiqji"} />
-
-
+        <CustomInfoData
+          title={"Github :"}
+          info={"https://github.com/ShaheenJawadi"}
+        />
+        <CustomInfoData
+          title={"Motivation :"}
+          info={
+            "qsjkhd jsqdtgq sgduy za g uagyz gyuyzagdhgza jd fzaudfazfdhzagfduyzfa ud uzyfduyazhdigajkzgdjzahgduyazgdjaghzduyg azudyfajhzgfdsqghfdhgfqshdqydtazdapodjmlasdjoiqji"
+          }
+        />
 
         <Button>Cv</Button>
         <Button>lettre de motivation</Button>
 
-
-
-<Box>
-    <Stack marginTop={4} direction={"row"} alignContent={"center"} alignItems={"center"} justifyContent={"center"} spacing={4}>
-        <Button variant="contained"  color="error">rejeter</Button>
-        <Button  variant="contained" color="success">mis en présélection</Button>
-
-    </Stack>
-</Box>
-
-
-
-
-
-
+        <Box>
+          <Stack
+            marginTop={4}
+            direction={"row"}
+            alignContent={"center"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            spacing={4}
+          >
+            <Button variant="contained" color="error">
+              rejeter
+            </Button>
+            <Button variant="contained" color="success">
+              mis en présélection
+            </Button>
+          </Stack>
+        </Box>
       </Stack>
     </CardContent>
   );

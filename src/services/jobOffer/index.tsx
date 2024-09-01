@@ -44,6 +44,24 @@ useListerQuery = () => {
 };
 
 
+
+
+
+getSingle = async (id: string | number): Promise<JobOffer> => {
+  const single = await this.service.findOne(id);
+  return single;
+};
+
+useSingleQuery = (id: string | number) => {
+  return useQuery<JobOffer, Error>(
+    [API_SECTIONS.jobOffer, id],
+    () => this.getSingle(id)  
+  );
+};
+
+
+
+
 }
 
 const JobOfferService = new JobOfferServiceClass();

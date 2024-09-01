@@ -8,8 +8,7 @@ const SingleJobGrid = ({single}:{single:JobOffer}) => {
   return ( <Stack sx={{width:"100%"}} spacing={2}>
     <Box>
       <Typography variant="body1">
-        {single?.short_description}
-        qslkdjlsqkjd klsqjdklsqj dkl jsqkldjsqkljdqskl djsqlk dl
+        {single?.short_description} 
       </Typography>
     </Box>
     <Box>

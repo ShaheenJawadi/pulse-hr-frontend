@@ -1,5 +1,6 @@
 
 import * as yup from "yup";
+import { Candidate } from "./Candidate";
 
 export interface JobOffer {
     id?: number;
@@ -16,6 +17,8 @@ export interface JobOffer {
     status: string;
 
     intervalle?: boolean;
+
+    candidates?: Candidate[];
 }
 
 

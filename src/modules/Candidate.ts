@@ -3,7 +3,7 @@
 
 import * as yup from "yup";
 
-interface Candidate {
+export interface Candidate {
     id?: number;
     full_name: string;
     email: string;
