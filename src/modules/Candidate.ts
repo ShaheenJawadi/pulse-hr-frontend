@@ -42,7 +42,7 @@ export const candidateSchema = yup.object().shape({
     linkedin_profile: yup.string().url("Le profil LinkedIn doit être une URL valide").nullable(),
     github_profile: yup.string().url("Le profil GitHub doit être une URL valide").nullable(),
     motivation: yup.string().nullable(),
-    birthday: yup.date().required("La date de naissance est requise").nullable(),
+    birthday: yup.string().required("La date de naissance est requise").nullable(),
     resume_path: yup.string().url("Le chemin du CV doit être une URL valide").nullable(),
     job_offer_id: yup.number(),
 });
