@@ -14,14 +14,60 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import WorkIcon from "@mui/icons-material/Work";
 import InfoIcon from "@mui/icons-material/Info";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
+import { useDrawerAction } from "@/components/drawer/drawer.context";
+import { InputField } from "@/components/utils/InputField";
+import useFormWithMutation from "@/hooks/postFormHook";
+import {
+  WorkPositionDefaultValues,
+  createWorkPositionSchema,
+} from "@/modules/WorkPosition";
+
+import { WpService } from "@/services/workPosition"; 
+import { EmployeeDefaultValues, EmployeeSchema } from "@/modules/Employee";
+
 
 const AddEmployeePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
+
+
+  const handleNext = () => {
+    const nextStep =
+      activeStep + 1 === steps.length ? activeStep : activeStep + 1;
+
+    setActiveStep(nextStep);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSuccess = () => {
+    alert("submitted");
+  };
+
+
+
+  const mutation = WpService.useCreateMutation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    onSubmit,
+  } = useFormWithMutation(
+    EmployeeDefaultValues,
+    EmployeeSchema,
+    mutation.mutateAsync,
+    () => handleSuccess(),
+    "Poste créé avec succès"
+  );
+
+
+
   const steps: StepperFormType[] = [
     {
       label: "Informations Personnelles",
-      componentPage: <PersonalInfo />,
+      componentPage: <PersonalInfo errors={errors} register={register} />,
       icon: <InfoIcon color="secondary" />,
     },
 
@@ -44,20 +90,6 @@ const AddEmployeePage = () => {
     
   ];
 
-  const handleNext = () => {
-    const nextStep =
-      activeStep + 1 === steps.length ? activeStep : activeStep + 1;
-
-    setActiveStep(nextStep);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSubmit = () => {
-    alert("submitted");
-  };
 
   return (
     <Stack spacing={3}>
@@ -89,7 +121,7 @@ const AddEmployeePage = () => {
                 activeStep={activeStep}
                 handleNext={handleNext}
                 handleBack={handleBack}
-                handleSubmit={handleSubmit}
+                handleSubmit={()=>null}
               />
             </Paper>
           </Grid>

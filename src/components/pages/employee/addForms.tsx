@@ -1,5 +1,6 @@
 import { InputField } from "@/components/utils/InputField";
 import { SelectField } from "@/components/utils/SelectField";
+import { EmployeeType } from "@/modules/Employee";
 import { SelectDataTypes } from "@/types/structureTypes";
 import {
   Avatar,
@@ -11,8 +12,16 @@ import {
   Stack,
 } from "@mui/material";
 import Image from "next/image";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-const PersonalInfo = () => {
+interface PersonalInfoProps {
+  register: UseFormRegister<EmployeeType>;
+  errors: FieldErrors<EmployeeType>;
+}
+
+const PersonalInfo = ( props:PersonalInfoProps) => {
+
+  const { register, errors } = props;
   const photoSize = 250;
   const emplacementList: SelectDataTypes[] = [
     {
@@ -54,7 +63,9 @@ const PersonalInfo = () => {
       <Box flex={1}>
         <Grid container spacing={4}>
           <Grid item xs={6}>
-            <InputField label="Nom" />
+            <InputField label="Nom"  formRegistartion={register("name")}
+          isError={errors?.name ? true : false}
+          errorMessage={errors?.name?.message} />
           </Grid>
           <Grid item xs={6}>
             <InputField label="Prenom" />
