@@ -33,6 +33,8 @@ import { SelectField } from "@/components/utils/SelectField";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
 import SingleJobGrid from "@/components/pages/recruitement/SingleJobGrid";
+import { WpService } from "@/services/workPosition";
+import { JobOfferService } from "@/services/jobOffer";
 type FakePOSTES = {
   id: number;
   name: string;
@@ -70,6 +72,9 @@ const RecrutementPage = () => {
       value: 1,
     },
   ];
+
+  const { data, error, isLoading } = JobOfferService.useListerQuery();
+
   return (
     <Stack spacing={3}>
       <PagerHeader title="Offre d'emploi" />
@@ -95,12 +100,12 @@ const RecrutementPage = () => {
 
       <Box>
         <Grid container spacing={2}>
-          {[1, 2, 3].map((item) => {
+          {data?.offres.map((item) => {
             return (
               <Grid item xs={4}>
                
-                  <CardListing title={"jobtitle"} menulist={jobTitlesMenu}>
-                    <SingleJobGrid />
+                  <CardListing title={item.title} menulist={jobTitlesMenu}>
+                    <SingleJobGrid single={item} />
                   </CardListing> 
               </Grid>
             );

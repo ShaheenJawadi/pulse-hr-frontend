@@ -70,10 +70,10 @@ const JobDescripton = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <Box sx={{ maxWidth: 800 }}>
+      <Box sx={{ width: "100%" }}>
         <Card>
           <CardContent>
-            {" "}
+        
             <SingleJobGrid />
           </CardContent>
         </Card>

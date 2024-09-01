@@ -1,6 +1,7 @@
+import { JobOffer } from "@/modules/JobOffer";
 import { CoreApi } from "@/utils/apiCore";
 import { API_SECTIONS } from "@/utils/apiEndpoints";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 class JobOfferServiceClass {
   protected service;
@@ -20,6 +21,29 @@ class JobOfferServiceClass {
       onError: (error) => {},
     });
   };
+
+
+
+  /* ////////////////////////// */
+
+
+fetchList = async () => {
+
+  const list = await this.service.list();
+
+  return {
+    offres: list?.data as JobOffer[], 
+  };
+};
+ 
+useListerQuery = () => {
+  return useQuery<{ offres: JobOffer[] }, Error>(
+    [API_SECTIONS.jobOffer+"#list"],
+    this.fetchList
+  );
+};
+
+
 }
 
 const JobOfferService = new JobOfferServiceClass();

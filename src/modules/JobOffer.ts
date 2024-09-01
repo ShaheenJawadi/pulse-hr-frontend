@@ -1,14 +1,14 @@
 
 import * as yup from "yup";
 
-interface JobOffer {
+export interface JobOffer {
     id?: number;
     title: string;
     department_id: null|number;
     location: string;
     min_experience: null|number;
     max_experience: null|number;
-    tags: string;
+    tags: string[];
     short_description: string;
     contract_type_id: number | null;
     requirements: string;
@@ -49,7 +49,7 @@ export const jobOfferDefaultValues: JobOffer = {
     min_experience: null,
     max_experience: null,
     contract_type_id: null,
-    tags: "",
+    tags: [],
     short_description: "",
     requirements: "",
     expire_at: "",

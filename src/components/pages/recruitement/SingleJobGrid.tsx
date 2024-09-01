@@ -1,14 +1,15 @@
 
 import { Box, Chip, Divider, Stack, Typography } from "@mui/material";
 import LocationOnTwoToneIcon from "@mui/icons-material/LocationOnTwoTone";
+import { JobOffer } from "@/modules/JobOffer";
 
 
-const SingleJobGrid = () => {
-  return ( <Stack spacing={2}>
+const SingleJobGrid = ({single}:{single:JobOffer}) => {
+  return ( <Stack sx={{width:"100%"}} spacing={2}>
     <Box>
       <Typography variant="body1">
-        SHORT DESC SHORT DESC SHORT DESC SHORT DESC SHORT DESC SHORT DESC
-        SHORT DESC SHORT DESC SHORT DESC{" "}
+        {single?.short_description}
+        qslkdjlsqkjd klsqjdklsqj dkl jsqkldjsqkljdqskl djsqlk dl
       </Typography>
     </Box>
     <Box>
@@ -18,7 +19,7 @@ const SingleJobGrid = () => {
     <Stack direction={"row"} justifyContent={"space-between"}>
       <Stack direction={"row"}>
         <LocationOnTwoToneIcon color="success" />
-        <Typography variant="body1">Tunisie , tunis</Typography>
+        <Typography variant="body1">{single?.location}</Typography>
       </Stack>
 
       <Box>
