@@ -24,6 +24,7 @@ import {
 
 import { WpService } from "@/services/workPosition"; 
 import { EmployeeDefaultValues, EmployeeSchema } from "@/modules/Employee";
+import { toast } from "react-toastify";
 
 
 const AddEmployeePage = () => {
@@ -31,20 +32,6 @@ const AddEmployeePage = () => {
 
 
 
-  const handleNext = () => {
-    const nextStep =
-      activeStep + 1 === steps.length ? activeStep : activeStep + 1;
-
-    setActiveStep(nextStep);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSuccess = () => {
-    alert("submitted");
-  };
 
 
 
@@ -54,12 +41,13 @@ const AddEmployeePage = () => {
     handleSubmit,
     formState: { errors },
     onSubmit,
+    trigger,
   } = useFormWithMutation(
     EmployeeDefaultValues,
     EmployeeSchema,
     mutation.mutateAsync,
     () => handleSuccess(),
-    "Poste créé avec succès"
+    "Employée créé avec succès"
   );
 
 
@@ -91,11 +79,30 @@ const AddEmployeePage = () => {
   ];
 
 
+
+  const handleNext = async () => {
+    const isStepValid = await trigger(); 
+    if (isStepValid) {
+      setActiveStep((prevStep) => prevStep + 1);
+    } else {
+      toast.error('err');
+    }
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleSuccess = () => {
+    alert("submitted");
+  };
+
+
   return (
     <Stack spacing={3}>
       <PagerHeader title="Ajouter un employée" />
 
-      <Box>
+      <Box component={"form"} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={3}>
           <Grid item xs={8.5}>
             <Paper>

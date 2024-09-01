@@ -44,7 +44,7 @@ const SideStepper = (props: StepperProps) => {
             Soumettre
           </Button>
         ) : (
-          <Button endIcon={<NavigateNextIcon />} onClick={handleNext}>
+          <Button type="submit" endIcon={<NavigateNextIcon />} onClick={handleNext}>
             Suivant
           </Button>
         )}
