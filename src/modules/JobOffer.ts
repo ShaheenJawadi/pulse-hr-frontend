@@ -14,6 +14,8 @@ interface JobOffer {
     requirements: string;
     expire_at: string;
     status: string;
+
+    intervalle?: boolean;
 }
 
 
@@ -27,6 +29,7 @@ export const createJobOfferSchema = yup.object().shape({
  
     max_experience: yup
     .number()
+    .nullable()
     .positive()
     .integer()
     .when("intervalle", {
@@ -50,5 +53,6 @@ export const jobOfferDefaultValues: JobOffer = {
     short_description: "",
     requirements: "",
     expire_at: "",
-    status: "open"
+    status: "open",
+    intervalle: false,
 };
