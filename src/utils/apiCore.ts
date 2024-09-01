@@ -69,8 +69,8 @@ export class CoreApi {
 
     async findOne(id: number | string): Promise<responseType> {
         try {
-            const res: AxiosResponse<responseType> = await this.http.get(`${this.base_path}/${id}`);
-            return res.data;
+            const res: AxiosResponse<responseType> = await this.http.get(`${this.base_path}${API_ENDPOINTS.SINGLE}${id}`);
+            return res.data?.data;
         } catch (err) {
             throw err;
         }
