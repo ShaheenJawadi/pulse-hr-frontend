@@ -59,6 +59,8 @@ const AddDepartment = () => {
           formRegistartion={register("manager_id")}
           isError={errors?.manager_id ? true : false}
           errorMessage={errors?.manager_id?.message}
+           targetMenu="Manager"
+
         />
         <InputField
           formRegistartion={register("location")}

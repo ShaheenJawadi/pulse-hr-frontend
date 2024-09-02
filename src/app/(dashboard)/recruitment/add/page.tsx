@@ -196,8 +196,8 @@ const AddJob = () => {
                       label={"Departement"}
                       formRegistartion={register("department_id")}
                       isError={errors?.department_id ? true : false}
-                      errorMessage={errors?.department_id?.message}
-                      selectData={emplacementList}
+                      errorMessage={errors?.department_id?.message} 
+                      targetMenu="Department"
                     />
                           <ExperianceYears
                       setValue={setValue}

@@ -145,8 +145,9 @@ const ProfessionalInfo = (props: Props) => {
               formRegistartion={register("department_id")}
               isError={errors?.department_id ? true : false}
               errorMessage={errors?.department_id?.message}
-              selectData={emplacementList}
+        
               defaultValue={getValues('department_id')}
+               targetMenu="Department"
             />
           </Grid>
           <Grid item xs={4}>
@@ -157,6 +158,7 @@ const ProfessionalInfo = (props: Props) => {
               errorMessage={errors?.position_id?.message}
               selectData={emplacementList}
               defaultValue={getValues('position_id')}
+               targetMenu="WorkPosition"
             />
           </Grid>
           <Grid item xs={4}>
@@ -167,6 +169,7 @@ const ProfessionalInfo = (props: Props) => {
               errorMessage={errors?.supervisor_id?.message}
               selectData={emplacementList}
               defaultValue={getValues('supervisor_id')}
+              targetMenu="Manager"
             />
           </Grid>
           <Grid item xs={4}>
@@ -176,7 +179,9 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.shift_id ? true : false}
               errorMessage={errors?.shift_id?.message}
               selectData={emplacementList}
-              defaultValue={getValues('shift_id')}
+            /*   defaultValue={getValues('shift_id')} */
+            defaultValue={1}
+                targetMenu="Shift"
             />
           </Grid>
           <Grid item xs={4}>
@@ -196,7 +201,10 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.contract_type_id ? true : false}
               errorMessage={errors?.contract_type_id?.message}
               selectData={emplacementList}
-              defaultValue={getValues('contract_type_id')}
+              /* defaultValue={getValues('contract_type_id')} */
+              defaultValue={1}
+                 targetMenu="ContractType"
+              
             />
           </Grid>
           <Grid item xs={4}>

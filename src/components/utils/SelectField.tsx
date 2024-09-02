@@ -1,5 +1,7 @@
+ 
 import { getDynamicSelectData } from "@/hooks/selectItemsData";
-import { SelectDataTypes } from "@/types/structureTypes";
+import { DepService } from "@/services/department";
+import { SelectDataTypes, ServiceRegistryCall } from "@/types/structureTypes";
 import {
   FormControl,
   InputLabel,
@@ -96,8 +98,11 @@ export const SelectField = (props: Props) => {
 };
 
 
+type DynamicProps ={
+  targetMenu:ServiceRegistryCall,
+}
 
-export const DynamicSelectField = (props: Props) => {
+export const DynamicSelectField = (props: Props &DynamicProps) => {
   const {
     label,
     formRegistartion,
@@ -105,15 +110,17 @@ export const DynamicSelectField = (props: Props) => {
     errorMessage, 
     dataValue,
     allowNull,
+    targetMenu,
     getNewValue,
   } = props;
 
 
+ 
 
-  const {options:selectData, isLoading, error}=getDynamicSelectData({target:"Department"});
+    const {options:selectData, isLoading, error}=getDynamicSelectData({target:targetMenu});
+ 
 
 
-  
   const [selectVal, setSelectVal] = useState(dataValue);
 
   const handleChange = (event: any) => {
@@ -159,4 +166,5 @@ export const DynamicSelectField = (props: Props) => {
     </FormControl>
   );
 };
+
 

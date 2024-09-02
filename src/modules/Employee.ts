@@ -98,10 +98,10 @@ export const EmployeeSchema = yup.object().shape({
     department_id: yup.number().required("Sélectionnez un département"),
     position_id: yup.number().required("Sélectionnez un poste"),
     supervisor_id: yup.number().nullable().defined(),
-    shift_id: yup.number().required("Sélectionnez un horaire"),
-
+/*     shift_id: yup.number().required("Sélectionnez un horaire"),
+    contract_type_id: yup.number().required("Sélectionnez un type de contrat"), */
     hire_date: yup.string().required("Entrez une date d'embauche"),
-    contract_type_id: yup.number().required("Sélectionnez un type de contrat"),
+
     end_contract: yup.string().nullable().defined(),
 
 

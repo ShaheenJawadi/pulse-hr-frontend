@@ -31,3 +31,6 @@ export type SelectDataTypes = {
     labelText: any;
 
 }
+
+
+export type ServiceRegistryCall="Manager"|"Department" |"WorkPosition" |"Shift" |"ContractType";

@@ -40,7 +40,7 @@ class DepartmentServiceClass {
    
   useDepartmentListQuery = () => {
     return useQuery<{ departments: Department[] }, Error>(
-      [API_SECTIONS.structure.department+"#list"],
+      "departments",
       this.fetchDepartmentList
     );
   };
@@ -51,3 +51,12 @@ class DepartmentServiceClass {
 const DepService = new DepartmentServiceClass();
 
 export { DepService };
+
+
+export const aaaauseDepartmentListQuery = () => {
+  return useQuery<{ departments: Department[] }, Error>(
+    "departments",
+    DepService.fetchDepartmentList
+  );
+};
+
