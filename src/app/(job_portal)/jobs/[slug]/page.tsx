@@ -19,7 +19,7 @@ import StickyNote2TwoToneIcon from "@mui/icons-material/StickyNote2TwoTone";
 import WorkHistoryTwoToneIcon from "@mui/icons-material/WorkHistoryTwoTone";
 import { ROUTING } from "@/utils/routes";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
-const SingleJobPost = () => {
+const SingleJobPost = ({ params }: { params: { slug: string } }) => {
   const {openDrawer} = useDrawerAction()
 
   const openApply = () => {
