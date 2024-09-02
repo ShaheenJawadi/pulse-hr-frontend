@@ -12,8 +12,7 @@ import {
   Paper,
   Stack,
   Typography,
-} from "@mui/material";
-import GeneralTable from "@/ui/table/mainTable";
+} from "@mui/material"; 
 import AddIcon from "@mui/icons-material/Add";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import MenuOption from "@/components/listingPages/menuOptions";

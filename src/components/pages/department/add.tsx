@@ -9,7 +9,7 @@ import {
   departmentDefaultValues,
 } from "@/modules/Department";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
-import { SelectField } from "@/components/utils/SelectField";
+import { DynamicSelectField, SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
 
 const AddDepartment = () => {
@@ -53,7 +53,7 @@ const AddDepartment = () => {
           label="Designation"
           type={"text"}
         />
-        <SelectField
+        <DynamicSelectField
           label={"Manager"}
           selectData={emplacementList}
           formRegistartion={register("manager_id")}

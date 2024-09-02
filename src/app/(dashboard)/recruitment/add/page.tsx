@@ -1,7 +1,7 @@
 "use client";
 import PagerHeader from "@/components/listingPages/pageHeader";
 import { InputField } from "@/components/utils/InputField";
-import { SelectField } from "@/components/utils/SelectField";
+import { DynamicSelectField, SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
 import {
   Stack,
@@ -192,7 +192,7 @@ const AddJob = () => {
                       type="text"
                     />
 
-                    <SelectField
+                    <DynamicSelectField
                       label={"Departement"}
                       formRegistartion={register("department_id")}
                       isError={errors?.department_id ? true : false}

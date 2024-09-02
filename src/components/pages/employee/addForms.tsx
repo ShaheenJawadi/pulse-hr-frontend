@@ -1,5 +1,5 @@
 import { InputField } from "@/components/utils/InputField";
-import { SelectField } from "@/components/utils/SelectField";
+import { DynamicSelectField, SelectField } from "@/components/utils/SelectField";
 import { EmployeeType } from "@/modules/Employee";
 import { SelectDataTypes } from "@/types/structureTypes";
 import {
@@ -140,7 +140,7 @@ const ProfessionalInfo = (props: Props) => {
       <Box flex={1}>
         <Grid container spacing={4}>
           <Grid item xs={4}>
-            <SelectField
+            <DynamicSelectField
               label={"Departement"}
               formRegistartion={register("department_id")}
               isError={errors?.department_id ? true : false}
@@ -150,7 +150,7 @@ const ProfessionalInfo = (props: Props) => {
             />
           </Grid>
           <Grid item xs={4}>
-            <SelectField
+            <DynamicSelectField
               label={"Poste"}
               formRegistartion={register("position_id")}
               isError={errors?.position_id ? true : false}
@@ -160,7 +160,7 @@ const ProfessionalInfo = (props: Props) => {
             />
           </Grid>
           <Grid item xs={4}>
-            <SelectField
+            <DynamicSelectField
               label={"Superviseur"}
               formRegistartion={register("supervisor_id")}
               isError={errors?.supervisor_id ? true : false}
@@ -170,7 +170,7 @@ const ProfessionalInfo = (props: Props) => {
             />
           </Grid>
           <Grid item xs={4}>
-            <SelectField
+            <DynamicSelectField
               label={"Horaire de Travail "}
               formRegistartion={register("shift_id")}
               isError={errors?.shift_id ? true : false}
@@ -190,7 +190,7 @@ const ProfessionalInfo = (props: Props) => {
           </Grid>
 
           <Grid item xs={4}>
-            <SelectField
+            <DynamicSelectField
               label={"Type de contrat"}
               formRegistartion={register("contract_type_id")}
               isError={errors?.contract_type_id ? true : false}

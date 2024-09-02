@@ -72,13 +72,13 @@ const GeneralTable = ({ columns, data, utils }: GeneralTableProps) => {
     <Stack spacing={3}>
       <Stack paddingX={4} direction={"row"} justifyContent={"space-between"}>
         <Box sx={{ minWidth: 120 }}>
-          <SelectField
+      {/*     <SelectField
             dataValue={20}
             size="small"
             label={"Ligne par page"}
             getNewValue={(v) => handleChangeRowsPerPage(v)}
             selectData={perPageList}
-          />
+          /> */}
         </Box>
 
         <Box> {utils} </Box>

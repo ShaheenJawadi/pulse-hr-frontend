@@ -1,3 +1,4 @@
+import { TestDepartmentSelect } from "@/hooks/selectItemsData";
 import { SelectDataTypes } from "@/types/structureTypes";
 import {
   FormControl,
@@ -93,3 +94,67 @@ export const SelectField = (props: Props) => {
     </FormControl>
   );
 };
+
+
+
+export const DynamicSelectField = (props: Props) => {
+  const {
+    label,
+    formRegistartion,
+    isError,
+    errorMessage, 
+    dataValue,
+    allowNull,
+    getNewValue,
+  } = props;
+
+
+
+  const {options:selectData, isLoading, error}=TestDepartmentSelect();
+
+  const [selectVal, setSelectVal] = useState(dataValue);
+
+  const handleChange = (event: any) => {
+    setSelectVal(event?.target?.value as string);
+
+    if (getNewValue) {
+      getNewValue(event?.target?.value);
+    }
+  };
+
+  useEffect(() => {
+    setSelectVal(dataValue);
+  }, [dataValue]);
+
+  return (
+    <FormControl fullWidth error={isError}>
+      <InputLabel>{label}</InputLabel>
+      <Select
+        error={isError}
+        {...props}
+        inputProps={formRegistartion}
+        onChange={handleChange}
+        value={selectVal}
+      >
+        {allowNull && (
+          <MenuItem value={undefined}>
+            <Stack direction={"row"} spacing={2}>
+              <Typography>{allowNull} </Typography>
+            </Stack>
+          </MenuItem>
+        )}
+
+        {selectData?.map((item, index) => {
+          return (
+            <MenuItem key={index} value={item.value}>
+              {item.labelText}
+            </MenuItem>
+          );
+        })}
+      </Select>
+
+      <FormHelperText>{errorMessage}</FormHelperText>
+    </FormControl>
+  );
+};
+
