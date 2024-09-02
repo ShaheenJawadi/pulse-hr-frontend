@@ -2,6 +2,11 @@ import AppReactDatepicker from "@/components/utils/datePicker";
 import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
 
 const DashboardTopSection = () => {
+
+
+    const randomBg = Math.floor(Math.random() * 11) + 1;
+
+    const imgBg=randomBg;
   return (
     <>
       <Grid container spacing={3}>
@@ -19,12 +24,24 @@ const DashboardTopSection = () => {
         </Grid>
         <Grid item xs={4.5}>
           <Stack spacing={3}>
-            <Box>qskld</Box>
             <Box>
-              <AppReactDatepicker
-                inline
-             
-              />
+              <Card
+                sx={{
+                  backgroundImage: `url(/dashboard/clock_bg/${imgBg}.jpg)`, 
+                  backgroundSize: "cover",
+                  borderRadius: 2,
+                  backgroundPosition: "center",
+                  height: 150, 
+                
+                }}
+              >
+                <CardContent >
+                  <Typography>12;30</Typography>
+                </CardContent>
+              </Card>
+            </Box>
+            <Box>
+              <AppReactDatepicker inline />
             </Box>
           </Stack>
         </Grid>
