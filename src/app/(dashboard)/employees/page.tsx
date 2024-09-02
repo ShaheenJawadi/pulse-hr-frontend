@@ -9,22 +9,25 @@ import {
   CardContent,
   Chip,
   Divider,
-  Grid, 
+  Grid,
   Stack,
   Typography,
-} from "@mui/material"; 
+} from "@mui/material";
 import PagerHeader from "@/components/listingPages/pageHeader";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
 import { ROUTING } from "@/utils/routes";
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import MenuOption from "@/components/listingPages/menuOptions";
 import { ListingMenuItemType } from "@/types/structureTypes";
+import { EmpService } from "@/services/employees";
+import { EmployeeType } from "@/modules/Employee";
 
 const MyTable = () => {
   const router = useRouter();
+  const { data, error, isLoading } = EmpService.useEmployeeListQuery();
 
   const addBtn = () => {
     router.push(ROUTING.EMPLOYEE.ADD);
@@ -44,8 +47,10 @@ const MyTable = () => {
         </Button>
       </Stack>
 
-      <Grid container>
-        <SingleEmployeeCard />
+      <Grid container spacing={2}>
+        {data?.employees.map((item) => {
+          return <SingleEmployeeCard single={item} />;
+        })}
       </Grid>
     </Stack>
   );
@@ -60,68 +65,80 @@ const menu: ListingMenuItemType[] = [
     title: "Profile",
     icon: <AccountBoxIcon />,
     link: ROUTING.RECRUTEMENT.APPLICATIONS("1"),
-  } 
+  },
 ];
 
-const SingleEmployeeCard = () => {
+const SingleEmployeeCard = ({ single }: { single: EmployeeType }) => {
   return (
     <Grid item xs={4}>
       <Card>
         <CardContent>
           <Stack spacing={3}>
             <Stack direction={"row"} justifyContent={"space-between"}>
-                   <Stack spacing={4} alignItems={"center"} direction={"row"}   >
-              <Box>
-                <Avatar
-                  sx={{ width: 80, height: 80 }}
-                  variant="rounded"
-                  src={"/utils/goat.jpg"}
-                />
-              </Box>
+              <Stack spacing={4} alignItems={"center"} direction={"row"}>
+                <Box>
+                  <Avatar
+                    sx={{ width: 80, height: 80 }}
+                    variant="rounded"
+                    src={"/utils/goat.jpg"}
+                  />
+                </Box>
 
-              <Box>
-                <Typography variant="h5">Shaheen Jawadi</Typography>
-                <Typography fontWeight={700} variant="body2">
-                  sqdqs@sqd.sqd
-                </Typography>
-              </Box>
+                <Box>
+                  <Typography variant="h5">
+                    {" "}
+                    {single?.name} {single?.last_name}
+                  </Typography>
+                  <Typography fontWeight={700} variant="body2">
+                    {single?.email}
+                  </Typography>
+                </Box>
+              </Stack>
+              <MenuOption menulist={menu} />
             </Stack>
-            <MenuOption menulist={menu} />
-            </Stack>
-       
+
             <Divider sx={{ width: "100%" }} />
             <Stack direction={"row"} spacing={4}>
               <Typography variant="body2">Departement:</Typography>
-              <Chip label="Employé" color="primary" size="medium" />
+              <Chip
+                label={single?.department?.name}
+                color="primary"
+                size="medium"
+              />
             </Stack>
-            <Stack alignItems={"center"} spacing={1}>
-              <Card
-                color={"secondary"}
-                variant="lightone"
-                sx={{
-                  padding: 2,
-                  backgroundColor: "secondary",
-                  width: "fit-content",
-                  minWidth: 300,
-                }}
-              >
-                <Stack direction={"row"} spacing={4}>
-                  <Box>
-                    <Avatar
-                      sx={{ width: 60, height: 60 }}
-                      variant="rounded"
-                      src={"/utils/goat.jpg"}
-                    />
-                  </Box>
-                  <Stack spacing={1}>
-                    <Typography variant="body2" color={"secondary"}>
-                      Manager:{" "}
-                    </Typography>
-                    <Typography> nom & prenom</Typography>
+            {single.supervisor && (
+              <Stack alignItems={"center"} spacing={1}>
+                <Card
+                  color={"secondary"}
+                  variant="lightone"
+                  sx={{
+                    padding: 2,
+                    backgroundColor: "secondary",
+                    width: "fit-content",
+                    minWidth: 300,
+                  }}
+                >
+                  <Stack direction={"row"} spacing={4}>
+                    <Box>
+                      <Avatar
+                        sx={{ width: 60, height: 60 }}
+                        variant="rounded"
+                        src={"/utils/goat.jpg"}
+                      />
+                    </Box>
+                    <Stack spacing={1}>
+                      <Typography variant="body2" color={"secondary"}>
+                        Manager:{" "}
+                      </Typography>
+                      <Typography>
+                        {" "}
+                        {single.supervisor?.name} {single.supervisor?.last_name}
+                      </Typography>
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Card>
-            </Stack>
+                </Card>
+              </Stack>
+            )}
 
             <Stack alignSelf={"center"} direction={"row"} gap={4}>
               <Chip

@@ -1,5 +1,6 @@
 
 import * as yup from "yup";
+import { Department } from "./Department";
 
 export type EmployeeType = {
     name: string;
@@ -18,6 +19,11 @@ export type EmployeeType = {
     position_id: number | null;
     additional_infos?: EmergencyContactType | null;
     user_id?: number | null;
+
+
+    department?: Department ;
+    supervisor?: EmployeeType;
+
 };
   type EmergencyContactType = {
     contactName: string;
