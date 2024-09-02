@@ -56,7 +56,7 @@ const DrawerHolder = () => {
       break;
     case "OPEN_APPLY_DRAWER":
       currentDrawer = {
-        component: <ApplyJob />,
+        component: <ApplyJob jobId={data?.id} />,
         title: "Postuler",
         subTitle: "job title",
         maxWidth: 500,

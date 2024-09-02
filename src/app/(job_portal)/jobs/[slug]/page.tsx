@@ -29,7 +29,7 @@ const SingleJobPost = ({ params }: { params: { slug: string } }) => {
   const { openDrawer } = useDrawerAction();
 
   const openApply = () => {
-    openDrawer("OPEN_APPLY_DRAWER", { id: 1 });
+    openDrawer("OPEN_APPLY_DRAWER", { id: data?.id });
   };
 
   return (

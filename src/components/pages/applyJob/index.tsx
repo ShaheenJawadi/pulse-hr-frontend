@@ -14,7 +14,7 @@ import { JobApplicationService } from "@/services/publicListing/applications";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
 import useFormWithMutation from "@/hooks/postFormHook";
 import { candidateDefaultValues, candidateSchema } from "@/modules/Candidate";
-const ApplyJob = () => {
+const ApplyJob = ({jobId}:{jobId:number}) => {
   const mutation = JobApplicationService.useCreateMutation();
   const { closeDrawer } = useDrawerAction();
   const {
@@ -34,7 +34,7 @@ const ApplyJob = () => {
   const handleSuccess = () => {
     closeDrawer();
   };
-  setValue("job_offer_id", 1);
+  setValue("job_offer_id", jobId);
 
   return (
     <Box component={"form"} onSubmit={handleSubmit(onSubmit)}>
