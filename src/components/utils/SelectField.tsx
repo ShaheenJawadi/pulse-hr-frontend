@@ -1,4 +1,4 @@
-import { TestDepartmentSelect } from "@/hooks/selectItemsData";
+import { getDynamicSelectData } from "@/hooks/selectItemsData";
 import { SelectDataTypes } from "@/types/structureTypes";
 import {
   FormControl,
@@ -31,7 +31,7 @@ type Props = SelectProps & {
   formRegistartion?: UseFormRegisterReturn;
   isError?: boolean;
   errorMessage?: string;
-  selectData: SelectDataTypes[];
+  selectData?: SelectDataTypes[];
   dataValue?: any;
   getNewValue?: (value: any) => void;
   allowNull?: string;
@@ -110,8 +110,10 @@ export const DynamicSelectField = (props: Props) => {
 
 
 
-  const {options:selectData, isLoading, error}=TestDepartmentSelect();
+  const {options:selectData, isLoading, error}=getDynamicSelectData({target:"Department"});
 
+
+  
   const [selectVal, setSelectVal] = useState(dataValue);
 
   const handleChange = (event: any) => {
