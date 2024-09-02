@@ -29,6 +29,8 @@ import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
 import { SelectField } from "@/components/utils/SelectField";
 import { SelectDataTypes } from "@/types/structureTypes";
+import { PublicJobListingService } from "@/services/publicListing";
+import { JobOffer } from "@/modules/JobOffer";
 
 const LogoHolder = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -37,6 +39,7 @@ const LogoHolder = styled(Box)(({ theme }) => ({
 }));
 
 const Home = () => {
+  const { data, error, isLoading } = PublicJobListingService.useListerQuery();
   return (
     <>
       <Box position={"relative"}>
@@ -51,10 +54,10 @@ const Home = () => {
         </Grid>
         <Grid item sm={8.5}>
           <Stack divider={<Divider />} spacing={2}>
-            <JobListHeader />
+            <JobListHeader count={data?.offres.length || 0} />
             <Grid container spacing={3}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
-                return <SingleGrid />;
+              {data?.offres.map((item) => {
+                return <SingleGrid single={item} />;
               })}
             </Grid>
           </Stack>
@@ -65,7 +68,7 @@ const Home = () => {
 };
 
 const FilterSide = () => {
-   const emplacementList: SelectDataTypes[] = [
+  const emplacementList: SelectDataTypes[] = [
     {
       labelText: "Tunis, tunisia",
       value: "Tunis, tunisia",
@@ -83,7 +86,6 @@ const FilterSide = () => {
           <Stack spacing={1}>
             <Typography>Emplacement</Typography>
             <SelectField label={"Emplacement"} selectData={emplacementList} />
-          
           </Stack>
           <Stack spacing={1}>
             <Typography>Expérience</Typography>
@@ -130,7 +132,7 @@ const FilterSide = () => {
   );
 };
 
-const SingleGrid = () => {
+const SingleGrid = ({ single }: { single: JobOffer }) => {
   return (
     <Grid item sm={6}>
       <Card variant="elevation">
@@ -138,34 +140,36 @@ const SingleGrid = () => {
           <Link href={ROUTING.PUBLIC.JOBLISTING.SINGLEJOB}>
             <Stack spacing={4}>
               <Typography variant="h5" sx={{ color: "#000" }}>
-                jOBtITLE
+                {single?.title}
               </Typography>
               <Stack direction={"row"} justifyContent={"space-between"}>
                 <Stack direction={"row"}>
                   <LocationOnTwoToneIcon color="success" />
-                  <Typography variant="body1">Tunisie , tunis</Typography>
+                  <Typography variant="body1">{single.location}</Typography>
                 </Stack>
 
                 <Stack direction={"row"}>
                   <SafetyCheckTwoToneIcon color="warning" />
-                  <Typography variant="body1">full time </Typography>
+                  <Typography variant="body1">adddddddd</Typography>
                 </Stack>
               </Stack>
 
-              
-
               <Box>
                 <Typography variant="subtitle1">
-                  qsjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
+                  {single?.short_description}
                 </Typography>
               </Box>
               <Stack spacing={1} direction={"row"}>
-                <Chip
-                  variant="outlined"
-                  size="small"
-                  color="primary"
-                  label="tag1"
-                />
+                {single?.tags?.map((tag, index) => (
+                  <Chip
+                    key={index}
+                    variant="outlined"
+                    size="small"
+                    color="primary"
+                    label={tag}
+                  />
+                ))}
+
                 <Chip
                   variant="outlined"
                   size="small"
@@ -183,7 +187,7 @@ const SingleGrid = () => {
                 <Typography variant="body2">Il ya 5 jours </Typography>
                 <Button variant="contained">Postuler</Button>
               </Stack>
-            </Stack>{" "}
+            </Stack> 
           </Link>
         </CardContent>
       </Card>
@@ -191,7 +195,7 @@ const SingleGrid = () => {
   );
 };
 
-const JobListHeader = () => {
+const JobListHeader = ({ count }: { count: number }) => {
   const orderByList: SelectDataTypes[] = [
     {
       labelText: "Plus récent",
@@ -206,14 +210,12 @@ const JobListHeader = () => {
   return (
     <Stack justifyContent={"space-between"} direction={"row"}>
       <Box>
-        <Typography variant="h5">8 emplois trouvés</Typography>
+        <Typography variant="h5">{count} emplois trouvés</Typography>
       </Box>
       <Stack alignItems={"center"} direction={"row"} spacing={2}>
         <Typography typography={"body1"}>Trier par</Typography>
         <FormControl size="small" sx={{ minWidth: 100 }}>
-        <SelectField dataValue={1} size="small"  selectData={orderByList} />
-          
-    
+          <SelectField dataValue={1} size="small" selectData={orderByList} />
         </FormControl>
 
         <IconButton color="primary">
