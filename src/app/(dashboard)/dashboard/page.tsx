@@ -1,7 +1,15 @@
+import DashboardTopSection from "@/components/pages/dashboard/topSection";
 
-export default function Home() {
+const Dashboard=() =>{
+
+
   return (
-   <div></div>
+   <div>
+
+    <DashboardTopSection/>
+   </div>
   );
 }
  
+
+export default Dashboard;
