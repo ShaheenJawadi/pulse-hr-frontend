@@ -39,16 +39,14 @@ const SideStepper = (props: StepperProps) => {
           Retour
         </Button>
 
-        {activeStep === steps.length - 1 ? (
-          <Button type="submit" startIcon={<SaveIcon />}  >
-            Soumettre
-          </Button>
-        ) : (
-          <Button    endIcon={<NavigateNextIcon />} onClick={handleNext}>
+        <Button type="button" disabled={(activeStep === steps.length - 1)}   endIcon={<NavigateNextIcon />} onClick={handleNext}>
             Suivant
           </Button>
-        )}
+     
       </Stack>
+      <Button disabled={!(activeStep === steps.length - 1)} type="submit" startIcon={<SaveIcon />}  >
+            Soumettre
+          </Button>
     </Stack>
   );
 };
