@@ -1,6 +1,7 @@
+import { EmployeeType } from '@/modules/Employee';
 import { CoreApi } from '@/utils/apiCore';
 import { API_SECTIONS } from '@/utils/apiEndpoints';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 
 class EmployeeServiceClass {
@@ -25,6 +26,24 @@ class EmployeeServiceClass {
         });
     };
 
+/* ///////////////// */
+
+
+fetchEmployeeList = async () => {
+
+    const list = await this.service.list();
+
+    return {
+      employees: list?.data as EmployeeType[], 
+    };
+  };
+   
+  useEmployeeListQuery = () => {
+    return useQuery<{ employees: EmployeeType[] }, Error>(
+      [API_SECTIONS.employee+"#list"],
+      this.fetchEmployeeList
+    );
+  };
 
 }
 
