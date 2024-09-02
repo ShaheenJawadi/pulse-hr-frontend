@@ -137,7 +137,7 @@ const SingleGrid = ({ single }: { single: JobOffer }) => {
     <Grid item sm={6}>
       <Card variant="elevation">
         <CardContent>
-          <Link href={ROUTING.PUBLIC.JOBLISTING.SINGLEJOB}>
+          <Link href={ROUTING.PUBLIC.JOBLISTING.SINGLEJOB(single?.slug)}>
             <Stack spacing={4}>
               <Typography variant="h5" sx={{ color: "#000" }}>
                 {single?.title}

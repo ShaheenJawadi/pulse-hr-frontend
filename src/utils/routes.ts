@@ -54,7 +54,7 @@ export const ROUTING = {
     JOBLISTING: {
 
       MAIN: "/jobs",
-      SINGLEJOB: "/jobs/slug",
+      SINGLEJOB: (slug: string) => `/jobs/${slug}`,
     }
 
 

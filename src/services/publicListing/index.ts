@@ -30,6 +30,26 @@ useListerQuery = () => {
 
 
 
+
+
+
+////////////////////////
+
+
+
+getSingle = async (slug: string | number): Promise<JobOffer> => {
+  const single = await this.service.findOne(slug);
+  return single;
+};
+
+useSingleQuery = (slug: string | number) => {
+  return useQuery<JobOffer, Error>(
+    [API_SECTIONS.jobOffer, slug],
+    () => this.getSingle(slug)  
+  );
+};
+
+
 }
 
 const PublicJobListingService = new PublicJobOffersServiceClass();

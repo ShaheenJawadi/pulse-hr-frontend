@@ -5,6 +5,7 @@ import { Candidate } from "./Candidate";
 export interface JobOffer {
     id?: number;
     title: string;
+    slug: string;
     department_id: null|number;
     location: string;
     min_experience: null|number;
@@ -58,4 +59,5 @@ export const jobOfferDefaultValues: JobOffer = {
     expire_at: "",
     status: "open",
     intervalle: false,
+    slug: "",
 };

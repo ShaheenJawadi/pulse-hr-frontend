@@ -19,16 +19,19 @@ import StickyNote2TwoToneIcon from "@mui/icons-material/StickyNote2TwoTone";
 import WorkHistoryTwoToneIcon from "@mui/icons-material/WorkHistoryTwoTone";
 import { ROUTING } from "@/utils/routes";
 import { useDrawerAction } from "@/components/drawer/drawer.context";
+import { PublicJobListingService } from "@/services/publicListing";
+import { JobOffer } from "@/modules/JobOffer";
+
 const SingleJobPost = ({ params }: { params: { slug: string } }) => {
-  const {openDrawer} = useDrawerAction()
+  const { data, error, isLoading } = PublicJobListingService.useSingleQuery(
+    params.slug
+  );
+  const { openDrawer } = useDrawerAction();
 
   const openApply = () => {
+    openDrawer("OPEN_APPLY_DRAWER", { id: 1 });
+  };
 
-    openDrawer("OPEN_APPLY_DRAWER" ,{id:1})
-
-
-  }
- 
   return (
     <Box padding={2}>
       <Stack spacing={10}>
@@ -38,76 +41,44 @@ const SingleJobPost = ({ params }: { params: { slug: string } }) => {
           alignItems={"center"}
         >
           <Image src="/telnet/logo.webp" width={180} height={45} alt="" />
-          <Button href={ROUTING.PUBLIC.JOBLISTING.MAIN} variant="outlined" size="large" color="primary">
+          <Button
+            href={ROUTING.PUBLIC.JOBLISTING.MAIN}
+            variant="outlined"
+            size="large"
+            color="primary"
+          >
             Trouver plus
           </Button>
         </Stack>
         <Stack spacing={4}>
           <Stack spacing={4} alignItems={"center"}>
             <Typography variant="h3" color={"#000"}>
-              {" "}
-              Job title ksqdkjlsq kdhkqjlh duioqs ydiusqd
+              {data?.title}
             </Typography>
-            <Typography variant="h6">
-              {" "}
-              short description qsk:jd lkqsjdkl sqjkd hkjsqdh ksqjkdhsqui dui
-              qskduyqs jdlksqjdkhsqkjdhuk sqgd jgsqjdg sqhgdsqhd ghqsfdhg
-            </Typography>
+            <Typography variant="h6">{data?.short_description}</Typography>
 
             <Stack spacing={1} direction={"row"}>
-              <Chip
-                variant="outlined"
-                size="small"
-                color="primary"
-                label="tag1"
-              />
-              <Chip
-                variant="outlined"
-                size="small"
-                color="primary"
-                label="tag2"
-              />
+              {data?.tags.map((tag, index) => (
+                <Chip
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  label={tag}
+                />
+              ))}
             </Stack>
           </Stack>
 
-          <BreifCard />
+          <BreifCard single={data ? data :null} />
 
           <Card>
             <CardContent>
               <Stack spacing={4}>
                 <Typography variant="h6">Description</Typography>
-                <Typography variant="body1">
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk
-                  qskjdhkjqsh dkjhsqjkd hjksqh kdjhsqkdhk qskjdhkjqsh dkjhsqjkd
-                  hjksqh kdjhsqkdhk
-                </Typography>
+                <Typography
+                  dangerouslySetInnerHTML={{ __html: data?.requirements || "" }}
+                  variant="body1"
+                />
               </Stack>
             </CardContent>
           </Card>
@@ -115,7 +86,7 @@ const SingleJobPost = ({ params }: { params: { slug: string } }) => {
           <Stack alignItems={"center"}>
             <Box>
               <Button
-              onClick={() => openApply()}
+                onClick={() => openApply()}
                 color="primary"
                 size="large"
                 sx={{ paddingX: 25 }}
@@ -132,26 +103,28 @@ const SingleJobPost = ({ params }: { params: { slug: string } }) => {
 };
 /* maybe add share btn and copy link  */
 
-const BreifCard = () => {
+const BreifCard = ({ single }: { single: JobOffer|null }) => {
   const data = [
     {
       title: "Emplacement",
-      info: "Tunis , tunisie",
+      info: single?.location,
       icon: <LocationOnTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Departement",
-      info: "IT",
+      info: "IT addddddddddddddddddd",
       icon: <CorporateFareTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Expérience",
-      info: "2-3 ans",
+      info: single?.max_experience
+        ? `${single.min_experience} - ${single.max_experience} ans`
+        : `${single?.min_experience} ans`,
       icon: <WorkHistoryTwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
     {
       title: "Type de contrat",
-      info: "CDI",
+      info: "addddddddddd",
       icon: <StickyNote2TwoToneIcon color="primary" sx={{ fontSize: 29 }} />,
     },
   ];
