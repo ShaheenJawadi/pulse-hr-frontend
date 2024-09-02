@@ -1,3 +1,5 @@
+"use client";
+
 import DashboardTopSection from "@/components/pages/dashboard/topSection";
 
 const Dashboard=() =>{

@@ -1,5 +1,6 @@
 import AppReactDatepicker from "@/components/utils/datePicker";
 import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
 
 const DashboardTopSection = () => {
   return (
@@ -35,6 +36,16 @@ const ClockComponant = () => {
 
   const imgBg = randomBg;
 
+  const [time, setTime] = useState<string>(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
     <Box>
       <Card
@@ -58,9 +69,9 @@ const ClockComponant = () => {
                 fontSize: "6.5rem",
                 color: "#fff",
                 textShadow: "1px 4px 10px #070421a3",
-              }} 
+              }}
             >
-              12:30
+              {time}
             </Typography>
           </Stack>
         </CardContent>
