@@ -9,18 +9,19 @@ import {
   CardContent,
   Chip,
   Divider,
-  Grid,
-  Paper,
+  Grid, 
   Stack,
   Typography,
-} from "@mui/material";
-import GeneralTable from "@/ui/table/mainTable";
+} from "@mui/material"; 
 import PagerHeader from "@/components/listingPages/pageHeader";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
 import { ROUTING } from "@/utils/routes";
-import { CustomInfoData } from "@/components/utils/InfoDataCustom";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import MenuOption from "@/components/listingPages/menuOptions";
+import { ListingMenuItemType } from "@/types/structureTypes";
 
 const MyTable = () => {
   const router = useRouter();
@@ -50,13 +51,26 @@ const MyTable = () => {
   );
 };
 
+const menu: ListingMenuItemType[] = [
+  {
+    title: "Aperçu",
+    icon: <RemoveRedEyeIcon />,
+  },
+  {
+    title: "Profile",
+    icon: <AccountBoxIcon />,
+    link: ROUTING.RECRUTEMENT.APPLICATIONS("1"),
+  } 
+];
+
 const SingleEmployeeCard = () => {
   return (
     <Grid item xs={4}>
       <Card>
         <CardContent>
           <Stack spacing={3}>
-            <Stack spacing={4} alignItems={"center"} direction={"row"}   >
+            <Stack direction={"row"} justifyContent={"space-between"}>
+                   <Stack spacing={4} alignItems={"center"} direction={"row"}   >
               <Box>
                 <Avatar
                   sx={{ width: 80, height: 80 }}
@@ -72,6 +86,9 @@ const SingleEmployeeCard = () => {
                 </Typography>
               </Box>
             </Stack>
+            <MenuOption menulist={menu} />
+            </Stack>
+       
             <Divider sx={{ width: "100%" }} />
             <Stack direction={"row"} spacing={4}>
               <Typography variant="body2">Departement:</Typography>
