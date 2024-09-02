@@ -21,6 +21,7 @@ export const API_SECTIONS = {
 
   publicListing: {
     apply: "/publicListing/apply", 
+    jobOffers: "/publicListing",
 
   },
 
