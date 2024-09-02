@@ -30,6 +30,7 @@ const AddEmployeePage = () => {
 
   const mutation = EmpService.useCreateMutation();
   const {
+    getValues,
     register,
     handleSubmit,
     formState: { errors },
@@ -46,23 +47,23 @@ const AddEmployeePage = () => {
   const steps: StepperFormType[] = [
     {
       label: "Informations Personnelles",
-      componentPage: <PersonalInfo errors={errors} register={register} />,
+      componentPage: <PersonalInfo errors={errors} register={register} getValues={getValues} />,
       icon: <InfoIcon color="secondary" />,
     },
 
     {
       label: "Détails d'Emploi",
-      componentPage: <ProfessionalInfo errors={errors} register={register} />,
+      componentPage: <ProfessionalInfo errors={errors} register={register} getValues={getValues} />,
       icon: <WorkIcon color="secondary" />,
     },
     {
       label: "Documents",
-      componentPage: <Documents errors={errors} register={register} />,
+      componentPage: <Documents errors={errors} register={register} getValues={getValues} />,
       icon: <DocumentScannerIcon color="secondary" />,
     },
     {
       label: "Informations Complémentaires",
-      componentPage: <AdditionalInfo errors={errors} register={register} />,
+      componentPage: <AdditionalInfo errors={errors} register={register} getValues={getValues} />,
       icon: <ImportContactsIcon color="secondary" />,
     },
   ];

@@ -11,16 +11,18 @@ import {
   Grid,
   Stack,
 } from "@mui/material";
+import { get } from "http";
 import Image from "next/image";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormGetValues, UseFormRegister } from "react-hook-form";
 
 interface Props {
   register: UseFormRegister<EmployeeType>;
   errors: FieldErrors<EmployeeType>;
+  getValues: UseFormGetValues<EmployeeType>
 }
 
 const PersonalInfo = (props: Props) => {
-  const { register, errors } = props;
+  const { register, errors , getValues} = props;
   const photoSize = 250;
   const emplacementList: SelectDataTypes[] = [
     {
@@ -111,6 +113,7 @@ const PersonalInfo = (props: Props) => {
               formRegistartion={register("sexe")}
               isError={errors?.sexe ? true : false}
               errorMessage={errors?.sexe?.message}
+              defaultValue={getValues("sexe")}
             />
           </Grid>
         </Grid>
@@ -120,7 +123,7 @@ const PersonalInfo = (props: Props) => {
 };
 
 const ProfessionalInfo = (props: Props) => {
-  const { register, errors } = props;
+  const { register, errors ,getValues } = props;
 
   const emplacementList: SelectDataTypes[] = [
     {
@@ -143,6 +146,7 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.department_id ? true : false}
               errorMessage={errors?.department_id?.message}
               selectData={emplacementList}
+              defaultValue={getValues('department_id')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -152,6 +156,7 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.position_id ? true : false}
               errorMessage={errors?.position_id?.message}
               selectData={emplacementList}
+              defaultValue={getValues('position_id')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -161,6 +166,7 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.supervisor_id ? true : false}
               errorMessage={errors?.supervisor_id?.message}
               selectData={emplacementList}
+              defaultValue={getValues('supervisor_id')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -170,6 +176,7 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.shift_id ? true : false}
               errorMessage={errors?.shift_id?.message}
               selectData={emplacementList}
+              defaultValue={getValues('shift_id')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -189,6 +196,7 @@ const ProfessionalInfo = (props: Props) => {
               isError={errors?.contract_type_id ? true : false}
               errorMessage={errors?.contract_type_id?.message}
               selectData={emplacementList}
+              defaultValue={getValues('contract_type_id')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -207,7 +215,7 @@ const ProfessionalInfo = (props: Props) => {
 };
 
 const AdditionalInfo = (props: Props) => {
-  const { register, errors } = props;
+  const { register, errors ,getValues} = props;
 
   const emplacementList: SelectDataTypes[] = [
     {
@@ -256,6 +264,7 @@ const AdditionalInfo = (props: Props) => {
               formRegistartion={register("additional_infos.maritalStatus")}
               isError={errors?.additional_infos?.maritalStatus ? true : false}
               errorMessage={errors?.additional_infos?.maritalStatus?.message}
+              defaultValue={getValues('additional_infos.maritalStatus')}
             />
           </Grid>
           <Grid item xs={4}>
@@ -265,6 +274,7 @@ const AdditionalInfo = (props: Props) => {
               formRegistartion={register("additional_infos.bloodGroup")}
               isError={errors?.additional_infos?.bloodGroup ? true : false}
               errorMessage={errors?.additional_infos?.bloodGroup?.message}
+              defaultValue={getValues('additional_infos.bloodGroup')}
             />
           </Grid>
         </Grid>
