@@ -91,7 +91,7 @@ const DefaultPalette = () => {
     divider: `rgba(${textColor}, 0.12)`,
     background: {
       paper: mode === 'light' ? '#FFF' : '#010A0F',
-      default: '#F1F1F3',
+      default: '#f1f5f9',
     },
     action: {
       active: `rgba(${textColor}, 0.54)`,
