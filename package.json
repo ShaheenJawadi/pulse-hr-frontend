@@ -22,6 +22,7 @@
         "nookies": "^2.5.2",
         "react": "^18",
         "react-beautiful-dnd": "^13.1.1",
+        "react-datepicker": "^7.3.0",
         "react-dom": "^18",
         "react-dropzone": "^14.2.3",
         "react-hook-form": "^7.53.0",
