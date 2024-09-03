@@ -1,23 +1,23 @@
 /* import AppReactDatepicker from "@/components/utils/datePicker"; */
 import {
+  Avatar,
   Badge,
   Box,
   Card,
   CardContent,
   Chip,
   colors,
+  Divider,
   Grid,
   IconButton,
+  LinearProgress,
   Stack,
   SvgIconProps,
   Typography,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import HailIcon from "@mui/icons-material/Hail";
-import BadgeIcon from "@mui/icons-material/Badge";
-import HotelIcon from "@mui/icons-material/Hotel";
-import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import EmailIcon from "@mui/icons-material/Email";
@@ -25,24 +25,18 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 const DashboardTopSection = () => {
   return (
     <>
- 
-          <Grid container   spacing={2}>
-            <Grid item xs={4.5}>
-              <WelcomeCard />
-            </Grid>
-            <Grid item xs={4.5}>
-              <MiddleCards />
-            </Grid>
-            <Grid item xs={3}>
-              {/* <Stack spacing={3}> */}
-                <ClockComponant />
-                {/*     <Box>
-              <AppReactDatepicker inline />
-            </Box> */}
-    {/*           </Stack> */}
-            </Grid>
-          </Grid>
-       
+      <Grid container spacing={2}>
+        <Grid item xs={4.5}>
+          <WelcomeCard />
+        </Grid>
+        <Grid item xs={3}>
+          <ClockComponant />
+          {/*  <MiddleCards /> */}
+        </Grid>
+        <Grid item xs={4.5}>
+          <EmpOfWeek />
+        </Grid>
+      </Grid>
     </>
   );
 };
@@ -69,113 +63,35 @@ const ClockComponant = () => {
   }, []);
 
   return (
- 
-      <Card onClick={() => setImgBg(randomBg)}
-        sx={{
-          backgroundImage: `url(/dashboard/clock_bg/${imgBg}.jpg)`,
-          backgroundSize: "cover",
-          borderRadius: 2,
-          backgroundPosition: "center",
-          height: "100%",
-        }}
-      >
-        <CardContent sx={{ height: "100%" }}>
-          <Stack
-            sx={{ height: "100%" }}
-            alignItems={"center"}
-            justifyContent={"center"}
+    <Card
+      onClick={() => setImgBg(randomBg)}
+      sx={{
+        backgroundImage: `url(/dashboard/clock_bg/${imgBg}.jpg)`,
+        backgroundSize: "cover",
+        borderRadius: 2,
+        backgroundPosition: "center",
+        height: "100%",
+      }}
+    >
+      <CardContent sx={{ height: "100%" }}>
+        <Stack
+          sx={{ height: "100%" }}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Typography
+            sx={{
+              userSelect: "none",
+              fontSize: "6.5rem",
+              color: "#fff",
+              textShadow: "1px 4px 10px #070421a3",
+            }}
           >
-            <Typography
-              sx={{
-                userSelect: "none",
-                fontSize: "6.5rem",
-                color: "#fff",
-                textShadow: "1px 4px 10px #070421a3",
-              }}
-            >
-              {time}
-            </Typography>
-          </Stack>
-        </CardContent>
-      </Card>
-  
-  );
-};
-
-const MiddleCards = () => {
-  type CardListItem = {
-    title: string;
-    value: string;
-    icon: React.ReactElement<SvgIconProps>;
-    color:
-      | "primary"
-      | "secondary"
-      | "default"
-      | "inherit"
-      | "error"
-      | "info"
-      | "success"
-      | "warning";
-  };
-  const cardList: CardListItem[] = [
-    {
-      title: "Total d'employés",
-      value: "15",
-      icon: <BadgeIcon sx={{ fontSize: 40 }} />,
-      color: "primary",
-    },
-    {
-      title: "Présents aujourd'hui",
-      value: "12",
-      icon: <HailIcon sx={{ fontSize: 40 }} />,
-      color: "success",
-    },
-    {
-      title: "Absents aujourd'hui",
-      value: "1",
-      icon: <HotelIcon sx={{ fontSize: 40 }} />,
-      color: "error",
-    },
-    {
-      title: "Employés en congé",
-      value: "2",
-      icon: <SelfImprovementIcon sx={{ fontSize: 40 }} />,
-      color: "warning",
-    },
-  ];
-  return (
-    <Grid container spacing={2}>
-      {cardList.map((item) => (
-        <Grid item xs={6}>
-          <Card sx={{ paddingX: 5, paddingY: 5 }} variant="elevation">
-            <Stack
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              direction={"row"}
-              spacing={2}
-            >
-              <Stack spacing={2}>
-                <Typography
-                  variant="body2"
-                  color={"secondary"}
-                  fontWeight={600}
-                >
-                  {item.title}
-                </Typography>
-                <Typography variant="body1" fontWeight={700}>
-                  {item.value}
-                </Typography>
-              </Stack>
-              <Box>
-                <Card variant="lightone" color={item.color}>
-                  <IconButton color={item.color}>{item.icon}</IconButton>
-                </Card>
-              </Box>
-            </Stack>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+            {time}
+          </Typography>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -257,12 +173,115 @@ const WelcomeCard = () => {
         <Image
           onClick={() => changeImgBg()}
           src={`/dashboard/persons/${imgBg}.png`}
-          width={180}
-          height={180}
+          width={200}
+          height={200}
           alt=""
         />
       </Stack>
     </Card>
   );
 };
+
+const EmpOfWeek = () => {
+  return (
+    <Card
+      sx={{
+        height: "100%",
+        padding: 0,
+        backgroundImage:
+          "linear-gradient(to  top left, #051937, #102f54, #194772, #1f6192, #237cb2, #2990c4, #34a5d4, #41bae4, #5dcbe8, #7bdbec, #98ebf1, #b6fbf7)",
+        border: "unset",
+      }}
+    >
+      <Stack
+        direction={"row"}
+        sx={{ height: "100%" }}
+        alignItems={"self-end"}
+        justifyContent={"space-between"}
+      >
+        <CardContent sx={{ height: "100%", width: "100%" }}>
+          <Stack alignItems={"center"} justifyContent={"space-between"} direction={"row"} spacing={2}>
+            <Box>
+              <Typography variant="h5" color={"white"}>
+                Employé de la semaine{" "}
+                <Typography component={"strong"} fontSize={45}>
+                  {" "}
+                  🎊
+                </Typography>
+
+              </Typography>
+              <Typography color={"white"} textAlign={"center"} variant="h6">
+                Shaheen jawadi
+              </Typography>
+              <Card>
+                <Stack spacing={2} padding={2} divider={<Divider />}>
+                  <Stack
+                    direction={"row"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
+                    spacing={3}
+                  >
+                    <Stack spacing={2} flex={1}>
+                      <Typography
+                        variant="body2"
+                        color={"secondary"}
+                        fontWeight={600}
+                      >
+                        Tâches accomplies
+                      </Typography>
+                      <Box>
+                        <LinearProgress variant="determinate" value={50} />
+                      </Box>
+                    </Stack>
+
+                    <Typography variant="h6" color={"success"}>
+                      95%
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction={"row"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
+                    spacing={3}
+                  >
+                    <Typography
+                      variant="body2"
+                      color={"secondary"}
+                      fontWeight={600}
+                    >
+                      Score
+                    </Typography>
+
+                    <Typography variant="h6" color={"success"}>
+                      253
+                    </Typography>
+                  </Stack>
+                </Stack>
+              </Card>
+            </Box>
+            <Box>
+              <Stack alignItems={"center"} position={"relative"}>
+                <Avatar
+                  sx={{ width: 150, height: 150 }}
+                  variant="rounded"
+                  src={"/utils/goat.jpg"}
+                />
+                <Box sx={{ position: "absolute", bottom: -50, right: 0 }}>
+                  <Image
+                    src={`/dashboard/items/emp-week-badge.png`}
+                    width={100}
+                    height={100}
+                    alt=""
+                  />{" "}
+                </Box>
+              </Stack>
+              
+            </Box>
+          </Stack>
+        </CardContent>
+      </Stack>
+    </Card>
+  );
+};
+
 export default DashboardTopSection;
