@@ -4,14 +4,18 @@ import {
   Box,
   Card,
   CardContent,
+  CardHeader,
   Divider,
   Grid,
   IconButton,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
 import Image from "next/image";
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
+import { ApexOptions } from "apexcharts";
+import AppReactApexCharts from "@/components/charts/ApexChartWrapper";
 
 const DashboardSecondSection = () => {
   return (
@@ -19,8 +23,8 @@ const DashboardSecondSection = () => {
       <Grid item xs={3}>
         <EmpOfWeek />
       </Grid>
-      <Grid item xs={9}>
-        qsdqsdqs
+      <Grid item xs={3}>
+        <TasksChart/>
       </Grid>
     </Grid>
   );
@@ -134,4 +138,83 @@ const EmpOfWeek = () => {
   );
 };
 
+
+const TasksChart = () => {
+
+    const theme = useTheme()
+
+     
+ 
+    const options: ApexOptions = {
+      stroke: { dashArray: 8 },
+      labels: ['Tâche terminée'],
+      colors: ['var(--mui-palette-primary-main)'],
+      states: {
+        hover: {
+          filter: { type: 'none' }
+        },
+        active: {
+          filter: { type: 'none' }
+        }
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          opacityTo: 0.5,
+          opacityFrom: 1,
+          shadeIntensity: 0.5,
+          stops: [30, 70, 100],
+          inverseColors: false,
+          gradientToColors: ['var(--mui-palette-primary-main)']
+        }
+      },
+      plotOptions: {
+        radialBar: {
+          endAngle: 130,
+          startAngle: -140,
+          hollow: { size: '60%' },
+          track: { background: 'transparent' },
+          dataLabels: {
+            name: {
+              offsetY: -24,
+              color: 'var(--mui-palette-text-disabled)',
+              fontFamily: theme.typography.fontFamily,
+              fontSize: theme.typography.body2.fontSize as string
+            },
+            value: {
+              offsetY: 8,
+              fontWeight: 500,
+              formatter: value => `${value}%`,
+              color: 'var(--mui-palette-text-primary)',
+              fontFamily: theme.typography.fontFamily,
+              fontSize: theme.typography.h3.fontSize as string
+            }
+          }
+        }
+      },
+      grid: {
+        padding: {
+          top: -18,
+          left: 0,
+          right: 0,
+          bottom: 14
+        }
+      },
+     
+    }
+  
+    return (
+      <Card>
+        <CardHeader
+          title='Suivi des tickets'
+          subheader='Les 7 derniers jours' 
+        />
+        <CardContent >
+         
+          <AppReactApexCharts  type='radialBar' height={300} width='100%' series={[35]} options={options} />
+        </CardContent>
+      </Card>
+    )
+}
 export default DashboardSecondSection;
