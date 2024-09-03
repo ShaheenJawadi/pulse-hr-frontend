@@ -16,7 +16,7 @@ const LayoutWrapper = ({ children }: ChildrenType) => {
       <TopBar />{" "}
       <Box sx={{ height: `calc(100vh - ${navigationHeaderHeight}px)` }}>
         <PerfectScrollbar>
-          <Container maxWidth="xl" sx={{ height: "100vh", overflow: "hidden" }}>
+          <Container maxWidth="xl">
             <Box sx={{ paddingY: 5 }}>{children}</Box>
           </Container> 
         </PerfectScrollbar>
