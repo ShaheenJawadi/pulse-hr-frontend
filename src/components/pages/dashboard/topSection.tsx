@@ -1,5 +1,6 @@
 import AppReactDatepicker from "@/components/utils/datePicker";
 import {
+  Badge,
   Box,
   Card,
   CardContent,
@@ -18,54 +19,18 @@ import { title } from "process";
 import BadgeIcon from "@mui/icons-material/Badge";
 import HotelIcon from "@mui/icons-material/Hotel";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import EmailIcon from "@mui/icons-material/Email";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 const DashboardTopSection = () => {
-  const [imgBg, setImgBg] = useState<number>(1);
-
-  const changeImgBg = () => {
-    if (imgBg < 14) {
-      setImgBg(imgBg + 1);
-    } else {
-      setImgBg(imgBg - 1);
-    }
-  };
-
   return (
     <>
       <Grid container spacing={3}>
         <Grid item xs={9}>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <Card
-                sx={{
-                  height: "100%",
-                  padding: 0,
-                  backgroundImage:
-                    "linear-gradient(to right bottom, #051937, #102f54, #194772, #1f6192, #237cb2, #2990c4, #34a5d4, #41bae4, #5dcbe8, #7bdbec, #98ebf1, #b6fbf7)",
-                  border: "unset",
-                }}
-              >
-                <Stack direction={"row"} justifyContent={"space-between"}>
-                  <CardContent>
-                    <Stack spacing={1}>
-                      <Typography variant="h4" color={"white"}>
-                        Bonjour Shaheen 👋
-                      </Typography>
-                      <Typography color={"white"} variant="h6">
-                        Prêt pour une journée productive !
-                      </Typography>
-                    </Stack>
-                  </CardContent>
-                  <Box>
-                    <Image
-                      onClick={() => changeImgBg()}
-                      src={`/dashboard/persons/${imgBg}.png`}
-                      width={180}
-                      height={180}
-                      alt=""
-                    />
-                  </Box>
-                </Stack>
-              </Card>
+              <WelcomeCard />
             </Grid>
             <Grid item xs={6}>
               <MiddleCards />
@@ -215,6 +180,93 @@ const MiddleCards = () => {
         </Grid>
       ))}
     </Grid>
+  );
+};
+
+const WelcomeCard = () => {
+  const [imgBg, setImgBg] = useState<number>(1);
+
+  const changeImgBg = () => {
+    if (imgBg < 14) {
+      setImgBg(imgBg + 1);
+    } else {
+      setImgBg(imgBg - 1);
+    }
+  };
+
+  return (
+    <Card
+      sx={{
+        height: "100%",
+        padding: 0,
+        backgroundImage:
+          "linear-gradient(to right bottom, #051937, #102f54, #194772, #1f6192, #237cb2, #2990c4, #34a5d4, #41bae4, #5dcbe8, #7bdbec, #98ebf1, #b6fbf7)",
+        border: "unset",
+      }}
+    >
+      <Stack
+        direction={"row"}
+        sx={{ height: "100%" }}
+        alignItems={"self-end"}
+        justifyContent={"space-between"}
+      >
+        <CardContent sx={{ height: "100%" }}>
+          <Stack sx={{ height: "100%" }} justifyContent={"space-between"}>
+            <Stack spacing={1}>
+              <Typography variant="h4" color={"white"}>
+                Bonjour Shaheen 👋
+              </Typography>
+              <Typography color={"white"} variant="h6">
+                Prêt pour une journée productive !
+              </Typography>
+            </Stack>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              alignSelf={"center"}
+              spacing={4}
+            >
+              <Badge variant="dot" color="error">
+                <Card variant="lightone" color={"secondary"}>
+                  <IconButton color={"secondary"}>
+                    <ViewKanbanIcon />
+                  </IconButton>
+                </Card>
+              </Badge>{" "}
+              <Badge variant="dot" color="error">
+                <Card variant="lightone" color={"secondary"}>
+                  <IconButton color={"secondary"}>
+                    <FormatListBulletedIcon />
+                  </IconButton>
+                </Card>{" "}
+              </Badge>{" "}
+              <Badge badgeContent={4} color="error">
+                <Card variant="lightone" color={"secondary"}>
+                  <IconButton color={"secondary"}>
+                    <EmailIcon />
+                  </IconButton>
+                </Card>{" "}
+              </Badge>{" "}
+              <Badge badgeContent={4} color="error">
+                <Card variant="lightone" color={"secondary"}>
+                  <IconButton color={"secondary"}>
+                    <NotificationsIcon />
+                  </IconButton>
+                </Card>{" "}
+              </Badge>
+            </Stack>
+          </Stack>
+        </CardContent>
+
+        <Image
+          onClick={() => changeImgBg()}
+          src={`/dashboard/persons/${imgBg}.png`}
+          width={180}
+          height={180}
+          alt=""
+        />
+      </Stack>
+    </Card>
   );
 };
 export default DashboardTopSection;
