@@ -1,15 +1,18 @@
 "use client";
 
+import DashboardSecondSection from "@/components/pages/dashboard/secondSection";
 import DashboardTopSection from "@/components/pages/dashboard/topSection";
+import { Stack } from "@mui/material";
 
 const Dashboard=() =>{
 
 
   return (
-   <div>
+   <Stack spacing={3}>
 
     <DashboardTopSection/>
-   </div>
+    <DashboardSecondSection/>
+   </Stack>
   );
 }
  

@@ -1,4 +1,4 @@
-import AppReactDatepicker from "@/components/utils/datePicker";
+/* import AppReactDatepicker from "@/components/utils/datePicker"; */
 import {
   Badge,
   Box,
@@ -15,7 +15,6 @@ import {
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import HailIcon from "@mui/icons-material/Hail";
-import { title } from "process";
 import BadgeIcon from "@mui/icons-material/Badge";
 import HotelIcon from "@mui/icons-material/Hotel";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
@@ -26,27 +25,24 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 const DashboardTopSection = () => {
   return (
     <>
-      <Grid container spacing={3}>
-        <Grid item xs={9}>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
+ 
+          <Grid container   spacing={2}>
+            <Grid item xs={4.5}>
               <WelcomeCard />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4.5}>
               <MiddleCards />
             </Grid>
-          </Grid>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Stack spacing={3}>
-            <ClockComponant />
-            <Box>
+            <Grid item xs={3}>
+              {/* <Stack spacing={3}> */}
+                <ClockComponant />
+                {/*     <Box>
               <AppReactDatepicker inline />
-            </Box>
-          </Stack>
-        </Grid>
-      </Grid>
+            </Box> */}
+    {/*           </Stack> */}
+            </Grid>
+          </Grid>
+       
     </>
   );
 };
@@ -73,14 +69,14 @@ const ClockComponant = () => {
   }, []);
 
   return (
-    <Box onClick={() => setImgBg(randomBg)}>
-      <Card
+ 
+      <Card onClick={() => setImgBg(randomBg)}
         sx={{
           backgroundImage: `url(/dashboard/clock_bg/${imgBg}.jpg)`,
           backgroundSize: "cover",
           borderRadius: 2,
           backgroundPosition: "center",
-          height: 150,
+          height: "100%",
         }}
       >
         <CardContent sx={{ height: "100%" }}>
@@ -102,7 +98,7 @@ const ClockComponant = () => {
           </Stack>
         </CardContent>
       </Card>
-    </Box>
+  
   );
 };
 
@@ -184,13 +180,13 @@ const MiddleCards = () => {
 };
 
 const WelcomeCard = () => {
-  const [imgBg, setImgBg] = useState<number>(1);
+  const [imgBg, setImgBg] = useState<number>(2);
 
   const changeImgBg = () => {
     if (imgBg < 14) {
       setImgBg(imgBg + 1);
     } else {
-      setImgBg(imgBg - 1);
+      setImgBg(1);
     }
   };
 
@@ -228,28 +224,28 @@ const WelcomeCard = () => {
             >
               <Badge variant="dot" color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton  sx={{color:"#fff"}}>
+                  <IconButton sx={{ color: "#fff" }}>
                     <ViewKanbanIcon />
                   </IconButton>
                 </Card>
               </Badge>{" "}
               <Badge variant="dot" color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton sx={{color:"#fff"}}>
+                  <IconButton sx={{ color: "#fff" }}>
                     <FormatListBulletedIcon />
                   </IconButton>
                 </Card>{" "}
               </Badge>{" "}
               <Badge badgeContent={4} color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton sx={{color:"#fff"}}>
+                  <IconButton sx={{ color: "#fff" }}>
                     <EmailIcon />
                   </IconButton>
                 </Card>{" "}
               </Badge>{" "}
               <Badge badgeContent={4} color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton  sx={{color:"#fff"}}>
+                  <IconButton sx={{ color: "#fff" }}>
                     <NotificationsIcon />
                   </IconButton>
                 </Card>{" "}
