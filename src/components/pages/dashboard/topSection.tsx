@@ -228,28 +228,28 @@ const WelcomeCard = () => {
             >
               <Badge variant="dot" color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton color={"secondary"}>
+                  <IconButton  sx={{color:"#fff"}}>
                     <ViewKanbanIcon />
                   </IconButton>
                 </Card>
               </Badge>{" "}
               <Badge variant="dot" color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton color={"secondary"}>
+                  <IconButton sx={{color:"#fff"}}>
                     <FormatListBulletedIcon />
                   </IconButton>
                 </Card>{" "}
               </Badge>{" "}
               <Badge badgeContent={4} color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton color={"secondary"}>
+                  <IconButton sx={{color:"#fff"}}>
                     <EmailIcon />
                   </IconButton>
                 </Card>{" "}
               </Badge>{" "}
               <Badge badgeContent={4} color="error">
                 <Card variant="lightone" color={"secondary"}>
-                  <IconButton color={"secondary"}>
+                  <IconButton  sx={{color:"#fff"}}>
                     <NotificationsIcon />
                   </IconButton>
                 </Card>{" "}
