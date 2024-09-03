@@ -21,7 +21,8 @@ import Image from "next/image";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import EmailIcon from "@mui/icons-material/Email";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsIcon from "@mui/icons-material/Notifications"; 
+
 const DashboardTopSection = () => {
   return (
     <>

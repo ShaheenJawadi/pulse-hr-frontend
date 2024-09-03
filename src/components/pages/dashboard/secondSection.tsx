@@ -12,14 +12,16 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import dynamic from 'next/dynamic'
 import Image from "next/image";
 import LinearProgress from "@mui/material/LinearProgress";
-import { ApexOptions } from "apexcharts";
-import AppReactApexCharts from "@/components/charts/ApexChartWrapper";
+import { ApexOptions } from "apexcharts"; 
 import HailIcon from "@mui/icons-material/Hail";
 import BadgeIcon from "@mui/icons-material/Badge";
 import HotelIcon from "@mui/icons-material/Hotel";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+const AppReactApexCharts = dynamic(() => import("@/components/charts/ApexChartWrapper"))
+
 const DashboardSecondSection = () => {
   return (
     <Grid container spacing={2}>
@@ -314,7 +316,7 @@ const AttendanceByDeP = () => {
       <CardContent>
         <AppReactApexCharts
           type="bar"
-          height={400}
+          height={300}
           width="100%"
           options={options}
           series={series}
