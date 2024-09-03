@@ -16,11 +16,11 @@ const AddWorkingShift = () => {
       <Box>
         <Stack spacing={3} divider={<Divider />}>
           <Stack spacing={2} direction={"row"} alignItems={"center"}>
-            <Typography flex={1} variant="body1"></Typography>
-            <Typography flex={3} variant="body1">
+            <Typography flex={3} variant="body1"></Typography>
+            <Typography flex={4} variant="body2">
               Pointage à la sortie
             </Typography>
-            <Typography flex={3} variant="body1">
+            <Typography flex={4} variant="body2">
               Pointage à la sortie
             </Typography>
           </Stack>
@@ -29,7 +29,7 @@ const AddWorkingShift = () => {
             (item) => {
               return (
                 <Stack spacing={2} direction={"row"} alignItems={"center"}>
-                  <Typography flex={1} variant="body1">
+                  <Typography flex={1} variant="body1" minWidth={100}>
                     {item}
                   </Typography>
                   <Box flex={3}>
