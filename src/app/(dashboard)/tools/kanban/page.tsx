@@ -1,23 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Stack } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanColumns from "@/components/pages/kanban/columns";
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from "@/hooks/redux";
-import { moveTask } from "@/hooks/redux/kanban";
+import { AppDispatch, RootState } from "@/hooks/redux";
+import { fetchKanbanData, moveTask } from "@/hooks/redux/kanban";
 
 const KanbanPage = () => {
  
 
+  
 
   const kanbanStore = useSelector((state: RootState) => state.kanban)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
  
+  useEffect(() => {
+    dispatch(fetchKanbanData())
+}, [dispatch])
   
   const onDragEnd = (result:any) => {
     const { source, destination,draggableId } = result;

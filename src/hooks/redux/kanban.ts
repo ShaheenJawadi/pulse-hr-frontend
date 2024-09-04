@@ -1,11 +1,18 @@
 
 import { kanbanColumn } from '@/data/kanbanFakeData'
-import { KanbanTasksType, KanbanColumnType } from '@/types/kanbanTypes';
-import { createSlice } from '@reduxjs/toolkit'
+import { KanbanService } from '@/services/utils/kanban';
+import { KanbanTasksType, KanbanColumnType } from '@/types/kanbanTypes'; 
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
+export const fetchKanbanData = createAsyncThunk('kanban/fetchKanbanData', async () => {
+    const data= KanbanService.fetchKanbanList();
+     
+    return data;
+  });
 
- 
+  
+
 export const kanbanSlice = createSlice({
     name: 'kanban',
     initialState:{ kanbanData:kanbanColumn as KanbanColumnType[]},
@@ -52,6 +59,24 @@ export const kanbanSlice = createSlice({
         },
 
 
+
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchKanbanData.pending, (state) => {
+ 
+          console.log("pending")
+        })
+        .addCase(fetchKanbanData.fulfilled, (state, action) => {
+          state.kanbanData = action.payload;
+          console.log(action.payload)
+    
+         
+        })
+        .addCase(fetchKanbanData.rejected, (state, action) => {
+            console.log('rejected')
+           
+        });
 
     }
 })
