@@ -30,11 +30,11 @@ export const fetchKanbanData = createAsyncThunk('kanban/fetchKanbanData', async 
     return data;
   });
 
-  
+  /* kanbanData:kanbanColumn */
 
 export const kanbanSlice = createSlice({
     name: 'kanban',
-    initialState:{ kanbanData:kanbanColumn as KanbanColumnType[]},
+    initialState:{ kanbanData:[] as KanbanColumnType[]},
     reducers: {
         moveTask: ( state ,action) => {
             const { currentTask, destinationColumn, sourceColumn, newOrder } = action.payload;
@@ -66,7 +66,7 @@ export const kanbanSlice = createSlice({
                 return newKanbanData;
             }
 
-            taskToMove.columnId = destinationColumn;
+            taskToMove.column_id = destinationColumn;
             taskToMove.displayOrder = newOrder;
             destination.tasks.push(taskToMove);
 

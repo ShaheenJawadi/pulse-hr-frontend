@@ -8,7 +8,7 @@ export type KanbanColumnType = {
 export type KanbanTasksType = {
 
     id: number,
-    columnId: number,
+    column_id: number,
     title: string, 
     tags: KanbanTaskTagsType[],
     displayOrder:number
