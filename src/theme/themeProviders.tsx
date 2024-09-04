@@ -23,21 +23,22 @@ const AppTheme = ({ children }: ChildrenType) => {
   }
 
   return (
-    <QueryClientProvider client={queryClientRef.current}>
-      <AppRouterCacheProvider>
-        <CssVarsProvider theme={theme}>
-          <>
-            <CssBaseline />
-            <ReduxProvider>
+    <ReduxProvider>
+      <QueryClientProvider client={queryClientRef.current}>
+        <AppRouterCacheProvider>
+          <CssVarsProvider theme={theme}>
+            <>
+              <CssBaseline />
+
               <DrawerProvider>
                 <DialogProvider> {children}</DialogProvider>
               </DrawerProvider>
               <ReactToastify />
-            </ReduxProvider>
-          </>
-        </CssVarsProvider>
-      </AppRouterCacheProvider>{" "}
-    </QueryClientProvider>
+            </>
+          </CssVarsProvider>
+        </AppRouterCacheProvider>{" "}
+      </QueryClientProvider>{" "}
+    </ReduxProvider>
   );
 };
 
