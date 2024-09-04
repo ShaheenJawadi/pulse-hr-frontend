@@ -12,6 +12,7 @@ export type KanbanTasksType = {
     columnId: number,
     title: string, 
     tags: KanbanTaskTagsType[],
+    displayOrder?:number
 
 
 }

@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { Box, Button, Stack } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import { kanbanColumn as initialColumns } from "@/data/kanbanFakeData";
-import { KanbanTasksType, KanbanColumnType } from "@/types/kanbanTypes";
+
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanColumns from "@/components/pages/kanban/columns";
 import { useDispatch, useSelector } from 'react-redux'

@@ -49,7 +49,8 @@ const KanbanColumns = ({ column, tasks }: KanbanColumnsProps) => {
       <Stack spacing={2}>
         <ColumnBox>
           <Stack spacing={2}>
-            {column?.tasks?.map((task, index) => (
+            {column?.tasks?.slice()  
+  .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0)).map((task, index) => (
                 <Draggable key={task.id}  draggableId={`${task.id}`} index={index}>
                   {(provided) => (
                     <div
