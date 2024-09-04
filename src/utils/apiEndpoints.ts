@@ -25,5 +25,9 @@ export const API_SECTIONS = {
 
   },
 
+  utils: {
+    kanban: "/utils/kanban",  
+
+  },
 
 };
