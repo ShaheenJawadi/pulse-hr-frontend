@@ -10,43 +10,42 @@ export const kanbanSlice = createSlice({
     initialState: kanbanColumn as KanbanColumnType[],
     reducers: {
         moveTask: (state, action) => {
+            const { currentTask, destinationColumn, sourceColumn, newOrder } = action.payload;
 
 
+            const updateDisplayOrder = (tasks: KanbanTasksType[]) => {
+                tasks.forEach((task, index) => {
+                    task.displayOrder = index;
+                });
+            };
 
-            const { currentTask, destinationColumn, sourceColumn } = action.payload;
-            const kanbanData = state as KanbanColumnType[];
+            const source = state.find(column => column.id == sourceColumn);
+            const taskToMove = source?.tasks?.splice(
+                source?.tasks?.findIndex(task => task.id == currentTask) ?? -1,
+                1
+            )[0];
 
-
-            const source = kanbanData.find(column => column.id == sourceColumn);
-            if (!source) {
-                console.log('error 1')
-                return;
+            if (!source || !taskToMove) {
+                console.error('err1');
+                return state;
             }
 
+            updateDisplayOrder(source?.tasks ?? []);
 
-            const taskIndex = source.tasks?.findIndex(task => task.id == currentTask);
-            if (taskIndex === -1) {
-                console.log('error 2')
-                return;
-                    
-
-
-            }
-
-            const [taskToMove] = source.tasks?.splice(taskIndex || 0, 1) || [];
-
-            const destination = kanbanData.find(column => column.id == destinationColumn);
-            if (!destination) {
-                console.log('error 3')
-                return;
-
-
+            const destination = state.find(column => column.id == destinationColumn);
+            if (!destination || !destination.tasks) {
+                console.error('err2');
+                return state;
             }
 
             taskToMove.columnId = destinationColumn;
-            destination?.tasks?.push(taskToMove);
+            taskToMove.displayOrder = newOrder;
+            destination.tasks.push(taskToMove);
 
-            state = kanbanData;
+            destination.tasks.sort((a, b) => a.displayOrder - b.displayOrder);
+            updateDisplayOrder(destination.tasks);
+
+            return state;
         },
 
 

@@ -25,13 +25,9 @@ const KanbanPage = () => {
 
     console.log(result);
     if (!destination) return;
-
-    if (source.droppableId === destination.droppableId) { 
-     console.log('same column');
-    } else { 
-        dispatch(moveTask({currentTask:draggableId, destinationColumn:destination.droppableId , sourceColumn:source.droppableId}))  
  
-    }
+      dispatch(moveTask({currentTask:draggableId, destinationColumn:destination.droppableId , sourceColumn:source.droppableId ,newOrder:destination.index-1}))  
+    
   };
  
 
