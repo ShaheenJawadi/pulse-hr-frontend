@@ -10,8 +10,9 @@ import themeOptions from ".";
 import { DrawerProvider } from "@/components/drawer/drawer.context";
 import { DialogProvider } from "@/components/dialog/dialog.context";
 import { useRef } from "react";
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from "react-query";
 import ReactToastify from "./toast";
+import ReduxProvider from "@/hooks/redux/provider";
 
 const AppTheme = ({ children }: ChildrenType) => {
   const theme = extendTheme(themeOptions());
@@ -21,17 +22,18 @@ const AppTheme = ({ children }: ChildrenType) => {
     queryClientRef.current = new QueryClient();
   }
 
-  
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <AppRouterCacheProvider>
         <CssVarsProvider theme={theme}>
           <>
             <CssBaseline />
-            <DrawerProvider>
-              <DialogProvider> {children}</DialogProvider>
-            </DrawerProvider>
-            <ReactToastify />
+            <ReduxProvider>
+              <DrawerProvider>
+                <DialogProvider> {children}</DialogProvider>
+              </DrawerProvider>
+              <ReactToastify />
+            </ReduxProvider>
           </>
         </CssVarsProvider>
       </AppRouterCacheProvider>{" "}
