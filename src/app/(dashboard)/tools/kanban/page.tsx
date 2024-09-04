@@ -37,7 +37,7 @@ const KanbanPage = () => {
       <Box>
         <PerfectScrollbar dir="horizontal">
           <Stack direction={"row"} spacing={4}>
-            {kanbanStore.map((column) => (
+            {kanbanStore.kanbanData.map((column) => (
               <Droppable droppableId={`${column.id}`} key={column.id} type="TASK">
                 {(provided) => (
                   <Box {...provided.droppableProps} ref={provided.innerRef}>

@@ -5,13 +5,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 
+ 
 export const kanbanSlice = createSlice({
     name: 'kanban',
-    initialState: kanbanColumn as KanbanColumnType[],
+    initialState:{ kanbanData:kanbanColumn as KanbanColumnType[]},
     reducers: {
-        moveTask: (state, action) => {
+        moveTask: ( state ,action) => {
             const { currentTask, destinationColumn, sourceColumn, newOrder } = action.payload;
 
+            let newKanbanData = state.kanbanData;
 
             const updateDisplayOrder = (tasks: KanbanTasksType[]) => {
                 tasks.forEach((task, index) => {
@@ -19,7 +21,7 @@ export const kanbanSlice = createSlice({
                 });
             };
 
-            const source = state.find(column => column.id == sourceColumn);
+            const source = newKanbanData.find(column => column.id == sourceColumn);
             const taskToMove = source?.tasks?.splice(
                 source?.tasks?.findIndex(task => task.id == currentTask) ?? -1,
                 1
@@ -27,15 +29,15 @@ export const kanbanSlice = createSlice({
 
             if (!source || !taskToMove) {
                 console.error('err1');
-                return state;
+                return newKanbanData;
             }
 
             updateDisplayOrder(source?.tasks ?? []);
 
-            const destination = state.find(column => column.id == destinationColumn);
+            const destination = newKanbanData.find(column => column.id == destinationColumn);
             if (!destination || !destination.tasks) {
                 console.error('err2');
-                return state;
+                return newKanbanData;
             }
 
             taskToMove.columnId = destinationColumn;
@@ -44,8 +46,9 @@ export const kanbanSlice = createSlice({
 
             destination.tasks.sort((a, b) => a.displayOrder - b.displayOrder);
             updateDisplayOrder(destination.tasks);
-
+            state.kanbanData = newKanbanData;
             return state;
+         
         },
 
 
