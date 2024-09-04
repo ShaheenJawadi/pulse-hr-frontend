@@ -16,6 +16,7 @@
         "@mui/icons-material": "^5.16.7",
         "@mui/material": "^5.16.7",
         "@mui/material-nextjs": "^5.16.6",
+        "@reduxjs/toolkit": "^2.2.7",
         "@tanstack/react-table": "^8.20.1",
         "apexcharts": "^3.53.0",
         "axios": "^1.7.4",
