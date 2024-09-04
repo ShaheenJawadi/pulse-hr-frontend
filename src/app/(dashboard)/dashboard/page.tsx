@@ -1,5 +1,6 @@
 "use client";
 
+import DashboardFourthSection from "@/components/pages/dashboard/fourthSection";
 import DashboardSecondSection from "@/components/pages/dashboard/secondSection";
 import DashboardThirSection from "@/components/pages/dashboard/thirdSection";
 import DashboardTopSection from "@/components/pages/dashboard/topSection";
@@ -14,6 +15,7 @@ const Dashboard=() =>{
     <DashboardTopSection/>
     <DashboardSecondSection/>
     <DashboardThirSection/>
+    <DashboardFourthSection/>
    </Stack>
   );
 }
