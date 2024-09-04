@@ -1,9 +1,28 @@
 
 import { kanbanColumn } from '@/data/kanbanFakeData'
 import { KanbanService } from '@/services/utils/kanban';
-import { KanbanTasksType, KanbanColumnType } from '@/types/kanbanTypes'; 
+import { KanbanTasksType, KanbanColumnType } from '@/modules/kanabn'; 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from "react-toastify";
 
+const saveData =(d:string)=>{
+  const  data= JSON.parse(d);
+
+ 
+  KanbanService.update(data).then((res) => {
+   
+    if(res.success){
+        toast.success("kanban mis à jour avec succès");
+    }else{
+        toast.error("Erreur");
+    }
+
+  }).catch((err) => { 
+    toast.error("Erreur");
+  })
+     
+  
+}
 
 export const fetchKanbanData = createAsyncThunk('kanban/fetchKanbanData', async () => {
     const data= KanbanService.fetchKanbanList();
@@ -54,6 +73,8 @@ export const kanbanSlice = createSlice({
             destination.tasks.sort((a, b) => a.displayOrder - b.displayOrder);
             updateDisplayOrder(destination.tasks);
             state.kanbanData = newKanbanData;
+        
+            saveData(JSON.stringify(newKanbanData))
             return state;
          
         },
