@@ -1,4 +1,4 @@
-import { KanbanColumnType, KanbanTaskTagsType, KanbanTasksType } from "@/types/kanbanTypes";
+import { KanbanColumnType, KanbanTaskTagsType, KanbanTasksType } from "@/modules/kanabn";
 
 
 const kanbanTaskTags: KanbanTaskTagsType[] = [
