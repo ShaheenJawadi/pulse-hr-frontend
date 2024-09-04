@@ -1,48 +1,52 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import { kanbanColumn as initialColumns } from "@/data/kanbanFakeData";
 import { KanbanTasksType, KanbanColumnType } from "@/types/kanbanTypes";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanColumns from "@/components/pages/kanban/columns";
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from "@/hooks/redux";
+import { moveTask } from "@/hooks/redux/kanban";
 
 const KanbanPage = () => {
-  const [columns, setColumns] = useState<KanbanColumnType[]>(initialColumns);
-  const [tasks, setTasks] = useState<KanbanTasksType[]>([]);
+ 
 
+
+  const kanbanStore = useSelector((state: RootState) => state.kanban)
+  const dispatch = useDispatch()
+
+ 
+  
   const onDragEnd = (result:any) => {
-    const { source, destination } = result;
+    const { source, destination,draggableId } = result;
+
 
     console.log(result);
     if (!destination) return;
 
     if (source.droppableId === destination.droppableId) { 
-      alert("same column");
-      const updatedTasks = [...tasks];
-      const [movedTask] = updatedTasks.splice(source.index, 1);
-      updatedTasks.splice(destination.index, 0, movedTask);
-      setTasks(updatedTasks);
+     console.log('same column');
     } else { 
-      const updatedTasks = [...tasks];
-      const [movedTask] = updatedTasks.splice(source.index, 1);
-      movedTask.columnId = parseInt(destination.droppableId);
-      updatedTasks.splice(destination.index, 0, movedTask);
-      setTasks(updatedTasks);
+        dispatch(moveTask({currentTask:draggableId, destinationColumn:destination.droppableId , sourceColumn:source.droppableId}))  
+ 
     }
   };
+ 
 
-  return (
+  return ( 
     <DragDropContext onDragEnd={onDragEnd}>
+      
       <Box>
         <PerfectScrollbar dir="horizontal">
           <Stack direction={"row"} spacing={4}>
-            {columns.map((column) => (
-              <Droppable droppableId={`col-${column.id}`} key={column.id} type="TASK">
+            {kanbanStore.map((column) => (
+              <Droppable droppableId={`${column.id}`} key={column.id} type="TASK">
                 {(provided) => (
                   <Box {...provided.droppableProps} ref={provided.innerRef}>
-                    <KanbanColumns column={column} tasks={tasks} />
+                    <KanbanColumns column={column} tasks={column?.tasks || []} />
                     {provided.placeholder}
                   </Box>
                 )}
@@ -51,8 +55,9 @@ const KanbanPage = () => {
           </Stack>
         </PerfectScrollbar>
       </Box>
-    </DragDropContext>
+    </DragDropContext> 
   );
 };
 
 export default KanbanPage;
+ 

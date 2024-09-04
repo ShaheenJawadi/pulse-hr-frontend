@@ -50,7 +50,7 @@ const KanbanColumns = ({ column, tasks }: KanbanColumnsProps) => {
         <ColumnBox>
           <Stack spacing={2}>
             {column?.tasks?.map((task, index) => (
-                <Draggable key={task.id}  draggableId={`task-${task.id}`} index={index}>
+                <Draggable key={task.id}  draggableId={`${task.id}`} index={index}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}

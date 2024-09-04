@@ -1,10 +1,10 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 
-import kanban from './kanban'
+import kanbanReducer  from './kanban'
 
 export const store = configureStore({
-  reducer: { kanban },
+  reducer: {kanban: kanbanReducer  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
