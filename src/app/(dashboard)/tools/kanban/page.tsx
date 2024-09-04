@@ -3,21 +3,23 @@
 import React, { useState } from "react";
 import { Box, Stack } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import { kanbanColumn as initialColumns, kanbanTasks as initialTasks } from "@/data/kanbanFakeData";
+import { kanbanColumn as initialColumns } from "@/data/kanbanFakeData";
 import { KanbanTasksType, KanbanColumnType } from "@/types/kanbanTypes";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanColumns from "@/components/pages/kanban/columns";
 
 const KanbanPage = () => {
   const [columns, setColumns] = useState<KanbanColumnType[]>(initialColumns);
-  const [tasks, setTasks] = useState<KanbanTasksType[]>(initialTasks);
+  const [tasks, setTasks] = useState<KanbanTasksType[]>([]);
 
   const onDragEnd = (result:any) => {
     const { source, destination } = result;
 
+    console.log(result);
     if (!destination) return;
 
     if (source.droppableId === destination.droppableId) { 
+      alert("same column");
       const updatedTasks = [...tasks];
       const [movedTask] = updatedTasks.splice(source.index, 1);
       updatedTasks.splice(destination.index, 0, movedTask);
@@ -37,7 +39,7 @@ const KanbanPage = () => {
         <PerfectScrollbar dir="horizontal">
           <Stack direction={"row"} spacing={4}>
             {columns.map((column) => (
-              <Droppable droppableId={`${column.id}`} key={column.id} type="TASK">
+              <Droppable droppableId={`col-${column.id}`} key={column.id} type="TASK">
                 {(provided) => (
                   <Box {...provided.droppableProps} ref={provided.innerRef}>
                     <KanbanColumns column={column} tasks={tasks} />
