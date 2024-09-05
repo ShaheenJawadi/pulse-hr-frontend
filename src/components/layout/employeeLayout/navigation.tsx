@@ -52,6 +52,7 @@ const SingleNavigationMenu = ({element }:SingleNavsProps) => {
     <>
       <Button 
         onClick={handleClick}
+        startIcon={<element.icon />}    
         color="secondary"
       >
              {element.title}

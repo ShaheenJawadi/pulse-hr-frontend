@@ -1,20 +1,10 @@
 import { NavigationMenuType } from "@/types/structureTypes";
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
-import WorkIcon from '@mui/icons-material/Work';
-import QueryStatsIcon from '@mui/icons-material/QueryStats';
-import { ReactElement } from "react";
-import { SvgIconProps } from "@mui/material";
-import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import { ROUTING } from "@/utils/routes";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import EventRepeatIcon from '@mui/icons-material/EventRepeat';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import SettingsIcon from '@mui/icons-material/Settings';
-import InsertChartIcon from '@mui/icons-material/InsertChart';
-import ReviewsIcon from '@mui/icons-material/Reviews';
+import SupportIcon from '@mui/icons-material/Support';
 import TroubleshootIcon from '@mui/icons-material/Troubleshoot';
 import SpeedIcon from '@mui/icons-material/Speed';
 
@@ -26,29 +16,52 @@ export const employeeNavigationMenu: NavigationMenuType[] = [
         icon: DashboardIcon,
         link: ROUTING.DASHBOARD.MAIN,
     },
+ 
+
+         
     {
-        title: 'Employés',
-        icon: PeopleIcon,
-        link: ROUTING.EMPLOYEE.MAIN
+        title: 'Projets',
+        icon: AccountTreeIcon,
+        link: "next features"
+    },
+   
+ 
+
+
+    {
+        title: 'Performance',
+        icon: SpeedIcon,
+        link: ROUTING.PERFORMACE.MAIN
     },
     {
-        title: 'Structure',
-        icon: MapsHomeWorkIcon,
+        title: 'Gestion des congés',
+        icon: EventRepeatIcon,
+        link: ROUTING.LEAVE.MAIN
+    },
+    {
+        title: " Présence & Suivi d'horaires",
+        icon: PendingActionsIcon,
+        link: "next features"
+    },
+     
+    {
+        title: 'Ressources & Support',
+        icon: SupportIcon,
         link: ROUTING.STRUCTURE.MAIN,
         childs: [
             {
-                title: 'Départements',
-                icon: MapsHomeWorkIcon,
+                title: 'Aide & Support',
+                icon: SupportIcon,
                 link: ROUTING.STRUCTURE.DEPARTMENTS
             },
             {
-                title: 'Postes',
-                icon: MapsHomeWorkIcon,
+                title: 'Annuaire ',
+                icon: SupportIcon,
                 link: ROUTING.STRUCTURE.JOB_TITLE
             },
             {
-                title: 'Heures de Travail',
-                icon: MapsHomeWorkIcon,
+                title: 'Documents & Ressources',
+                icon: SupportIcon,
                 link: ROUTING.STRUCTURE.SHIFTS
             }
         ]
@@ -58,29 +71,9 @@ export const employeeNavigationMenu: NavigationMenuType[] = [
 
     /* /////////// */
 
-    {
-        title: 'Présence -------',
-        icon: PendingActionsIcon,
-        link: "next features"
-    },
-    {
-        title: 'Congés',
-        icon: EventRepeatIcon,
-        link: ROUTING.LEAVE.MAIN
-    }, 
-    {
-        title: 'Performance -------',
-        icon: SpeedIcon,
-        link: ROUTING.PERFORMACE.MAIN
-    },
-     
-    {
-        title: 'Rapports et analyses -------',
-        icon: TroubleshootIcon,
-        link: "next features"
-    },
    
- 
+    
+
 
  
     
