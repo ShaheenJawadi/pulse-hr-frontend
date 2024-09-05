@@ -34,18 +34,20 @@ import Image from "next/image";
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
-  backgroundColor: theme.palette.background.paper, 
+  backgroundColor: theme.palette.background.paper,
   height: employeeNavigationHeaderHeight,
   justifyContent: "center",
   display: "flex",
   flexDirection: "column",
   padding: theme.spacing(0, 20),
-  "& .MuiIconButton-root": { 
+  "& .MuiIconButton-root": {
     "& .MuiSvgIcon-root": {
       fontSize: 28,
     },
   },
 }));
+
+ 
 
 const EmployeeTopBar = () => {
   return (
@@ -59,34 +61,28 @@ const EmployeeTopBar = () => {
           height={"100%"}
           justifyContent={"space-between"}
         >
-          <LeftSection />
-    <Box>
-        sqdqs
-    </Box>
+          <LeftSection /> 
           <RightSection />
-        </Stack>{" "}
+        </Stack>
       </Stack>
     </TopBarWrapper>
   );
 };
 
+const LogoComponent = () => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Image src="/logo/logo.svg" width={180} height={60} alt="logo" />
+    </Box>
+  );
+};
 
-const LogoComponent = ( ) => {
-    return (
-      <Box
-        sx={{ 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      > 
-          <Image src="/logo/logo.svg" width={180} height={60} alt="logo" />
-    
-         
-      </Box>
-    );
-  };
-  
 const MenuProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -208,7 +204,6 @@ const ClockInOut = () => {
         size="small"
         startIcon={<PunchClockIcon />}
         color="warning"
-        
         onClick={() => clockIn()}
       >
         Pointage d'entrée
