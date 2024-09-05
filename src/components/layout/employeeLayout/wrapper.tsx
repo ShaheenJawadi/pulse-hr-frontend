@@ -17,10 +17,11 @@ const EmployeeLayoutWrapper = ({ children }: ChildrenType) => {
   return (
     <Box>
       <EmployeeTopBar /> 
-      <EmployeeNavigation/>
+
       <Box sx={{ height: `calc(100vh - ${employeeNavigationHeaderHeight}px)` }}>
         <PerfectScrollbar>
           <Container maxWidth="xl">
+          <EmployeeNavigation/>
             <Box sx={{ paddingY: 5 }}>{children}</Box>
           </Container> 
         </PerfectScrollbar>
