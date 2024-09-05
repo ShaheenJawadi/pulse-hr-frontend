@@ -20,24 +20,27 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { navigationHeaderHeight } from "@/theme/constatnt";
+import {
+  employeeNavigationHeaderHeight,
+  navigationHeaderHeight,
+} from "@/theme/constatnt";
 import PunchClockIcon from "@mui/icons-material/PunchClock";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import Link from "next/link";
 import { ROUTING } from "@/utils/routes";
 import ItemPopover from "@/components/utils/PopoverComponent";
 import { useDialogAction } from "@/components/dialog/dialog.context";
+import Image from "next/image";
 
 const TopBarWrapper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
-  backgroundColor: theme.palette.secondary.main,
-  color: theme.palette.primary.contrastText,
-  height: navigationHeaderHeight + 1,
+  backgroundColor: theme.palette.background.paper, 
+  height: employeeNavigationHeaderHeight,
   justifyContent: "center",
   display: "flex",
   flexDirection: "column",
-  "& .MuiIconButton-root": {
-    color: "#fff",
+  padding: theme.spacing(0, 20),
+  "& .MuiIconButton-root": { 
     "& .MuiSvgIcon-root": {
       fontSize: 28,
     },
@@ -47,20 +50,43 @@ const TopBarWrapper = styled(Paper)(({ theme }) => ({
 const EmployeeTopBar = () => {
   return (
     <TopBarWrapper variant="outlined">
-      <Stack
-        alignItems={"center"}
-        direction={"row"}
-        height={"100%"}
-        justifyContent={"space-between"}
-      >
-        <LeftSection />
-
-        <RightSection />
+      <Stack spacing={15} direction={"row"}>
+        <LogoComponent />
+        <Stack
+          flex={1}
+          alignItems={"center"}
+          direction={"row"}
+          height={"100%"}
+          justifyContent={"space-between"}
+        >
+          <LeftSection />
+    <Box>
+        sqdqs
+    </Box>
+          <RightSection />
+        </Stack>{" "}
       </Stack>
     </TopBarWrapper>
   );
 };
 
+
+const LogoComponent = ( ) => {
+    return (
+      <Box
+        sx={{ 
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      > 
+          <Image src="/logo/logo.svg" width={180} height={60} alt="logo" />
+    
+         
+      </Box>
+    );
+  };
+  
 const MenuProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -76,7 +102,7 @@ const MenuProfile = () => {
         <Avatar
           variant="rounded"
           src="/utils/goat.jpg"
-          sx={{ width: 40, height: 40 }}
+          sx={{ width: 50, height: 50 }}
         >
           S
         </Avatar>
@@ -128,7 +154,7 @@ const RightSection = () => {
     <Stack direction={"row"} spacing={2}>
       <ClockInOut />
       <IconButton>
-        <NotificationsIcon />
+        <NotificationsIcon color="secondary" />
       </IconButton>
       <MenuProfile />
     </Stack>
@@ -144,19 +170,19 @@ const LeftSection = () => {
       <ItemPopover title="Bloc-notes">
         <Link href={ROUTING.UTILITIES.NOTEBOOK}>
           <IconButton>
-            <StickyNote2Icon />
+            <StickyNote2Icon color="primary" />
           </IconButton>{" "}
         </Link>
       </ItemPopover>
       <ItemPopover title="Tâches">
         <IconButton>
-          <FormatListBulletedIcon />
+          <FormatListBulletedIcon color="primary" />
         </IconButton>
       </ItemPopover>
       <ItemPopover title="Kanban">
         <Link href={ROUTING.UTILITIES.KANBAN}>
           <IconButton>
-            <ViewKanbanIcon />
+            <ViewKanbanIcon color="primary" />
           </IconButton>
         </Link>
       </ItemPopover>
@@ -175,20 +201,19 @@ const ClockInOut = () => {
     openDialog("CLOCK_OUT", { id: 1 });
   };
 
-
   return (
     <Stack justifyContent={"center"}>
-    
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<PunchClockIcon />}
-          color="warning"
-          onClick={()=>clockIn()}
-        >
-          Pointage d'entrée
-        </Button>
-  {/* 
+      <Button
+        variant="outlined"
+        size="small"
+        startIcon={<PunchClockIcon />}
+        color="warning"
+        
+        onClick={() => clockIn()}
+      >
+        Pointage d'entrée
+      </Button>
+      {/* 
          <Button
       variant="outlined"
       size="small"
